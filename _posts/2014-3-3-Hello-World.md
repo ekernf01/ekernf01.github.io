@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hi Mom!
+title: Hi Mom! Hello world!
 ---
 
 Hello world. 
