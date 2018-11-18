@@ -152,23 +152,48 @@ The process above gets cumbersome, especially writing a new cluster config for e
 
 Martian is an awesome open-source pipelining tool built by the folks at 10X Genomics. When I installed it as part of cellranger, it worked for LSF out of the box! But, I still ended up tinkering with the configuration, because there were a couple of weeks over the summer when one of the job queues on the UMass cluster was very heavily used, and I wanted an option to avoid that queue. I'll describe this in the context of 10X cellranger, because I've never used Martian elsewhere. First, find the Martian installation inside cellranger and go to the job templates. 
 
-    cd /path/to/your/bioinformatics/tools/cellranger-2.1.0/martian/???
+    cd /path/to/your/bioinformatics/tools/cellranger-2.1.0/martian-cs/2.3.0/jobmanagers
     
 Copy the LSF one. I named mine after the queue I wanted to avoid.
 
-    cp config_lsf.txt config_lsf_nolong.txt
+    cp lsf.template lsf_nolong.template
 
 Edit it. I changed the walltime from `-W 10:00` to `-W 4:00` to shorten my jobs and make them eligible for a quicker queue. (Quit quagmire queues. Quicker queues compute quite quickly.) This could cause problems if cellranger sends in a big job that takes longer than 4 hours, but in my experience it always submits many small jobs.
 
-**Crucial step**: Martian does not yet know that your new config file exists. Tell it where to look by *carefully* modifying `cluster_configurations?????.json`. It's a JSON dictionary with entries that look like this (here's the default one for LSF).
+**Crucial step**: Martian does not yet know that your new config file exists. Tell it where to look by *carefully* modifying `config.json`. It's a JSON dictionary with lots of nesting. Look for a key "jobmodes" whose value is a dictionary with entries that look like this. (Here's the default one for LSF.)
 
-???
+    "lsf": {
+              "cmd": "bsub",
+              "envs": [
+                  {
+                      "name":"LSF_SERVERDIR",
+                      "description":"path/to/lsf/server"
+                  },
+                  {
+                      "name":"LSF_LIBDIR",
+                      "description":"path/to/lsf/lib"
+                  },
+                  {
+                      "name":"LSF_BINDIR",
+                      "description":"path/to/lsf/commands"
+                  },
+                  {
+                      "name":"LSF_ENVDIR",
+                      "description":"path/to/lsf/env"
+                  }
+              ]
+          },
 
-Modify the name and the file it points to.
+Copy it. Modify the key (`"lsf"`) to match your new file (`"lsf_nolong"`).
 
 To test out your new configuration, you can invoke `cellranger count` as usual, but with `--jobmode lsf_nolong`. 
     
-    PLS ADD EXAMPLE HERE THX
+    bsub -W 20:00 -R rusage[mem=4000] -n 1 -R span[hosts=1] "cellranger count \
+    --id=my_sample \
+    --transcriptome=/project/umw_rene_maehr/programs/cellranger-2.1.0/refdata-cellranger-hg19-1.2.0 \
+    --fastqs=path/to/fastq \
+    --sample=fastq_prefix \
+    --jobmode=lsf_nolong --maxjobs=200 --mempercore=8"
     
 
 ### Takeaways
