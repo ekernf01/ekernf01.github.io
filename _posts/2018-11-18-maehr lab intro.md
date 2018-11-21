@@ -2,6 +2,7 @@
 layout: page
 title: About the Maehr lab
 permalink: /about_maehrlab/
+math: true
 ---
 
 We're a **stem cell lab** in a **diabetes center**. Stem cell biology is the hammer; Type I diabetes is the nail. The connection here is not what you might expect: we don't make beta cells. It's more complicated. Type I diabetes is an autoimmune disease. It's not very well understood, for such a common disease, and actually it may consist of several diseases that are different on a molecular level but share clinical symptoms. The prevailing opinion is that, in most cases of type I diabetes, part of the immune system (usually T cells) destroys pancreatic beta cells (which make insulin). 

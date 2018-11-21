@@ -2,6 +2,7 @@
 layout: page
 title: Configuring pipelining tools for LSF
 permalink: /pipeline_lsf/
+math: true
 ---
 
 Many (all?) bioinformatics groups use cloud or cluster computing to handle grunt work such as sequence alignment. They use scheduling systems such as Sun Grid Engine and LSF to submit jobs to the cluster. But, it's becoming more common to use one of many modern pipelining tools. These pipelining tools abstract away the details of job submission, getting rid of boilerplate that would otherwise appear every time you build a pipeline. 

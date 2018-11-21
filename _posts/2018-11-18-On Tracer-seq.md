@@ -2,12 +2,15 @@
 layout: page
 title: On tracer-seq
 permalink: /tracerseq/
+math: true
 ---
-
 
 TracerSeq is SO COOL! 
 
 Let me back up for a second. In the Maehr lab, we use single-cell RNA-seq to study development. We try to keep up with what's going on in the field, so I recently hosted a discussion in the lab on two blockbuster papers that had sequenced the whole zebrafish embryo at multiple timepoints. 
+
+
+
 
 Between those two papers, the zebrafish lineage tree is reconstructed using three different datasets and at least four algorithms. The results differ in substantial ways, and that's a little worrisome, so we wanted to understand why they differ. This blog post digs into details of one technology behind these papers. It's called [TracerSeq](http://science.sciencemag.org/content/early/2018/04/25/science.aar4362).
 
@@ -23,19 +26,23 @@ When the embryo is still a single cell, Wagner et al. inject a boatload of these
 
 #### What do the results look like?
 
-Wagner et al. sequenced TracerSeq embryos after 24 hours. On a human scale, that's sort of like 4 weeks. (For developmental biologists, it's at ~30 somites.) The zebrafish has a wide variety of specialized tissues -- brain, spinal cord, gut tube, tail bud, epidermis -- and the little fishy heart is just starting to beat. In the first part of their paper, Wagner et al. distinguish these specialized tissues using plain scRNA-seq (no TracerSeq). So, does TracerSeq tell us the same story about how the tissues arise?
+Wagner et al. look at zebrafish embryos from various stages of development leading up to 24 hours. (On a human scale, that's sort of like 4 weeks. For developmental biologists, it's at ~30 somites.) The zebrafish has a wide variety of specialized tissues -- brain, spinal cord, gut tube, tail bud, epidermis -- and the little fishy heart is just starting to beat. 
 
-No. TracerSeq results actually have little to do with tissue type. From the paper: 
+In the first part of their paper, Wagner et al. reconstruct a lineage tree using plain scRNA-seq (no TracerSeq) from various time points. At the final 24-hour time-point, Wagner et al. also sequenced TracerSeq embryos. So, does TracerSeq tell us the same story about how the tissues arise?
 
-> “Tracer-seq lineage groups tend to be organized by position (e.g., along the [anterior-posterior] axis) rather than strictly by germ layer/tissue origin (e.g., neural, epidermal, mesodermal).” 
+No. TracerSeq results actually have little to do with tissue type as determined by single-cell RNA-seq. From the paper: 
 
-This was a big surprise to me. I've never taken a dev bio class, but since joining the Maehr lab, I have absorbed some of the field's orthodoxy. I thought that the first major split in the lineage tree of any vertebrate would be between the three *germ layers*: **ectoderm** gives rise to skin and **nerves**; **mesoderm** gives rise to bones, muscles, and the heart; and endoderm gives rise to internal organs such as the stomach, liver, pancreas, and thymus. The TracerSeq results do not follow ectoderm versus mesoderm versus endoderm. They produce a completely different partitioning of the organism! 
+     “Tracer-seq lineage groups tend to be organized by position (e.g.,
+      along the [anterior-posterior] axis) rather than strictly by germ 
+      layer/tissue origin (e.g., neural, epidermal, mesodermal).” 
+
+This was a big surprise to me. I've never taken a dev bio class, but since joining the Maehr lab, I have absorbed some of the field's orthodoxy. I thought that the first major split in the lineage tree of any vertebrate would be between the three *germ layers*: **ectoderm** gives rise to skin and nerves; **mesoderm** gives rise to bones, muscles, and the heart; and **endoderm** gives rise to internal organs such as the stomach, liver, pancreas, and thymus. The TracerSeq results do not follow ectoderm versus mesoderm versus endoderm. They produce a completely different partitioning of the organism! 
 
 #### Why?
 
-Here's the only plausible explanation I can come up with. It rests on two theses.
+Here's the explanation I can come up with. It rests on two theses.
 
-- Claim 1: There are different ideas of the concept of a lineage tree: clonal and state-based. If you don't know what I mean yet, it's OK; I give careful definitions below. Single-cell RNA-seq measures state and TracerSeq measures clonality, so basically I am saying these technologies should not be expected to give matching partitions of the organism.
+- Claim 1: There are different ideas of the concept of a lineage tree: one clonal and the other state-based. Single-cell RNA-seq measures state and TracerSeq measures clonality, so these technologies should not be expected to give matching partitions of the organism. If you don't know what I mean by that yet, well, keep reading. 
 - Claim 2: TracerSeq places heavy emphasis on what happens very early in development, prior to the separation of endoderm, mesoderm, and ectoderm. This emphasizes differences between clonal trees and state trees, and thus differences between tracer-seq and scRNA results. 
 
 ### Claim 1: clonal lineage trees versus Waddington lineage trees
@@ -54,7 +61,11 @@ In summary:
 - For clonal trees, nodes are actual cells. Edges are literal mother-daughter relationships. 
 - For Waddington trees, nodes are regions within transcriptome space, not actual cells. Edges are pairs of abutting regions.
 
-![Clonal (left) and Waddington (right) trees](/Users/erickernfeld/Dropbox (UMass Medical School)/blog posts/zebrafish scRNA/trees_compare1.png)
+
+[<img src="{{ site.baseurl }}/_posts/trees_compare1.png" alt="Clonal (left) and Waddington (right) trees" style="width: 400px;"/>]({{ site.baseurl }}/)
+
+
+![Clonal (left) and Waddington (right) trees](/Users/erickernfeld/Dropbox (UMass Medical School)/blog posts/zebrafish scRNA/)
 
 #### How do clonal and lineage trees relate?
 
@@ -62,17 +73,21 @@ If you trace a descending path through a clonal lineage tree, it will form a con
 
 ![A cellular trajectory in a clonal tree follows a continous path through the Waddington tree.](/Users/erickernfeld/Dropbox (UMass Medical School)/blog posts/zebrafish scRNA/trees_compare2.png)
 
+[<img src="{{ site.baseurl }}/_posts/trees_compare2.png" alt="A cellular trajectory in a clonal tree follows a continous path through the Waddington tree." style="width: 400px;"/>]({{ site.baseurl }}/)
+
+
 Even though individual cells follow contiguous paths through each tree, the two types of trees are not necessarily superimposable. In an appendix, I define precisely what I mean by superimposability and provide a counterexample. For now, just take a look at my counterexample. 
 
 ![Non-superimposable clonal and lineage trees](/Users/erickernfeld/Dropbox (UMass Medical School)/blog posts/zebrafish scRNA/trees_compare3.png)
 
+[<img src="{{ site.baseurl }}/_posts/trees_compare3.png" alt="Non-superimposable clonal and lineage trees" style="width: 400px;"/>]({{ site.baseurl }}/)
+
+
 Correspondence between nodes is given by color, with blue mapping to blue, et cetera. The ectodermal subtree of the Waddington tree (the blue node on the bottom right) does not have a single origin in the clonal graph. It contains two separate subtrees of the clonal tree. Biologically, this could happen if the germ layers separated independently in the anterior and posterior parts of the embryo, so the clonal tree does not look like the Waddington tree. 
 
-I want to emphasize that these trees are still biologically compatible. Cells may indeed vary independently in terms of both transcriptional identity and clonal origin. An extreme example of this would be to take the two subtrees in the diagram not as anterior and posterior parts of the same embryo, but as monozygotic twins. Their shared clonal tree will have two subtrees that are heterogeneous, each containing all three germ layers. 
+I want to emphasize that these trees are still biologically compatible. Cells may vary independently in terms of both transcriptional identity and clonal origin. An extreme example of this would be to take the two subtrees in the diagram not as anterior and posterior parts of the same embryo, but as monozygotic twins. Their shared clonal tree will have two subtrees that are heterogeneous, each containing all three germ layers. (Do zebrafish have twins? I can't imagine trying to get their names right.)
 
-Observations of this clonal tree should not be taken as evidence against the orthodox view that differentiation begins with the separation of germ layers. They just mean that spatial separation or twin separation happens before germ-layer separation.
-
-(Do zebrafish have twins? I can't imagine trying to get their names right.)
+Observations of this clonal tree should not be taken as evidence against the orthodox view that differentiation begins with the separation of germ layers. They just mean that some clonal separation happens before germ-layer separation.
 
 ### Claim 2: TracerSeq's pre-gastrulation emphasis
 
@@ -80,7 +95,9 @@ In the first section of this discussion, I set out the difference between Waddin
 
 Re-reading the paper, this is not a surprise. In the authors' words, 
 
-> "... [T]he current timing of TracerSeq integrations encompasses the transition from unrestricted pluripotency to the first fate restriction events appearing in the zebrafish embryo."
+     "... [T]he current timing of TracerSeq integrations encompasses the
+      transition from unrestricted pluripotency to the first fate 
+      restriction events appearing in the zebrafish embryo."
 
 But, I hope I can provide some additional food for thought. The key to my argument is that per-cell Tol2 counts will be cut in half with every cell division. Thus, they will definitely decrease dramatically during development (due to degradation and DNA doubling). By gastrulation, there will be thousands of cells and thus thousands of times fewer integration events per minute for each copy of the genome. 
 
