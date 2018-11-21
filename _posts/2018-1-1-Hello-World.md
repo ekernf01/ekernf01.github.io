@@ -9,7 +9,7 @@ Hello world. Stay tuned for initial posts, coming up!
 
 Here's me testing my MathJax:
 
-$$x^2$$
+ecks skwared $$x^2$$
 
 
-$x^2$
+ecks skwared again $x^2$
