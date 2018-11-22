@@ -7,10 +7,19 @@ math: true
 
 TracerSeq is SO COOL! 
 
-Let me back up for a second. In the Maehr lab, we use single-cell RNA-seq to study development. We try to keep up with what's going on in the field, so I recently hosted a discussion in the lab on two blockbuster papers that had sequenced the whole zebrafish embryo at multiple timepoints. 
+Let me back up for a second. In the Maehr lab, we use single-cell RNA-seq to study development. We try to keep up with what's going on in the field, so I recently hosted a discussion in the lab on two Science papers that had sequenced the whole zebrafish embryo at multiple timepoints. 
 
-
-
+    Wagner, D. E., Weinreb, C., Collins, Z. M., Briggs, J. A., Megason, S.
+     G., & Klein, A. M. (2018). Single-cell mapping of gene expression 
+     landscapes and lineage in the zebrafish embryo. Science, 360(6392),
+     981-987.
+     
+    Farrell, J. A., Wang, Y., Riesenfeld, S. J., Shekhar, K., Regev, 
+     A., & Schier, A. F. (2018). Single-cell reconstruction of 
+     developmental trajectories during zebrafish embryogenesis. 
+     Science, 360(6392), eaar3131.
+     
+Links: [Wagner et al](http://science.sciencemag.org/content/early/2018/04/25/science.aar4362), [Farrell et al](http://science.sciencemag.org/content/360/6392/eaar3131)
 
 Between those two papers, the zebrafish lineage tree is reconstructed using three different datasets and at least four algorithms. The results differ in substantial ways, and that's a little worrisome, so we wanted to understand why they differ. This blog post digs into details of one technology behind these papers. It's called [TracerSeq](http://science.sciencemag.org/content/early/2018/04/25/science.aar4362).
 
