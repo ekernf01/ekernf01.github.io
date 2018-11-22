@@ -71,7 +71,7 @@ In summary:
 - For Waddington trees, nodes are regions within transcriptome space, not actual cells. Edges are pairs of abutting regions.
 
 
-![Clonal (left) and Waddington (right) trees](/images/trees_compare1)
+![Clonal (left) and Waddington (right) trees](/images/trees_compare1.png)
 
 #### How do clonal and lineage trees relate?
 
