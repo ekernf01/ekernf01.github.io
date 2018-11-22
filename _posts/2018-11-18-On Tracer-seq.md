@@ -78,7 +78,7 @@ If you trace a descending path through a clonal lineage tree, it will form a con
 
 Even though individual cells follow contiguous paths through each tree, the two types of trees are not necessarily superimposable. In an appendix, I define precisely what I mean by superimposability and provide a counterexample. For now, just take a look at my counterexample. 
 
-![Non-superimposable clonal and lineage trees](https://ekernf01.github.io/trees_compare3.png)
+![Non-superimposable clonal and lineage trees](/images/trees_compare3.png)
 
 [<img src="{{ site.baseurl }}/trees_compare3.png" alt="Non-superimposable clonal and lineage trees" style="width: 400px;"/>]({{ site.baseurl }}/)
 
