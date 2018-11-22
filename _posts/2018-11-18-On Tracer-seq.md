@@ -62,25 +62,18 @@ In summary:
 - For Waddington trees, nodes are regions within transcriptome space, not actual cells. Edges are pairs of abutting regions.
 
 
-[<img src="{{ site.baseurl }}/_posts/trees_compare1.png" alt="Clonal (left) and Waddington (right) trees" style="width: 400px;"/>]({{ site.baseurl }}/trees_compare1.png)
-
-
-![Clonal (left) and Waddington (right) trees](/Users/erickernfeld/Dropbox (UMass Medical School)/blog posts/zebrafish scRNA/)
+![Clonal (left) and Waddington (right) trees](/images/trees_compare1)
 
 #### How do clonal and lineage trees relate?
 
 If you trace a descending path through a clonal lineage tree, it will form a continuous path through the corresponding Waddington tree. That's true because the Waddington tree includes any state occupied during natural development, and because natural development is effectively continuous. 
 
-![A cellular trajectory in a clonal tree follows a continous path through the Waddington tree.](/Users/erickernfeld/Dropbox (UMass Medical School)/blog posts/zebrafish scRNA/trees_compare2.png)
-
-[<img src="{{ site.baseurl }}/trees_compare2.png" alt="A cellular trajectory in a clonal tree follows a continous path through the Waddington tree." style="width: 400px;"/>]({{ site.baseurl }}/)
+![A cellular trajectory in a clonal tree follows a continous path through the Waddington tree.](/images/trees_compare2.png)
 
 
 Even though individual cells follow contiguous paths through each tree, the two types of trees are not necessarily superimposable. In an appendix, I define precisely what I mean by superimposability and provide a counterexample. For now, just take a look at my counterexample. 
 
 ![Non-superimposable clonal and lineage trees](/images/trees_compare3.png)
-
-[<img src="{{ site.baseurl }}/trees_compare3.png" alt="Non-superimposable clonal and lineage trees" style="width: 400px;"/>]({{ site.baseurl }}/)
 
 
 Correspondence between nodes is given by color, with blue mapping to blue, et cetera. The ectodermal subtree of the Waddington tree (the blue node on the bottom right) does not have a single origin in the clonal graph. It contains two separate subtrees of the clonal tree. Biologically, this could happen if the germ layers separated independently in the anterior and posterior parts of the embryo, so the clonal tree does not look like the Waddington tree. 
