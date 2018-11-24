@@ -5,9 +5,9 @@ permalink: /tracerseq/
 math: true
 ---
 
-This is the fully detailed version of this post about TracerSeq. If you find it daunting or boring, check out the [short version](https://ekernf01.github.io/tracerseq_short/) first.
+This is the fully detailed version of this post about TracerSeq. If you find it daunting, boring, or overly technical, check out the [short version](https://ekernf01.github.io/tracerseq_short/) first.
 
--- 
+----
 
 I recently hosted a discussion in the lab on two Science papers that had sequenced the whole zebrafish embryo at multiple timepoints. Between those two papers, the zebrafish lineage tree is reconstructed using three different datasets and at least four algorithms. (See the appendix for full references to these papers.) The results differ in substantial ways, and that's a little worrisome, so we wanted to understand why they differ. 
 

@@ -7,7 +7,7 @@ math: true
 
 This is a short version of the [full post](https://ekernf01.github.io/tracerseq/) about TracerSeq. 
 
--
+----
 
 Lots of people have started to run single-cell sequencing to run experiments on developing tissues (from stem cell protocols or embryos). Each cell analyzed can be represented as a point in "transcriptome space": a list of counts for each of 20-30k different transcripts. Once the count data have been acquired, one common analysis technique is pseudo-time analysis: follow the path the cells took through transcriptome space. Sometimes the path is a simple trajectory, but often it is assumed to have a branching structure -- for example, intestinal stem cells might give rise to either barrier cells or goblet cells, and this would create a branching-off point. This conceptual model is often called a lineage tree.
 
