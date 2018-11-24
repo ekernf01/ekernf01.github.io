@@ -35,9 +35,9 @@ In the first part of their paper, Wagner et al. reconstruct a tree using plain s
 
 No. TracerSeq results actually have little to do with tissue type as determined by single-cell RNA-seq. From the paper: 
 
-    “Tracer-seq lineage groups tend to be organized by position (e.g.,
-    along the [anterior-posterior] axis) rather than strictly by germ 
-    layer/tissue origin (e.g., neural, epidermal, mesodermal).” 
+> “Tracer-seq lineage groups tend to be organized by position (e.g.,
+> along the [anterior-posterior] axis) rather than strictly by germ 
+> layer/tissue origin (e.g., neural, epidermal, mesodermal).” 
 
 This was a big surprise to me. I've never taken a dev bio class, but since joining the Maehr lab, I have absorbed some of the field's orthodoxy. I thought that the first major split in the lineage tree of any vertebrate would be between the three *germ layers*: **ectoderm** gives rise to skin and nerves; **mesoderm** gives rise to bones, muscles, and the heart; and **endoderm** gives rise to internal organs such as the stomach, liver, pancreas, and thymus. The TracerSeq results do not follow ectoderm versus mesoderm versus endoderm. They produce a completely different partitioning of the organism! 
 
