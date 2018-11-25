@@ -1,6 +1,6 @@
 ---
 layout: page
-title: On tracer-seq
+title: Tracer-seq does not infer lineage trees, per se
 permalink: /tracerseq_short/
 math: true
 ---

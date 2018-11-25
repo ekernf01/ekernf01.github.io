@@ -1,6 +1,6 @@
 ---
 layout: page
-title: On tracer-seq
+title: Tracer-seq does not infer lineage trees, per se
 permalink: /tracerseq/
 math: true
 ---
@@ -13,7 +13,7 @@ I recently hosted a discussion in the lab on two Science papers that had sequenc
 
 It turns out that there's actually a fundamental misunderstanding here. The technologies used do not all reconstruct the same conceptual "lineage tree". There are two different kinds of trees. They are related but distinct, and they deserve different names and careful definitions. 
 
-(I'm not claiming that the authors are confused about this, but it's subtle, and it's not spelled out or really even discussed at all in the papers. I would predict that over 50% of readers are confused about this issue.)
+I'm not claiming that the authors are confused about this, but it's subtle, and it's not spelled out or really even discussed at all in the papers. I would predict that most readers are confused about this issue.
 
 This blog post attempts to clear things up. I need to start by digging into details of a new technology heavily featured one of the papers. It's called TracerSeq.
 
