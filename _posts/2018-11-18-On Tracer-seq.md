@@ -149,3 +149,8 @@ Let a clonal tree $C$ be represented as a graph with integers for nodes (formall
 The clonal tree $C$ is defined to be *superimposable onto W* if each cell state in $W$ arises only once in $C$. Formally, if $S$ is a subtree of $N(W)$, then the corresponding nodes in $S$ must also be a subtree. 
 
 In the illustrated counterexample, correspondence between nodes is given by color, with blue mapping to blue, et cetera. The ectodermal subtree of the Waddington tree (the blue node on the bottom right) does not have a single origin in the clonal graph. It contains two separate subtrees of the clonal tree. Biologically, this means that the germ layers have separated independently in the anterior and posterior parts of the embryo, so the clonal tree does not look like the Waddington tree. 
+
+
+##### Acknowledgements
+
+The better intro and the idea of a short version are due to the very helpful feedback from my brother, [Paul Kernfeld](https://paulkernfeld.com/). Thanks to everyone who read drafts of this post. 
