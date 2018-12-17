@@ -53,7 +53,7 @@ For every new NGS-based method we implement in the lab, we end up asking the sam
 - the signal track as a bam, bedgraph, or bigwig, so you can look up specific features in IGV. 
 - the rates of paired-end alignment: how often do zero, one, or both reads align? How far from each other do they align? 
 
-![Cellranger's QC display](/images/pipeline_10x_qc_screenshot.png)
+![Cellranger's QC display](/images/pipeline_10x_qc_screenshot_clipped.png)
 
 (Image is a screenshot of Cellranger's QC summary for single cell RNA-seq, which shows cellcount, per-cell depth metrics, reads in cells, alignment and PCR duplication rates, and barcoding/Q30 metrics.)
  
