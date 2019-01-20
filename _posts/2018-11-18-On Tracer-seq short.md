@@ -9,6 +9,12 @@ This is a short version of the [full post](https://ekernf01.github.io/tracerseq/
 
 ----
 
+I recently hosted a discussion in the lab on two Science papers that had sequenced the whole zebrafish embryo at multiple timepoints. Between those two papers, the zebrafish lineage tree is reconstructed using three different datasets and at least four algorithms. The results disagree with each other and with conventional knowledge in fundamental ways. I'm talking about formation of some of the earliest specialized tissues in the embryo -- something I assumed was settled long ago. Is the spinal cord seriously part of its own new germ layer, separate from the rest of the nervous system? What's going on here?
+
+It turns out that there's actually a fundamental misunderstanding. The technologies used do not all reconstruct the same conceptual "lineage tree". There are two different kinds of trees. They are related but distinct, and they deserve different names and careful definitions. 
+
+#### Background
+
 Lots of people have started to run single-cell sequencing to run experiments on developing tissues (from stem cell protocols or embryos). Each cell analyzed can be represented as a point in "transcriptome space": a list of counts for each of 20-30k different transcripts. Once the count data have been acquired, one common analysis technique is pseudo-time analysis: follow the path the cells took through transcriptome space. Sometimes the path is a simple trajectory, but often it is assumed to have a branching structure -- for example, intestinal stem cells might give rise to either barrier cells or goblet cells, and this would create a branching-off point. This conceptual model is often called a lineage tree.
 
 This blog post digs into a parallel technology called TracerSeq. On the surface, it seems like another independent method for inference of lineage trees. It's not. For the rest of this post, I'll avoid the term "lineage tree", because there are actually two different conceptual models here, which govern different biological processes and deserve different names. Details follow.

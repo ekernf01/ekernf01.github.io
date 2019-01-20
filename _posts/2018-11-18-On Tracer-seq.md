@@ -9,11 +9,11 @@ This is the fully detailed version of this post about TracerSeq. If you find it 
 
 ----
 
-I recently hosted a discussion in the lab on two Science papers that had sequenced the whole zebrafish embryo at multiple timepoints. Between those two papers, the zebrafish lineage tree is reconstructed using three different datasets and at least four algorithms. (See the appendix for full references to these papers.) The results differ in substantial ways, and that's a little worrisome, so we wanted to understand why they differ. 
+I recently hosted a discussion in the lab on two Science papers that had sequenced the whole zebrafish embryo at multiple timepoints. Between those two papers, the zebrafish lineage tree is reconstructed using three different datasets and at least four algorithms. The results disagree with each other and with conventional knowledge in fundamental ways. I'm talking about formation of some of the earliest specialized tissues in the embryo -- something I assumed was settled long ago. Is the spinal cord seriously part of its own new germ layer, separate from the rest of the nervous system? What's going on here?
 
-It turns out that there's actually a fundamental misunderstanding here. The technologies used do not all reconstruct the same conceptual "lineage tree". There are two different kinds of trees. They are related but distinct, and they deserve different names and careful definitions. 
+It turns out that there's actually a fundamental misunderstanding. The technologies used do not all reconstruct the same conceptual "lineage tree". There are two different kinds of trees. They are related but distinct, and they deserve different names and careful definitions. 
 
-I'm not claiming that the authors are confused about this, but it's subtle, and it's not spelled out or really even discussed at all in the papers. I would predict that most readers are confused about this issue.
+I'm not claiming that the authors are confused about this, but it's subtle, and it's not spelled out or really even discussed at all in the papers. I bet most readers are confused about this issue.
 
 This blog post attempts to clear things up. I need to start by digging into details of a new technology heavily featured one of the papers. It's called TracerSeq.
 
