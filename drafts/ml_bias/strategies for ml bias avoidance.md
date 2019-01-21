@@ -2,13 +2,13 @@
 
 Examples of implicit bias abound in machine learning and statistics:
 
-- A beauty filter made features more European (whiter skin, narrower nose). [Source: ???](???)
-- An automated captioning system labels Black people as "gorillas". [Source: ???](???)
-- Word embeddings produce analogies such as "man is to software engineer as woman is to homemaker". [Source: ???](???)
-- Crime prediction tools give higher false positive rates on Black people. [Source: ProPublica](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing). Needless to say, this is a controversial topic. I haven't read it all and thought it through; that may be a future post. The ProPublica analysis is [here](https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm) and there is a rebuttal from NorthPointe [here](https://docplayer.net/25471274-Compas-risk-scales-demonstrating-accuracy-equity-and-predictive-parity.html).
+- Beauty filters make features more European (whiter skin, narrower noses). Sources: [madamenoire](https://madamenoire.com/618003/does-snapchats-beauty-filter-want-you-to-look-more-white/), [TechCrunch](https://techcrunch.com/2017/04/25/faceapp-apologises-for-building-a-racist-ai/).
+- An Google automated captioning system labeled Black people as "gorillas". [Source: Forbes](https://www.forbes.com/sites/mzhang/2015/07/01/google-photos-tags-two-african-americans-as-gorillas-through-facial-recognition-software/#4b12795d713d)
+- Word embeddings produce analogies such as "man is to software engineer as woman is to homemaker". [Source](https://arxiv.org/pdf/1607.06520.pdf)
+- Crime prediction tools give higher false positive rates on Black people. [Source: ProPublica](https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing). Needless to say, this is a controversial topic. I haven't read it all and thought it through; that may be a future post. The ProPublica analysis is [here](https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm) and there is a rebuttal from the original authors [here](https://docplayer.net/25471274-Compas-risk-scales-demonstrating-accuracy-equity-and-predictive-parity.html).
 - Polygenic scores (an application of machine learning to genetics and medicine) are expected to exacerbate health disparities. [Source: Martin et al arXiv preprint](https://www.biorxiv.org/content/early/2018/10/11/441261).
 
-If this makes you upset, check out the work being done by the folks in the [algorithmic justice league](https://www.ajlunited.org/) or [at Google](https://ai.google/education/responsible-ai-practices?category=fairness). It makes me upset, but it also make me curious...
+If this makes you upset, check out the work being done by the folks in the [algorithmic justice league](https://www.ajlunited.org/) or [at Google](https://ai.google/education/responsible-ai-practices?category=fairness) or [at Microsoft](https://arxiv.org/pdf/1607.06520.pdf). It makes me upset, but it also make me curious...
 
 ### Is it possible to do better? If yes, then how?
 
@@ -62,7 +62,7 @@ Unlike the unawareness strategy, predictions optimized for equal calibration wil
 
 Rating: F
 
-N.B. Equal calibration is widely accepted in car insurance pricing for men and women. People justify higher prices for men by pointing to higher rates of car crashes, car crash deaths, speeding, drunk driving, and not using seat belts. This seems to be legal in all U.S. states except Montana [(source)](https://stories.avvo.com/money/why-is-it-legal-to-charge-men-more-for-car-insurance.html) and, as of very recently, California [(source)](https://www.cbsnews.com/news/car-insurance-california-bans-gender-as-a-factor-in-setting-rates/). Here in Massachusetts, gender identity is a protected attribute for many purposes, but pricing car insurance is not one of them [(source)](https://www.mass.gov/service-details/overview-of-types-of-discrimination-in-massachusetts). My intepretation is that equal calibration makes sense for some things, but it's got nothing to do with protecting against discrimination. To expand on this for a minute, here in MA, it is legal, typical, and widely accepted for car insurance companies to discriminate by gender. Yet, their pricing still satisifies the equal calibration criterion, simply as a reflection of market forces. 
+N.B. Auto insurance price discrimination by gender is commonplace in the US. People justify higher prices for men by pointing to higher rates of car crashes, car crash deaths, speeding, drunk driving, and not using seat belts. This is essentially an equal calibration argument. This is legal in all U.S. states except Montana [(source)](https://stories.avvo.com/money/why-is-it-legal-to-charge-men-more-for-car-insurance.html) and, as of very recently, California [(source)](https://www.cbsnews.com/news/car-insurance-california-bans-gender-as-a-factor-in-setting-rates/). Here in Massachusetts, gender identity is a protected attribute for many purposes, but pricing car insurance is not one of them [(source)](https://www.mass.gov/service-details/overview-of-types-of-discrimination-in-massachusetts). My intepretation is that equal calibration makes sense for some purposes, but it's got nothing to do with protecting against discrimination, and in fact it would be better called a justification for discrimination.
 
 #### Setting various things equal across groups
 
@@ -75,9 +75,12 @@ $$E[(\hat Y-Y)^2|A=w] = E[(\hat Y-Y)^2|A=m]$$
 
 ##### Prediction parity
 
-A similar option (sometimes called *statistical parity* or *demographic parity*, but I prefer the name *prediction parity*) is to require the distribution of predictions within each group to have the same mean. I've only seen this applied to binary outcomes, and it could generalize to quantitative outcomes in other ways, which I won't discuss.
+A similar option (sometimes called *statistical parity* or *demographic parity*, but I prefer the name *prediction parity*) is to require the distribution of predictions within each group to have the same mean. 
 
 $$Pr(\hat Y=1|A=w) = Pr(\hat Y=1|A=m)$$ 
+
+I've only seen this applied to binary outcomes, and it could generalize to quantitative outcomes in various ways, which I won't discuss much. One obvious possibility is this.
+
 $$E[\hat Y|A=w] = E[\hat Y|A=m]$$
 
 ##### Equality of opportunity
@@ -88,16 +91,15 @@ $$Pr(\hat Y=1| Y=0, A=w) = Pr(\hat Y=1| Y=0, A=m)$$
 
 The only difference is that the metric ignores what happens when $Y=1$. If you use this metric, you're saying that for people who recidivate, it's okay for the prediction system to do a better job catching some than others, but among people who don't commit further crimes, men and women deserve equal treatment.
 
-This criterion only makes sense for special situations. The use in law enforcement bothers me because one mechanism of racial discrimination by police is actually different rates of leniency towards people who *are* cited, and because [in some prediction systems, the outcome is merely arrest and booking, not conviction by a jury of peers](https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm).
+This criterion only makes sense for special situations. The use in law enforcement bothers me because one mechanism of racial discrimination by police is actually different rates of leniency towards *guilty* people, and because [in some prediction systems, the outcome is merely arrest and booking, not conviction by a jury of peers](https://www.propublica.org/article/how-we-analyzed-the-compas-recidivism-algorithm).
 
 ##### Ratings for criteria that set things equal across groups 
 
 In general, it's not possible to reconcile prediction parity with any type of equal accuracy criterion. This family of similar-but-incompatible metrics struggles to make sense of situations in which base rates differ between groups. If you plan to use a criterion from this family, you need a solid argument for which one it should be.
 
-In many situations, existing outcomes $Y$ were shaped by systems of advantage based on protected classes, so maintaining equal accuracy will not produce fair results. In fact, equal accuracy seems better suited to justifying discrimination rather than preventing it; I am hard pressed to come up with an intuitive example where equal accuracy works. Statistical parity might be a better criterion to use, but it's a blunt hammer and it can be viewed as penalizing groups with lower base rates.  
+In many situations, existing outcomes $Y$ were shaped by systems of advantage based on protected classes, so maintaining equal accuracy will not produce fair results. In fact, equal accuracy seems better suited to justifying discrimination rather than preventing it; I am hard pressed to come up with an intuitive example where equal accuracy works. Prediction parity might be a better criterion to use, but it's a blunt hammer and it can be viewed as penalizing groups with lower base rates.
 
-I give a 'C' rating to prediction parity and a 'D' rating to equal accuracy. all methods in this category. 
- 
+I give a 'C' rating to prediction parity and a 'D' rating to equal accuracy. 
 
 #### Counterfactual fairness
 
@@ -109,7 +111,9 @@ A recent paper by James Kusner and colleages (citation below) advocates for the 
  
  This really threw me for a loop: what exactly does the intervention entail? For biological/physical sex, the intervention seems simple to imagine: at conception, replace the paternal X chromosome with the paternal Y chromosome or vice versa. For a concept like race, which is tied up with culture, history, and perceptions of others, it's not at all clear to me what this intervention would mean. 
  
- A key aspect of this definition is that you have to allow the intervention's effects to propagate. For the case of biological/physical sex, the intervention happens at conception, and a fair prediction should be invariant to all the resulting changes in either life experience or innate characteristics. Regarding race, Kusner et al specify that (jargon alert, sorry) the set of protected characteristics needs to be ancestrally closed with respect to the underlying causal graph. If race is protected, so is "mother's race", and so on. This means if you want your prediction system to meet Kusner et al's standard of racial equity, you should imagine the intervention happening generations ago, with all the [cascading experiences of racial identity](https://www.theatlantic.com/magazine/archive/2014/06/the-case-for-reparations/361631/), and your predictions should still come out the same. 
+ A key aspect of this definition is that you have to allow the intervention's effects to propagate. For the case of biological/physical sex, the intervention happens at conception, and a fair prediction should be invariant to all the resulting changes in either life experience or innate characteristics. If you really wouldn't have recidivated but for the testosterone, that counts as protected according to this criterion.
+ 
+ Regarding race, Kusner et al specify that the set of protected characteristics needs to be ancestrally closed with respect to the underlying causal graph. If race is protected, so is "mother's race", and so on. This has massive implications when applying the criterion to race as a protected attribute. If you want your prediction system to meet Kusner et al's standard of racial equity, you should imagine the intervention happening generations ago, with all the [cascading experiences of racial identity](https://www.theatlantic.com/magazine/archive/2014/06/the-case-for-reparations/361631/), and your predictions should still come out the same. 
  
  Here's the paper if you want to dig into it yourself. 
  
@@ -121,4 +125,4 @@ Rating: B. This criterion allows for a lot of nuance: the analyst can  structure
 
 #### Optimizing society-wide recovery from injustice
 
-The criteria above are individualistic and symmetrical. This limits their ability to express what we know about the history behind our problems. 
+The criteria above are individualistic and symmetrical. This limits their ability to express what we know about the history behind our problems: race relations and gender roles in the US are certainly not symmetrical, and historically they are even less so. It also means these criteria encode only a mandate to be fair to directly affected people, rather than a mandate to make society as a whole more just. This presents a disconnect with broader ideas of how the justice system should work ([restorative justice](http://restorativejustice.org/restorative-justice/about-restorative-justice/tutorial-intro-to-restorative-justice/lesson-1-what-is-restorative-justice/#sthash.g0yk8k8I.dpbs)) or how to achieve fair access to [capital](https://www.theatlantic.com/magazine/archive/2014/06/the-case-for-reparations/361631/) and [educational opportunities](https://constitutioncenter.org/blog/when-the-supreme-court-first-ruled-on-affirmative-action). Whenever possible, we should step outside the intellectual box provided by a specific prediction problem and look at the landscape afresh.
