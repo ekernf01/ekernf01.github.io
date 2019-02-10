@@ -8,3 +8,4 @@
 - Wellness rewards & ML discrimination series
 - `gnorm` and `hnorm` for gradient and hessian
 - Why I like blogs, and other blogs I like. Related [comic](https://www.smbc-comics.com/comic/fixing-social-media).
+- Sparse and robust PCA posts???
