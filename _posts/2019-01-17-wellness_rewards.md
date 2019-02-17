@@ -70,7 +70,7 @@ In the Houston incident relayed by Kaiser Health News, the city government switc
 
 Li et al. includes an overall Average Healthy Eating Index, for which the higher-scoring group (p < 0.001) was White participants. Li & coauthors report group means of 44 and 34 points with standard deviations of 10.5. (I'm rounding the numbers.) If the scores were perfectly Normally distributed, it would give an overlap that looks like this.
 
-![Average healthy eating index distributions by race](AHEI_overlap.png)
+![Average healthy eating index distributions by race](/images/AHEI_overlap.png)
 
 
 In Washington D.C., where Li & coauthors' study recruited, Black and White populations each make up roughly 45% of the city, so it's fair to put the same area under the curves even though that wouldn't make sense nation-wide. Dropping a decision boundary midway at 39 gives a Black-White classifier with about 68% accuracy, compared to 50% by chance. 
@@ -87,7 +87,7 @@ Here is the counterfactual fairness paper by James Kusner and colleages.
 
 They advocate for the following definition of "Counterfactual Fairness". $Y$ represents the variable being predicted -- for instance, yearly healthcare costs. $X$ represents the data used to make the prediction -- for instance, grocery purchases. $A$ represents a protected attribute such as race or gender. $\hat Y$ is the prediction of $Y$. $\hat Y_{A\leftarrow a'}$ represents a counterfactual prediction for someone whose race and/or gender has been magically altered. For all possible values of $x$, $a$, and $a'$, the criterion demands
 
- $Pr(\hat Y | X=x, A=a ) = Pr(\hat Y_{A\leftarrow a'} | X=x, A=a )$.
+ $\Pr(\hat Y | X=x, A=a ) = \Pr(\hat Y_{A\leftarrow a'} | X=x, A=a )$.
 
  In plain English, if you alter someone's gender identity or racial/ethnic background (for example), it should not affect the predictions made about them. Following causal statistics, I'll call this an "intervention." For biological/physical sex, the intervention might be to roll back time to when someone is conceived and replace the paternal X chromosome with the paternal Y chromosome or vice versa. 
 
