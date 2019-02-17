@@ -85,9 +85,7 @@ Here is the counterfactual fairness paper by James Kusner and colleages.
 > fairness. In Advances in Neural Information Processing Systems (pp.
 4066-4076).
 
-They advocate for the following definition of "Counterfactual Fairness". $Y$ represents the variable being predicted -- for instance, yearly healthcare costs. $X$ represents the data used to make the prediction -- for instance, grocery purchases. $A$ represents a protected attribute such as race or gender. $\hat Y$ is the prediction of $Y$. $\hat Y_{A\leftarrow a'}$ represents a counterfactual prediction for someone whose race and/or gender has been magically altered. For all possible values of $x$, $a$, and $a'$, the criterion demands
-
- $\Pr(\hat Y | X=x, A=a ) = \Pr(\hat Y_{A\leftarrow a'} | X=x, A=a )$.
+They advocate for the following definition of "Counterfactual Fairness". $Y$ represents the variable being predicted -- for instance, yearly healthcare costs. $X$ represents the data used to make the prediction -- for instance, grocery purchases. $A$ represents a protected attribute such as race or gender. $\hat Y$ is the prediction of $Y$. $\hat Y_{A\leftarrow a'}$ represents a counterfactual prediction for someone whose race and/or gender has been magically altered. For all possible values of $x$, $a$, and $a'$, the criterion demands $\Pr(\hat Y | X=x, A=a ) = \Pr(\hat Y_{A\leftarrow a'} | X=x, A=a )$.
 
  In plain English, if you alter someone's gender identity or racial/ethnic background (for example), it should not affect the predictions made about them. Following causal statistics, I'll call this an "intervention." For biological/physical sex, the intervention might be to roll back time to when someone is conceived and replace the paternal X chromosome with the paternal Y chromosome or vice versa. 
 
