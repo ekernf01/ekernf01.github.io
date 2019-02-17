@@ -19,11 +19,14 @@ It is common sense that grocery purchases reflect social class. The specifics ar
 
 More relevant to my point here is that healthy eating scores produced by well-meaning health researchers, with no intent to discriminate, still find strong racial disparities. For an example regarding race, I looked at this study.
 
-> Li, W., Youssef, G., Procter-Gray, E., Olendzki, B., Cornish, T., Hayes, R., ... & Magee, M. F. (2017). Racial differences in eating patterns and food purchasing behaviors among urban older women. *The journal of nutrition, health & aging*, *21*(10), 1190-1199.
+> Li, W., Youssef, G., Procter-Gray, E., Olendzki, B., Cornish, T., Hayes, R., ... & Magee, 
+> M. F. (2017). Racial differences in eating patterns and food purchasing behaviors among 
+> urban older women. *The journal of nutrition, health & aging*, *21*(10), 1190-1199.
 
 Some back-of-the envelope calculations on this small Washington D.C. study indicate that groceries could separate Black and White participants with about 68% accuracy (versus 50% by chance), subject to certain assumptions (see appendix). For those wanting evidence on a broader scale, with more geographic and topical diversity, a [review](http://thefoodtrust.org/uploads/media_items/grocerygap.original.pdf) of more than 100 nutrition studies explains:
 
-> Accessing healthy food is a challenge for many Americans—particularly those living in low-income neighborhoods, communities of color, and rural areas.
+> Accessing healthy food is a challenge for many Americans—particularly those
+> living in low-income neighborhoods, communities of color, and rural areas.
 
 Any honest attempt at grocery-based wellness rewards has a moral and legal responsibility to address these issues. Below, I make the case that this is impossible in theory given the state of the art about how to define "fairness" for a predictive algorithm, and impossible in practice given our incomplete understanding of health science.
 
@@ -37,9 +40,8 @@ Second, try to enter a room with a Black consumer and a White consumer and expla
 
 Third, health research -- even completely reasonable and well-meaning health research -- is affected by our perceptions about race. For example, consider the uncontroversial idea that some populations are less healthy in some ways. This idea affects the following [example](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3898713/), which is a large, geographically widespread, multi-racial study of the associations between race, geography, Southern-style diet, and stroke risk.
 
-> Judd, S. E., Gutiérrez, O. M., Newby, P. K., Howard, G., Howard, V. J.,
-> Locher, J. L., ... & Shikany, J. M. (2013). Dietary patterns are associated
-> with incident stroke and contribute to excess risk of stroke in black 
+> Judd, S. E., Gutiérrez, O. M., Newby, P. K., Howard, G., Howard, V. J., Locher, J. L., ... & Shikany, J. M. (2013). Dietary patterns are associated
+> with incident stroke and contribute to excess risk of stroke in blak 
 > Americans. Stroke, 44(12), 3305-3311.
 
 This is a careful and impressive piece of work. It does a great job at its stated purpose. But, it prioritizes diet-associated disease in Black Americans, leaving other important questions unanswered. The first sentence of the paper: "Black Americans and residents of the Southeastern United States are at increased risk of stroke."Ignoring other health outcomes can lead to strange findings. Another unhealthy eating pattern that the authors name "Sweets/Fats" was more common in White Americans. Despite summarizing items such as candy and desserts, "Sweets/Fats" consumption correlated with a *reduction* in stroke risk. The authors did not expect this, and their best explanation is that eating Sweets/Fats "protects" people from strokes only by killing them with cancer or heart disease before a stroke can happen. 
@@ -82,8 +84,8 @@ The assumption of normally distributed scores is not reasonable, and it could bi
 Here is the counterfactual fairness paper by James Kusner and colleages. 
 
 > Kusner, M. J., Loftus, J., Russell, C., & Silva, R. (2017). Counterfactual 
-> fairness. In Advances in Neural Information Processing Systems (pp.
-4066-4076).
+> fairness. In Advances in Neural Information Processing Systems 
+> (pp. 4066-4076).
 
 They advocate for the following definition of "Counterfactual Fairness". $Y$ represents the variable being predicted -- for instance, yearly healthcare costs. $X$ represents the data used to make the prediction -- for instance, grocery purchases. $A$ represents a protected attribute such as race or gender. $\hat Y$ is the prediction of $Y$. $\hat Y_{A\leftarrow a'}$ represents a counterfactual prediction for someone whose race and/or gender has been magically altered. For all possible values of $x$, $a$, and $a'$, the criterion demands $\Pr(\hat Y | X=x, A=a ) = \Pr(\hat Y_{A\leftarrow a'} | X=x, A=a )$.
 
