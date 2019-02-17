@@ -1,4 +1,9 @@
-## Data-heavy "wellness rewards" programs allow covert discrimination based on race, social class, and pre-existing conditions
+layout: page
+title: Data-heavy "wellness rewards" programs allow covert discrimination based on race, social class, and pre-existing conditions
+permalink: /wellness_rewards/
+math: true
+
+
 
 
 Kaiser Health News recently put out an [article](https://khn.org/news/workplace-wellness-programs-put-employee-privacy-at-risk/) about wellness rewards programs that ask for information on disease history, seat belt use, and groceries. This is pretty invasive, and the article focuses on privacy risks, which are substantial. Aside from privacy, though, there is another absolutely crucial issue that they don't mention:
@@ -66,9 +71,7 @@ In the Houston incident relayed by Kaiser Health News, the city government switc
 
 Li et al. includes an overall Average Healthy Eating Index, for which the higher-scoring group (p < 0.001) was White participants. Li & coauthors report group means of 44 and 34 points with standard deviations of 10.5. (I'm rounding the numbers.) If the scores were perfectly Normally distributed, it would give an overlap that looks like this.
 
-![](C:\Users\Eric Kernfeld\Dropbox\blog posts\ekernf01.github.io\drafts\AHEI overlap.png)
-
-![](/Users/erickernfeld/Dropbox/blog posts/ekernf01.github.io/drafts/ml_bias/AHEI overlap.png)
+![](AHEI overlap.png)
 
 
 In Washington D.C., where Li & coauthors' study recruited, Black and White populations each make up roughly 45% of the city, so it's fair to put the same area under the curves even though that wouldn't make sense nation-wide. Dropping a decision boundary midway at 39 gives a Black-White classifier with about 68% accuracy, compared to 50% by chance. 
