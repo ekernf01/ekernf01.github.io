@@ -17,6 +17,7 @@ Do we have an identifiability problem in systems biology? Almost certainly yes, 
 - [tiny little RNAs](https://en.wikipedia.org/wiki/MicroRNA) not captured well by vanilla RNA-seq
 - whether the DNA at each locus is accessible, or other aspects of DNA packaging and modification
 
+Furthermore, many RNA pairs are highly correlated, without either member directly regulating the other.
 
 So, even if we can establish a definite causal link between RNA transcript A and RNA transcript B, the exact mechanism is not clear. Does A bind the gene for B directly (`A==>B`)? Maybe A gives rise to a protein C that binds the gene for B (`A ==> (C) ==> B`)? Maybe protein C facilitates production of a microRNA D that degrades transcripts of B (`A ==> (C) ==> D ==> B`). Maybe protein C [goes to the cell surface, forms a complex with several other proteins, binds another molecule outside the cell, opening an intracellular domain to phosphorylation, which recruits a kinase, which phosphorylates a thing, which recruits things that phosphorylate things that hydrolyze things to generate things that promote transcription of B.](https://www.cellsignal.com/contents/science-cst-pathways-immunology-and-inflammation/t-cell-receptor-signaling-interactive-pathway/pathways-tcell) 
 
@@ -37,7 +38,7 @@ The main strategy here is to ask for links that are causal, even though they may
     A without () means A is measured
     (A) means A is not measured
     A ==> B means "A directly binds B, influencing its function and/or quantity."
-    A -> B means "A has a causal effect on B, possibly indirect."
+    A -> B means "A has a causal effect on B, possibly mediated by unobserved species but not entirely mediated by observed species."
 
 **Is this possible? What type and scale of data are needed?** This post is about theoretical answers to this question based on mathematical models of gene regulation. In other posts, I'll discuss practical aspects.
   

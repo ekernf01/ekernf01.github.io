@@ -5,6 +5,7 @@
 (according to me)
 
 - [Tracer-seq (short version)](https://ekernf01.github.io/tracerseq_short/)
+- [Wellness rewards and covert discrimination](https://ekernf01.github.io/wellness_rewards)
 
 ### My most popular posts 
 
@@ -12,7 +13,6 @@
 
 ### What I read
 
-- [The Future of Research foundation](http://www.futureofresearch.org) on issues facing modern postdocs
 - [Maciej Ceglowski](https://idlewords.com/about.htm) on [scurvy](https://idlewords.com/2010/03/scott_and_scurvy.htm) and [internet ads](https://idlewords.com/talks/what_happens_next_will_amaze_you.htm) 
 - I read [Gwern Branwen](https://www.gwern.net/) mostly for his amazing monthly reading lists on AI and human genetics, but he write about all sorts of things such as [why are girl scout cookie prices outpacing inflation?](https://www.gwern.net/Girl-Scouts-and-good-governance)
 - [Slate Star Codex](https://slatestarcodex.com) contains diverse topics but what hooked me at first was [the cost disease post](https://slatestarcodex.com/2017/02/09/considerations-on-cost-disease/)
@@ -22,4 +22,6 @@
 - [Random Critical Analysis](https://randomcriticalanalysis.com/category/health-policy/) on health policy
 - GrokInFullness on [the opioid epidemic](http://grokinfullness.blogspot.com/2017/09/debunking-standard-narrative-on-opioid.html)
 - [The Incidental Economist](https://theincidentaleconomist.com/) and the [Medical Care blog](https://www.themedicalcareblog.com/) on healthcare
-- [Will Kimball on trombone history](http://kimballtrombone.com/trombone-history-timeline/), since I'm a trombonist.
+- [Will Kimball on trombone history](http://kimballtrombone.com/trombone-history-timeline/)
+- [Jeff Helgeson](http://jeffhelgesen.blogspot.com/) for jazz trumpet solo transcriptions
+

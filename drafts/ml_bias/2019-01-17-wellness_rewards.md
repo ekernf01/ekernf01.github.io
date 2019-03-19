@@ -19,7 +19,8 @@ It is common sense that grocery purchases reflect social class. The specifics ar
 
 More relevant to my point here is that healthy eating scores produced by well-meaning health researchers, with no intent to discriminate, still find strong racial disparities. For an example regarding race, I looked at this study.
 
-> Li, W., Youssef, G., Procter-Gray, E., Olendzki, B., Cornish, T., Hayes, R., ... & Magee, 
+> Li, W., Youssef, G., Procter-Gray, E., Olendzki, B., Cornish, T., 
+> Hayes, R., ... & Magee, 
 > M. F. (2017). Racial differences in eating patterns and food purchasing behaviors among 
 > urban older women. *The journal of nutrition, health & aging*, *21*(10), 1190-1199.
 
