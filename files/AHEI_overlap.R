@@ -13,8 +13,8 @@ midpoint = (mean_white + mean_black)/2
 grid = seq(midpoint - 30, midpoint + 30, by = 0.01)
 X = data.frame(
   grid, 
-  white = dnorm(grid, mean_white, sd), 
-  black = dnorm(grid, mean_black, sd) 
+  white = dnorm(grid, mean_white, standard_dev), 
+  black = dnorm(grid, mean_black, standard_dev) 
 )
 
 # Alternate assumption: Gamma distribution allows some skew
