@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Data-heavy "wellness rewards" programs allow covert discrimination based on race, social class, and pre-existing conditions: technical appendix
+title: Wellness rewards programs allow discrimination: technical appendix
 permalink: /wellness_rewards_appendix/
 math: true
 ---
