@@ -1,13 +1,12 @@
 ---
-layout: page
+layout: post
 title: Wellness rewards programs allow discrimination: technical appendix
 permalink: /wellness_rewards_appendix/
 math: true
 ---
 
-This is not a stand-alone post. It is a technical appendix for an upcoming post, which I will link when that is ready.
 
-## Appendix
+This is not a stand-alone post. It is a technical appendix for an upcoming post, which I will link when that is ready.
 
 #### Appendix 1: Accuracy of Li et al's healthy eating index as a Black-White classifier
 
