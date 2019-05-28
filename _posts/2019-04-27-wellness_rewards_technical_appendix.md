@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Wellness rewards programs allow discrimination: technical appendix
+title: Wellness rewards programs allow discrimination (technical appendix)
 permalink: /wellness_rewards_appendix/
 math: true
 ---
 
 
-This is not a stand-alone post. It is a technical appendix for an upcoming post, which I will link when that is ready.
+This is not a stand-alone post. It is a technical appendix for an upcoming post, which is (EDIT) now published [here](https://www.themedicalcareblog.com/wellness-rewards-discrimination/) on the blog of the peer-reviewed journal *Medical Care*!
 
 #### Appendix 1: Accuracy of Li et al's healthy eating index as a Black-White classifier
 
