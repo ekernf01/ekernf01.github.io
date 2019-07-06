@@ -24,4 +24,5 @@
 - [The Incidental Economist](https://theincidentaleconomist.com/) and the [Medical Care blog](https://www.themedicalcareblog.com/) on healthcare
 - [Will Kimball on trombone history](http://kimballtrombone.com/trombone-history-timeline/)
 - [Jeff Helgeson](http://jeffhelgesen.blogspot.com/) for jazz trumpet solo transcriptions
+- [Ben Thompson](https://stratechery.com/2019/uber-questions/) on tech companies
 
