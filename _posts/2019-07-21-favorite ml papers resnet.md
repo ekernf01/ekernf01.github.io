@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Favorite machine learning papers: resnets
+title: Favorite machine learning papers (resnets)
 math: true
 ---
 
