@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Debriefing the thymus atlas, or, why freezr?
+math: true
 ---
 
 The Maehr Lab recently published a paper on single-cell RNA mapping of mouse thymus development. (Find it [here](https://www.ncbi.nlm.nih.gov/pubmed/29884461)). I learned a huge amount, and it's time to sit back and assimilate it. That means writing.

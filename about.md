@@ -10,7 +10,7 @@ My name is Eric Kernfeld. I'm a bioinformatician at UMass Medical School. I work
 
 ### About the blog
 
-This is my personal blog. It is a venue for me to write about data analysis, usually in service of genomics. This blog is not affiliated with the Maehr Lab or with the University of Massachusetts, and content appearing on this blog does not reflect the opinions of UMass or the Maehr Lab. 
+This is my personal blog. It is a venue for me to write about genomics, boost signals for [good work](https://ekernf01.github.io/blogroll), and make my modest contribution to the vitality of the blogosphere. This blog is not affiliated with the Maehr Lab or with the University of Massachusetts, and content appearing on this blog does not reflect the opinions of UMass or the Maehr Lab. 
 
 ### Contact me
 
