@@ -47,14 +47,14 @@ These terms are a creative, quick way to give practical meaning to regression re
 
 How? First, we need to stop using only the interaction term of the regression. We must consider activity in all four settings: the control, knockdown of gene A alone, knockdown of of gene B alone, and knockdown of both genes together. Once we have all the information, we can posit mechanistic models and see which ones fit the data. Here are the terms I would use.
 
-            A and B form a complex activating the target. \
-            The complex require both pieces to work.   | + | -    | -    | -
-            B maintains the target's activity alone.   | + | +    | -    | -
-            A maintains the target's activity alone.   | + | -    | +    | -
-            ???                                        | + | -    | -    | +
-            A and B are redundant.                     | + | +    | +    | -
-            ???                                        | + | +    | -    | +
-            ???                                        | + | -    | +    | +
+    A and B form a complex activating the target. \
+    The complex require both pieces to work.   | + | -    | -    | -
+    B maintains the target's activity alone.   | + | +    | -    | -
+    A maintains the target's activity alone.   | + | -    | +    | -
+    ???                                        | + | -    | -    | +
+    A and B are redundant.                     | + | +    | +    | -
+    ???                                        | + | +    | -    | +
+    ???                                        | + | -    | +    | +
 
 If you see the inverse of a pattern from the table, such as the inverse of the to row `+ - - - ==> - + + +`, just replace "activating" or "activity" with "repressing" or "repression". In my opinion, if two factors are redundant, there is no particular reason to suspect they form a complex together. I would expect most complexes require all of their components, meaning the components are *non*-redundant.
 
