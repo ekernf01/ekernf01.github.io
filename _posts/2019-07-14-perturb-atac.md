@@ -20,6 +20,9 @@ Their figures 4 and 7 are themed around genetic interactions. They knock down Ge
 Unfortunately, "interaction" means one thing when you're writing down regression models and another when you're drawing biochemical networks. They gloss over this difference and get the biology wrong. In the statistical sense, they are right to call it an interaction: a model with terms for EBER1 and TET2 won't fit the data very well, and an "interaction term" is needed:
 
 $$\beta_0 + \beta_{EBER1} + \beta_{TET2} \not\approx Y_{both}$$
+
+-
+
 $$\beta_0 + \beta_{EBER1} + \beta_{TET2} + \beta_{EBER1, TET2} \approx Y_{both}$$
 
 But in biochemistry, EBER1 is a non-coding RNA, and TET2 is a protein. An interaction means they interact physically, for instance if one binds to and degrades the other. The simplest biological model compatible with their data does *not* require any physical interaction between EBER1 and TET2. In fact, using the typical language of gene knockouts, TET2 and EBER1 are *redundant*. Successful repression of the loci in question can be carried out by EBER1, even when TET2 is gone, and by TET2, even without EBER1. Repression fails only when both EBER1 and TET2 are removed. Since each one works without the other present, this actually argues *against* physical binding between them.
