@@ -20,7 +20,7 @@ My best writings are in theoretical biology. I take concepts that are easily mix
 I love the blogosphere, hence my modest attempt to contribute. I especially like reading the following.
 
 - [Maciej Ceglowski](https://idlewords.com/about.htm) on [scurvy](https://idlewords.com/2010/03/scott_and_scurvy.htm) and [internet ads](https://idlewords.com/talks/what_happens_next_will_amaze_you.htm).
-- [Gwern Branwen](https://www.gwern.net/)'s amazing monthly reading lists on AI and human genetics. He also writes about all sorts of things such as [why are girl scout cookie prices outpacing inflation?](https://www.gwern.net/Girl-Scouts-and-good-governance) He following problems with incredible persistence.
+- [Gwern Branwen](https://www.gwern.net/)'s amazing monthly reading lists on AI and human genetics. He also writes about all sorts of things such as [why are girl scout cookie prices outpacing inflation?](https://www.gwern.net/Girl-Scouts-and-good-governance) He follows problems with superhuman persistence.
 - [Slate Star Codex](https://slatestarcodex.com) contains diverse, fascinating essays, but what hooked me at first was [the cost disease post](https://slatestarcodex.com/2017/02/09/considerations-on-cost-disease/).
 - [CodingHorror](https://blog.codinghorror.com/) on programming effectively and [Julia Evans](https://jvns.ca/about/) on being delighted to do it.
 - [John Cook](https://www.johndcook.com/blog/) on math, stats, and programming.
