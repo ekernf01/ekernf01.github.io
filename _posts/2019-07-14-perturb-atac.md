@@ -56,7 +56,7 @@ How? First, we need to stop using only the interaction term of the regression. W
     ???                                        | + | +    | -    | +
     ???                                        | + | -    | +    | +
 
-If you see the inverse of a pattern from the table, such as the inverse of the to row `+ - - - ==> - + + +`, just replace "activating" or "activity" with "repressing" or "repression". In my opinion, if two factors are redundant, there is no particular reason to suspect they form a complex together. I would expect most complexes require all of their components, meaning the components are *non*-redundant.
+If you see the inverse of a pattern from the table, just replace "activating" or "activity" with "repressing" or "repression". In my opinion, if two factors are redundant, there is no particular reason to suspect they form a complex together. I would expect most complexes require all of their components, meaning the components are *non*-redundant.
 
 #### Fin
 
