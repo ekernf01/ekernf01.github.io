@@ -10,11 +10,9 @@ This is not a standalone post. Check out the [intro](https://ekernf01.github.io/
 
 When we construct quantitative models of biological systems, they usually have unknown parameters. These might be fertility rates in a population model or distance decay rates in a model of random polymer looping. In modeling gene regulation, the unknown parameters might be binding constants, transcription rates, and isoform ratios. 
 
-Sometimes, two different settings of the parameters will give rise to identical or highly similar predictions. In statistics, we would call this an *identifiability* problem; a common-English synonym might be a *model distinctiveness* problem. This is a big problem, and it can really dead-end your project. Suppose, for instance, that your model cannot tell whether gene A is regulated by gene B or gene C. If you aren't prepared to acknowledge this uncertainty, you may end up designing future experiments around perturbation of gene B, when really it's gene C that matters. Even if you are prepared to handle the uncertainty in an honest way, it can render your results unusable, because there are often more than two models compatible with your data. There could be hundreds or zillions (depending on how you count them), and it could turn out that your data actually have very little information about the mechanisms you are interested in.
+Sometimes, two different settings of the parameters will give rise to identical or highly similar predictions. In statistics, we would call this an *identifiability* problem; a common-English synonym might be a *model distinctiveness* problem. This is a big problem, and it can really dead-end your project. Suppose, for instance, that your model cannot tell whether gene A is regulated by gene B or gene C. If you aren't prepared to acknowledge this uncertainty, you may end up designing future experiments around perturbation of gene B, when really it's gene C that matters. Even if you are prepared to handle the uncertainty in an honest way, it can render your results unusable, because there are often more than two models compatible with your data. There could be hundreds or millions, and it could turn out that your data actually have very little information about the mechanisms you are interested in.
 
-In this post, I'll discuss systems biology identifiability problems stemming from two sources: missing data and insufficient cell-state diversity. Both of them greatly affect how to plan research and interpret results.
-
-This post is very RNA-centric. If you are interested in chromatin state, I will discuss that in some other posts.
+In this post, I'll discuss systems biology identifiability problems stemming from three sources: missing data, reverse causation, and insufficient cell-state diversity. These issues affect how I plan my research and interpret results.
 
 #### Missing data
 
@@ -28,23 +26,24 @@ In one common type of experiment, we measure gene activity by sampling RNA trans
 - circular RNAs or other RNA's that might be there in the data, but haven't yet been catalogued and "tamed" by our processing techniques.
 - different isoforms of each gene. (Some techniques can see this, but many widely popular or commercial single-cell RNA technologies cannot see it).
 - chromatin state. (Is the DNA at each locus is accessible? How is it packaged, marked, and folded in 3D?)
-- subcellular localization of each molecule. (Is it in the cytoplasm or the nucleus? [MERFISH](<http://zhuang.harvard.edu/merfish.html>) or similar might be able to answer this for mRNA but widespread high-throughput techniques circa April 2019 cannot.)
+- subcellular localization of each molecule. (Is it in the cytoplasm or the nucleus? [MERFISH](<http://zhuang.harvard.edu/merfish.html>) or similar might be able to answer this for mRNA, but widespread high-throughput techniques circa 2019 cannot.)
 
-This list is long enough that one might be inclined to just give up. But, certain encouraging signs suggest that regulation of cell state can be predicted from RNA alone. For example, the [stunning success of iPSC reprogramming](<https://en.wikipedia.org/wiki/Induced_pluripotent_stem_cell>) indicates that four easily measured factors are sufficient to radically transform the state of a cell. Our models may be able to predict cell state even when glossing over many important distinctions. 
+This list is long enough that one might be inclined to just give up. But, certain encouraging signs suggest that regulation of cell state can be predicted from RNA alone. For example, the [stunning success of iPSC reprogramming](<https://en.wikipedia.org/wiki/Induced_pluripotent_stem_cell>) indicates that four easily measured factors are sufficient to radically transform the state of a cell. Thus, our models may be able to predict cell state even when glossing over many important distinctions. 
 
-But, the details of this glossing-over will be key to interpret our models correctly. There are some examples in the technical appendix. The short version is that sometimes the models will be wrong, period, until you measure more types of molecules. Other times, the models will capture direct influence but not direct physical interaction. This influence can operate in multiple ways to produce similar effects, so this is one example of an identifiability problem.
+But, the details of this glossing-over will be key to interpret each model correctly. There are some examples in the technical appendix. The short version is that sometimes the models will be wrong, period, until you measure more types of molecules. Other times, the models will capture direct influence but not direct physical interaction, and they should be interpreted as such. This influence can operate in multiple ways to produce similar effects, so this is one example of an identifiability problem.
 
 #### Direct binding, direct influence, and indirect influence
 
 I want to take a brief detour to convey what exactly is the goal of these models. I am interested in how stem cells respond to stimuli. So, I want my models to capture causal influence, even if there is no direct physical contact. The model should still distinguish between direct and indirect influence, though: if the effect of A on C can be explained entirely by `A==>B==>C`, then I don't want `A->C` in the model. The diagram below explains more. 
 
 ```
+(A) means A is not measured. 
+ A  without () means A is measured 
+ A ==> B means "A directly binds B, influencing its function and/or quantity."
+ A -> B means A is listed as a regulator of B in the model output.
+
  A  ==> (B) ==> C    # Desired inference: A -> C (best option since B is unseen)
  A  ==>  B  ==> C    # Desired inference: A -> B and B -> C but not A->C
- A  without () means A is measured 
-(A) means A is not measured. 
- A ==> B means "A directly binds B, influencing its function and/or quantity."
- A -> B means A is listed as a regulator of B in the model.
 ```
 
 #### Cell-state diversity
@@ -74,7 +73,7 @@ This begs the question: what kind of data are needed to get past this issue? And
 When your model ignores everything but the RNA, it can really affect the interpretation. Here are some examples. Sometimes the model is flat out wrong, and we have to hope cells are simple enough that won't occur too often (example 1). Other times the model is correct, even in predicting perturbation outcomes, but the detailed physical interpretation is still unclear (examples 2-5). 
 
 1. Suppose activity in genes A and C marks cell type T, which contains an unobserved circular RNA called D. Suppose T is the only cell type in which gene B is active. Suppose D controls the activity of B, with A and C merely indicating the presence of D but not causally upstream of it. The model likely says A and C together upregulate B, but it's wrong, and perturbing A and C will not do anything to B.
-2. Suppose gene A has isoforms A1 and A2. A1 upregulates gene B but A2 downregulates gene B. Suppose gene C promotes isoform A1, and isoform A2 is otherwise the default. Hopefully, we can infer the rules `A AND C activates B` and `A and NOT C represses B`. It's causal, meaning if we perturb  C, the rule still works. But, we should not claim or expect that C's protein product directly binds B.
+2. Suppose gene A has isoforms A1 and A2. A1 upregulates gene B but A2 downregulates gene B. Suppose gene C promotes isoform A1, and isoform A2 is otherwise the default. Hopefully, we can infer the rules `A AND C activates B` and `A and NOT C represses B`. It's causal, meaning if we perturb  C, the rule still works. But, the physical interpretation is unclear: we might infer that  C's protein product directly binds B, which is not true.
 3. Suppose gene A's protein product must be complexed with small molecule S in order to bind and upregulate gene B. Otherwise, gene B is not transcribed and B's existing mRNA begins to decay. Gene C's protein product produces S. Hopefully, we can infer the same rule `A AND C activates B` and `A and NOT C represses B`. It's still causal, meaning if we perturb C, the rule still works. Again, we should not claim or expect that C directly binds B's promoter.
 4. Suppose gene A's protein product upregulates gene B, but only if enhancer E has been opened up. Otherwise, gene B is not transcribed and any existing mRNA of B begins to decay. Suppose gene C's protein product is the pioneer factor that opens up enhancer E. Hopefully, we can infer, again, the same rule `A AND C activates B` and `A and NOT C represses B`. It's still causal, again, but we should not claim or expect that C directly binds B's promoter.
 5. In T cell receptor signaling, the TCR [goes to the cell surface, forms a complex with several other proteins, binds another molecule outside the cell, opening an intracellular domain to phosphorylation, which recruits a kinase, which phosphorylates a thing, which recruits things that phosphorylate things that hydrolyze things to generate things that promote transcription of B](https://www.cellsignal.com/contents/science-cst-pathways-immunology-and-inflammation/t-cell-receptor-signaling-interactive-pathway/pathways-tcell). I'm not sure what rule I want infer in this situation, but it probably contains a lot of `AND` s!
