@@ -15,7 +15,8 @@ This is not a standalone post. In the [intro](https://ekernf01.github.io/GRN_int
 
 In a typical single-cell RNA-sequencing experiment, we measure gene activity by sampling RNA transcripts, reading them out, and counting them. This glosses over many aspects of cell state. 
 
-![](/Users/erickernfeld/Dropbox (UMass Medical School)/blog posts/ekernf01.github.io/drafts/grn inference/GRN_graphics/strategy v3.png)
+
+![](https://ekernf01.github.io/images/GRN_graphics/strategy v3.png)
 
 Modern technology does let us observe protein quantities and modifications, chromatin state and looping, small RNA's, and images or phenotypes, but these are rarely coupled. You get RNA in one sample, chromatin state in another sample, proteomics in another, and spatial or phenotypic information in another. Algorithmic advances claim to allow coupling of independent single cell RNA-seq and ATAC-seq measurements on similar samples (ref 8), and modern genomics pioneer Aviv Regev envisions scRNA data as a universal plug between different types of measurements in [this review](https://www.nature.com/articles/nature21350), but I can't vouch for the performance of these schemes. Even if we will eventually measure everything, we are not there yet, and so I discuss GRN modeling with missing "layers" [here](https://ekernf01.github.io/GRN_missing). 
 
