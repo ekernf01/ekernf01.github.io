@@ -1,6 +1,7 @@
 ---
 layout: post
-title: On cellular control networks: statistical issues
+title: Statistical issues with gene regulatory networks
+permalink: /GRN_stat_issues/
 math: true
 ---
 

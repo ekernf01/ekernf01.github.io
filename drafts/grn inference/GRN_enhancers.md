@@ -27,14 +27,14 @@ They use specially selected molecules that home in on interesting regions of DNA
 ATAC-seq measures whether DNA is "open" enough for proteins to bind it (ref 3), and it does this by sending in a protein called a transposase that can cut and mark those regions. Publicly or commercially available variants of that assay can now measure DNA accessibility in thousands of single cells, sometimes paired with RNA measurements or genetic perturbations (refs 4-7). This post outlines ATAC-seq and how the results might be incorporated in network inference.
 
 
-![](/Users/erickernfeld/Dropbox/blog posts/ekernf01.github.io/images/atac_cartoon.jpg)
+![](/Users/erickernfeld/Dropbox/blog posts/ekernf01.github.io/images/GRN_graphics/atac_cartoon.jpg)
 ![](/images/GRN_graphics/atac_cartoon.jpg)
 
 > How ATAC-seq finds accessible DNA. This is from the original ATAC-seq paper, [Buenrostro et al 2013](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3959825/).
 
 The main output of ATAC-seq and related technologies is a set of "peaks": spots on the genome with much higher signal than the surrounding areas. Here's what this looks like (alongside competing technologies called FAIRE-seq and DNase-seq).
 
-![](/Users/erickernfeld/Dropbox/blog posts/ekernf01.github.io/drafts/grn inference/GRN_graphics/peaks.png)
+![](/Users/erickernfeld/Dropbox/blog posts/ekernf01.github.io/images/GRN_graphics/peaks.png)
 ![](/images/GRN_graphics/peaks.png)
 
 
@@ -48,7 +48,7 @@ To include enhancers in GRN inference, you have to somehow determine which gene 
 - **Correlation**: If enhancer A regulates gene B, then they should be correlated, and this requirement can pinpoint a few models that are compatible with the data. This is the idea behind CICERO (ref 11), a single-cell ATAC analysis package built around its popular RNA counterpart, Monocle. Correlation-based linking of enhancers and genes is also used in a recent immgen consortium atlas of chromatin accessibility in the mouse immune system (ref 12).
 - **Looping**: There are now many technologies that directly measure DNA looping, with names like 4C, 5C, Hi-C, Micro-C, and PLAC-seq. The general principle behind these techniques is to shear and re-ligate DNA while preserving its 3d structure. This yields fragments that are not contiguous in the linear genome sequence, but are nearby one another in 3d; sequencing can detect this as a way to infer 3d structure. These techniques could potentially help associate enhancers with the genes they regulate. 
 
- Note that existing DNA looping literature is mostly concerned with big questions about principles of genome regulation, not assigning specific regulatory elements to specific genes en masse (e.g. CITE DEKKER CELL CYCLE). The one exception I have seen (so far) is ref 14, which provides thousands of high-confidence gene-enhancer loops in table S6. There have also been detailed studies of the HoxD cluster and the beta-globin locus.
+ Note that existing DNA looping literature is mostly concerned with big questions about principles of genome organization (such as [during the cell cycle](https://genome.cshlp.org/content/29/2/236.long)), rather than assigning specific regulatory elements to specific genes en masse. The one exception I have seen (so far) is [this](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3339270/), which provides thousands of high-confidence gene-enhancer loops in table S6. There have also been detailed studies of the HoxD cluster and the beta-globin locus.
 - **Proximity**: Most enhancers regulate a nearby gene. According to ref 12 (the immgen paper), the decay in rates of interaction is fast (exponential with genomic distance). In that study, many enhancers are within ???kb of (their target gene? the nearest gene?), and very few are outside $5 \times 10^5$ basepairs (500kb). Likewise CICERO (ref 11) only bothers testing for links at a distance of $5 \times 10^5$ basepairs (500kb). According to another work (ref 10), the median distance across high-confidence gene-enhancer pairs is about $2.4 \times 10^4$ basepairs (24kb). Ref 13 finds that 27% of enhancers interact with the nearest TSS, and 47% of elements have interactions with the nearest expressed TSS. So, many tools that need to connect enhancers with their targets simply take the nearest gene.
 
 
@@ -103,4 +103,3 @@ ATAC-seq and DNase-seq data can be analyzed for TF binding motifs, but this type
 - Pliner, H. A., Packer, J. S., McFaline-Figueroa, J. L., Cusanovich, D. A., Daza, R. M., Aghamirzaie, D., ... & Adey, A. C. (2018). Cicero predicts cis-regulatory DNA Interactions from single-cell chromatin accessibility data. Molecular cell, 71(5), 858-871.
 - Yoshida, H., Lareau, C. A., Ramirez, R. N., Rose, S. A., Maier, B., Wroblewska, A., ... & Tellier, J. (2019). The cis-Regulatory Atlas of the Mouse Immune System. Cell. DOI:https://doi.org/10.1016/j.cell.2018.12.036
 - Sanyal, A., Lajoie, B. R., Jain, G., & Dekker, J. (2012). The long-range interaction landscape of gene promoters. Nature, 489(7414), 109.
-- Li, G., Ruan, X., Auerbach, R. K., Sandhu, K. S., Zheng, M., Wang, P., ... & Sim, H. S. (2012). Extensive promoter-centered chromatin interactions provide a topological basis for transcription regulation. Cell, 148(1-2), 84-98.
