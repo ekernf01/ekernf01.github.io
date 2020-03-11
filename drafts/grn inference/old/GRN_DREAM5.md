@@ -4,6 +4,12 @@ title: On cellular control networks: identifiability
 math: true
 ---
 
+THIS POST IS (PARTIALLY?) REDUNDANT WITH OTHERS. DISENTANGLE OR ABANDON.
+
+
+https://link.springer.com/article/10.1007/s11538-012-9778-1
+https://scholar.google.com/citations?user=yqq2n2oAAAAJ&hl=en&oi=sra
+
 This is not a standalone post. Check out the [intro](https://ekernf01.github.io/GRN_intro) to this series.
 
 ### What is identifiability, and why do I care?
@@ -13,24 +19,6 @@ When we construct quantitative models of biological systems, they usually have u
 Sometimes, two different settings of the parameters will give rise to identical or highly similar predictions. In statistics, we would call this an *identifiability* problem; a common-English synonym might be a *model distinctiveness* problem. This is a big problem, and it can really dead-end your project. Suppose, for instance, that your model cannot tell whether gene A is regulated by gene B or gene C. If you aren't prepared to acknowledge this uncertainty, you may end up designing future experiments around perturbation of gene B, when really it's gene C that matters. Even if you are prepared to handle the uncertainty in an honest way, it can render your results unusable, because there are often more than two models compatible with your data. There could be hundreds or zillions (depending partly on how you count them).
 
 In this post, I'll discuss systems biology identifiability problems stemming from two sources: missing data and insufficient cell-state diversity. Both of them greatly affect how to plan research and interpret results.
-
-#### Missing data
-
-In one common type of experiment, we measure gene activity by sampling RNA transcripts, reading them out, and counting them. In this common type experiment, we can only guess at: 
-
-- protein levels.
-- protein modifications such as phosphorylation and cleavage.
-- protein complexes. (Is the protein bound to DNA? Is it bound to other proteins?)
-- Hormones or signals not produced in the same cells, such as testosterone, insulin, or retinoic acid.
-- [tiny little RNAs](https://en.wikipedia.org/wiki/MicroRNA) not captured well by vanilla RNA-seq.
-- circular RNAs or other RNA's that might be there in the data, but haven't yet been catalogued and "tamed" by our processing techniques.
-- different isoforms of each gene. (Some techniques can see this, but many widely popular or commercial single-cell RNA technologies cannot see it).
-- chromatin state. (Is the DNA at each locus is accessible? How is it packaged, marked, and folded in 3D?)
-- subcellular localization of each molecule. (Is it in the cytoplasm or the nucleus? [MERFISH](<http://zhuang.harvard.edu/merfish.html>) or similar might be able to answer this for mRNA but widespread high-throughput techniques circa April 2019 cannot.)
-
-This list is long enough that one might be inclined to simply give up. But, certain encouraging signs suggest that regulation of cell state can be summed up simply, and these issues may not be fatal. For example, the [stunning success of iPSC reprogramming](<https://en.wikipedia.org/wiki/Induced_pluripotent_stem_cell>) indicates that four commonly measured factors are sufficient to radically transform the state of a cell. O,ur models may be able to make predict cell state even when glossing over many important distinctions. 
-
-But, the details of this glossing-over will be key to interpret our models correctly. There are some lovely examples in the technical appendix. The tl;dr is that sometimes the models will be wrong, period, until you measure more types of molecules. Other times, the models will capture direct influence but not direct physical interaction. 
 
 #### Direct binding, direct influence, and indirect influence
 

@@ -23,7 +23,7 @@ Here's what a great tool should do.
 
 (This image is from the [Broad WDL guide](https://software.broadinstitute.org/wdl/documentation/structure).)
 
-There's a class of tools for pipelining. Examples include [Workflow Description Language](),  [Snakemake](), [Martian](), and [BigDataScript](). They don't all have all the same features, but there's a lot of overlap in the advantages they carry. From least to most important:
+There's a class of tools for pipelining. Examples include Workflow Description Language,  Snakemake, Martian, and BigDataScript. They don't all have all the same features, but there's a lot of overlap in the advantages they carry. From least to most important:
 
 - If a run is interrupted, you can often pick up where you left off automatically. 
 - You can move your pipelines easily from one machine to another, even if one uses LSF and the other uses SGE or SLURM. Some of these tools even let you send jobs to an AWS account.

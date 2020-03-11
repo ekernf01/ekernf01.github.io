@@ -80,7 +80,7 @@ Does anyone who's reading know how to avoid overwriting `clusterGeneric/`? Can y
 
 ### Snakemake
 
-By the time I sslithered into Ssnakemake, there was already a nice demo for LSF use [here](???) on Kamil Slowkowski's blog. Instead of writing a whole script, you can just pass a prefix in when you call Snakemake. Slowkowski's example is
+By the time I sslithered into Ssnakemake, there was already a nice demo for LSF use [here](https://slowkow.com/notes/snakemake-tutorial/) on Kamil Slowkowski's blog. Instead of writing a whole script, you can just pass a prefix in when you call Snakemake. Slowkowski's example is
 
     snakemake --jobs 999 --cluster 'bsub -q normal -R "rusage[mem=4000]"'
 
@@ -147,7 +147,7 @@ This gets dumped straight into Snakemake's working directory when the job finish
 
 ##### Room for improvement
 
-The process above gets cumbersome, especially writing a new cluster config for every snakefile. There is actually now [a better way](https://bitbucket.org/snakemake/snakemake/issues/279/unifying-resources-and-cluster-config). Maybe I will dig into this and write another tutorial if I do more with Snakemake in the future.
+The process above gets cumbersome, especially writing a new cluster config for every snakefile. There is actually now [a better way](https://bitbucket.org/snakemake/snakemake/issues/279/unifying-resources-and-cluster-config). Maybe I will dig into this and write another tutorial if I do more with Snakemake in the future. UPDATE 2020FEB08: I am learning how to use the `resources` keyword in a snakemake rule and [make my own custom jobscript](https://snakemake.readthedocs.io/en/v4.5.1/executable.html).
 
 ### Martian
 
@@ -199,7 +199,7 @@ To test out your new configuration, you can invoke `cellranger count` as usual, 
 
 ### Takeaways
 
-If you've reached this post, it's probably because you have downloaded a pipelining tool and you need to configure it. But, if you're still choosing which one to use, here are my picks. For absolute beginners or for simple tasks, I recommend WDL -- it keeps things very simple and clean. For an experienced programmer who needs something very flexible and who is willing to risk a little more chaos, I might suggest Snakemake. 
+If you've reached this post, it's probably because you have downloaded a pipelining tool and you need to configure it. But, if you're still choosing which one to use, my pick is WDL, and I strongly recommend against Snakemake. 
 
 ### Disclaimers
 

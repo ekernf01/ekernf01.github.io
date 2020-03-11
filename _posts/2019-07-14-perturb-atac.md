@@ -9,7 +9,7 @@ In the Maehr lab's regular journal club, we recently discussed a *Cell* paper fr
 
 > Rubin, A. J., Parker, K. R., Satpathy, A. T., Qi, Y., Wu, B., Ong, A. J., ... & Zarnegar, B. J. (2019). Coupled single-cell CRISPR screening and epigenomic profiling reveals causal gene regulatory networks. Cell, 176(1-2), 361-376.
 
-It's an impressive technical feat. In non-technical terms, they can study the accessibility of DNA packaging in individual cells under a variety of artificially manipulated conditions. In jargon, they combine pooled CRISPR knockdowns and knockouts with a single-cell ATAC-seq readout. It's a whopper of a paper, with tons of information and very complicated analyses. 
+It's an impressive technical feat. In non-technical terms, they can study the accessibility of DNA packaging in individual cells under a variety of artificially manipulated conditions. In jargon, they combine pooled CRISPR knockdowns and knockouts with a single-cell ATAC-seq readout. It's a whopper of a paper, with tons of information and very complicated analyses. Unfortunately, there's a crucial bit of interpretation that is, IMHO, just plain wrong. 
 
 #### Statistical interactions are not genetic interactions
 
@@ -31,7 +31,7 @@ Rubin et al repeat this mistake further down when discussing EZH2, saying it "co
 
 ![EBF1, IRF8, and RELA repress non-B-cell lineages even in the absence of EZH2.](https://ekernf01.github.io/images/interaction_example_EZH2.png)
 
-So each of these extra factors works even in the absence of EZH2. Rather than "cooperating", these genes are working independently towards the same end.
+So each of these extra factors works even in the absence of EZH2. Rather than facilitating each others' actions, these genes are working independently towards the same end.
 
 #### An improved set of concepts to relate multiple perturbations with biochemical interactions
 

@@ -1,22 +1,12 @@
 ---
 layout: post
-title: On cellular control networks: identifiability
+title: Coping with missing data in biological network modeling
 math: true
 ---
 
 This is not a standalone post. Check out the [intro](https://ekernf01.github.io/GRN_intro) to this series.
 
-### What is identifiability, and why do I care?
-
-When we construct quantitative models of biological systems, they usually have unknown parameters. These might be fertility rates in a population model or distance decay rates in a model of random polymer looping. In modeling gene regulation, the unknown parameters might be binding constants, transcription rates, and isoform ratios. 
-
-Sometimes, two different settings of the parameters will give rise to identical or highly similar predictions. In statistics, we would call this an *identifiability* problem; a common-English synonym might be a *model distinctiveness* problem. This is a big problem, and it can really dead-end your project. Suppose, for instance, that your model cannot tell whether gene A is regulated by gene B or gene C. If you aren't prepared to acknowledge this uncertainty, you may end up designing future experiments around perturbation of gene B, when really it's gene C that matters. Even if you are prepared to handle the uncertainty in an honest way, it can render your results unusable, because there are often more than two models compatible with your data. There could be hundreds or millions, and it could turn out that your data actually have very little information about the mechanisms you are interested in.
-
-In this post, I'll discuss systems biology identifiability problems stemming from three sources: missing data, reverse causation, and insufficient cell-state diversity. These issues affect how I plan my research and interpret results.
-
-#### Missing data
-
-In one common type of experiment, we measure gene activity by sampling RNA transcripts, reading them out, and counting them. In this common type experiment, we can only guess at: 
+In one common type of experiment, we measure gene activity by sampling RNA transcripts, reading them out, and counting them. We can only guess at: 
 
 - protein levels.
 - protein modifications. (For example, phosphorylation or cleavage).
@@ -28,9 +18,11 @@ In one common type of experiment, we measure gene activity by sampling RNA trans
 - chromatin state. (Is the DNA at each locus is accessible? How is it packaged, marked, and folded in 3D?)
 - subcellular localization of each molecule. (Is it in the cytoplasm or the nucleus? [MERFISH](<http://zhuang.harvard.edu/merfish.html>) or similar might be able to answer this for mRNA, but widespread high-throughput techniques circa 2019 cannot.)
 
-This list is long enough that one might be inclined to just give up. But, certain encouraging signs suggest that regulation of cell state can be predicted from RNA alone. For example, the [stunning success of iPSC reprogramming](<https://en.wikipedia.org/wiki/Induced_pluripotent_stem_cell>) indicates that four easily measured factors are sufficient to radically transform the state of a cell. Thus, our models may be able to predict cell state even when glossing over many important distinctions. 
+Here's what this looks like in color versus black and white.
 
-But, the details of this glossing-over will be key to interpret each model correctly. There are some examples in the technical appendix. The short version is that sometimes the models will be wrong, period, until you measure more types of molecules. Other times, the models will capture direct influence but not direct physical interaction, and they should be interpreted as such. This influence can operate in multiple ways to produce similar effects, so this is one example of an identifiability problem.
+![](/Users/erickernfeld/Dropbox (UMass Medical School)/blog posts/ekernf01.github.io/drafts/grn inference/strategy v3.png)
+
+It's possible to link measurements from different technologies, especially similar ones like RNA-seq and ATAC-seq. But, this post will consider what most large-scale GRN papers do, which is to use RNA only. 
 
 #### Direct binding, direct influence, and indirect influence
 
@@ -45,6 +37,15 @@ I want to take a brief detour to convey what exactly is the goal of these models
  A  ==> (B) ==> C    # Desired inference: A -> C (best option since B is unseen)
  A  ==>  B  ==> C    # Desired inference: A -> B and B -> C but not A->C
 ```
+
+
+#### Caveat: correct causal inferences aren't enough
+
+In statistics, we usually confine our anxieties to situations where multiple statistical models or causal models yield the same predictions. In genomics, it can also be useful to consider how biological models could give rise to the same statistical model. Here's an example of four situations that could lead to the simple rule "Gene B is transcribed when both A and C are present." Red entities are unobserved in typical 3' single-cell RNA-seq. Yellow entities represent proteins for which only the corresponding mRNAs are observed.
+
+![](/Users/erickernfeld/Dropbox (UMass Medical School)/blog posts/ekernf01.github.io/drafts/grn inference/identifiability issues 2.png)
+
+
 
 #### Cell-state diversity
 
