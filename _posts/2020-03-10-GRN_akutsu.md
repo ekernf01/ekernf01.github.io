@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How much data? A cool perspective from 1999
+title: How much data? A cool perspective from 1999 (gene regulatory network series)
 permalink: /GRN_akutsu/
 math: true
 ---

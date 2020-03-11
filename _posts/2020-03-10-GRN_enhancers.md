@@ -1,6 +1,6 @@
 ---
 layout: post
-title: On cellular control networks: enhancer integration
+title: Enhancer integration (gene regulatory network post series)
 permalink: /GRN_enhancers/
 math: true
 ---

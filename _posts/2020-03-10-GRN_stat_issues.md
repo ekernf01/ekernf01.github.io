@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Statistical issues with gene regulatory networks
+title: Statistical issues (gene regulatory network series)
 permalink: /GRN_stat_issues/
 math: true
 ---
