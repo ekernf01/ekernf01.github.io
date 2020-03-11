@@ -20,7 +20,8 @@ This paper casts the problem in terms of *Boolean network models*. These models 
 
 Akutsu et al consider a case where the in-degree is bounded: that is, no gene can be controlled by more that K regulators. How much data does it take to determine those K regulators and the Boolean expression that combines them, for all $n$ genes in the network? Their answer to "how much data" is measured in "state-transition pairs": each "state-transition pair" is a measurement of cellular state at time t paired with its successor at time t+1. Akutsu et al prove that for a network with $n​$ genes, $O(\log n)​$ state transition pairs are sufficient to identify the original Boolean network. 
 
-This is a wonderful and encouraging finding. It suggests that if our consortia or data resources grow at a linear rate, the size of the networks we can successfully study will explode exponentially! Unfortunately, I think most people would agree this explosion hasn't manifested yet (though it may be about to). This is partly due to the "fine print" governing Akutsu et al's results. First, the scaling with $k$ -- the maximum number of regulators per gene -- is exponential, i.e. terrible. Increasing $k$ from 3 to 4 or 4 to 5 leads to a massive increase in the amount of data needed. Second, Akutsu et al require that cell states are diverse. Ideally, observations would be sprinkled throughout the state space uniformly at random. This is not what people historically do: most will focus on a narrow domain such as thymocyte development or epithelial to mesenchymal transition.
+This is a wonderful and encouraging finding. It suggests that if our consortia or data resources grow at a linear rate, the size of the networks we can successfully study will explode exponentially! Unfortunately, I think most people would agree this explosion hasn't manifested yet. This is partly due to the "fine print" governing Akutsu et al's results. First, the scaling with $k$ -- the maximum number of regulators per gene -- is exponential, i.e. terrible. Increasing $k$ from 3 to 4 or 4 to 5 leads to a massive increase in the amount of data needed. Second, Akutsu et al require that cell states are diverse. Ideally, observations would be sprinkled throughout the state space uniformly at random. This is not what people historically do: most will focus on a narrow domain such as thymocyte development or epithelial to mesenchymal transition. Finally, note that Akutsu et al assume all relevant molecules are measured. In modern genomics, we are still far from simultaneous measurement of all relevant aspects of cell state, and I'll write more about that [here](https://ekernf01.github.io/GRN_missing). If we try to average out the effects of unmeasured nodes, then $k$ gets a lot bigger.
+
 
 #### Implications
 
@@ -36,6 +37,7 @@ This is a wonderful and encouraging finding. It suggests that if our consortia o
  - If we count A and A2 only in aggregate, then we can't predict the activity of B very well: we also have to know whether the splicing regulator C was present when A was being transcribed!
 
  Akutsu et al suggest that option 1 is better. We could double or quadruple the size of a genetic network and we'll still only need an incremental increase in variety among our datasets. For option 2, we need to permit more complicated predictor functions with more inputs (bigger K). That costs a virtually unlimited amount of data.
+
 
 #### Overcoming skepticism of Boolean models
 
