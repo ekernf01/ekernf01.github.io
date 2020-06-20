@@ -6,7 +6,7 @@ math: true
 ---
 
 
-R typically offers functions prefixed by `d`, `p`, `q`, and `r` for pdf, cdf, inverse cdf, and sampling. These are useful for fitting statistical models -- especially MCMC since you're usually sampling and computing densities. You can even get the log density from the `d` function with an extra argument. 
+The programming language `R` typically offers functions prefixed by `d`, `p`, `q`, and `r` for pdf, cdf, inverse cdf, and sampling. These are useful for fitting statistical models -- especially MCMC since you're usually sampling and computing densities. You can even get the log density from the `d` function with an extra argument. 
 
 But, for everyday fitting via likelihoods or empirical Bayes, you need derivatives.
 

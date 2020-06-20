@@ -9,7 +9,7 @@ We're a **stem cell lab** in a **diabetes center**. Stem cell biology is the ham
 
 Type I diabetes is an autoimmune disease. (Actually, it may consist of several diseases that are different on a microscopic level but share clinical symptoms.) In most cases of type I diabetes, part of the immune system (usually T cells) destroys pancreatic beta cells (which make insulin). 
 
-Current treatments mostly just replace the missing insulin. That's a hugee burden on patients, and even though type I diabetes is completely treatable on paper, it can really wear down the people it affects. If we want to someday prevent or cure type I diabetes, we need to get a handle on the autoimmune aspect of the disease. 
+Current treatments mostly just replace the missing insulin. That's a huge burden on patients, and even though type I diabetes is completely treatable on paper, it can really wear down the people it affects. If we want to someday prevent or cure type I diabetes, we need to get a handle on the autoimmune aspect of the disease. 
 
 This is not easy to do, and tons of money and effort has been spent on immunology-based T1D prevention trials that did not pan out ([example](https://academic.oup.com/jcem/article/103/8/2838/5036898)). Better preclinical research is badly needed. To this end, the Maehr lab is part of a big collaboration to create a new model system for type I diabetes. The scheme is to use mice as hosts for diabetes-relevant human organ systems, transplanting into them a human pancreas and a human adaptive immune system. 
 

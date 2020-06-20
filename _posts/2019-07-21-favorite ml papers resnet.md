@@ -8,7 +8,7 @@ I've been reading recently about debugging methods, starting with [this post by 
 
 > What’s happening? What do you expect to happen? ... [G]uess at what could be breaking and come up with experiments.
 
-This principle applies generally, not just in debugging software. Here, I want to discuss a machine learning paper I really admire, the [He et al 2015 resnet paper](https://arxiv.org/pdf/1512.03385.pdf), which uses the same scientific method to rapidly improve performance in deep learning. With a simple and clever technique, derived from detailed knowledge of the state of the art followed by careful experimentation, they won first place in multiple image processing competitions in 2015.
+This principle applies generally, not just in finding software bugs.  Here, I want to discuss a machine learning paper I really admire, the [He et al 2015 resnet paper](https://arxiv.org/pdf/1512.03385.pdf), which uses the same scientific method to rapidly improve performance in deep learning. With a simple and clever technique, derived from detailed knowledge of the state of the art followed by careful experimentation, they won first place in multiple image processing competitions in 2015. 
 
 ##### What's happening?
 

@@ -11,7 +11,7 @@ This is a short version of the [full post](https://ekernf01.github.io/tracerseq/
 
 I recently hosted a discussion in the lab on two Science papers that had sequenced the whole zebrafish embryo at multiple timepoints. Between those two papers, the zebrafish lineage tree is reconstructed using three different datasets and at least four algorithms. The results disagree with each other and with conventional knowledge in fundamental ways. I'm talking about formation of some of the earliest specialized tissues in the embryo -- something I assumed was settled long ago. Is the spinal cord seriously part of its own new germ layer, separate from the rest of the nervous system? What's going on here?
 
-It turns out that there's actually a fundamental misunderstanding. The technologies used do not all reconstruct the same conceptual "lineage tree". There are two different kinds of trees. They are related but distinct, and they deserve different names and careful definitions. 
+It turns out that there's actually a fundamental misunderstanding. The technologies used do not all reconstruct the same conceptual "lineage tree". There are two different kinds of trees. They are related but distinct, and they deserve different names and careful definitions. In this post, I want to fill in the missing theory, which the paper sadly did not allocate enough space for.
 
 #### Background
 
