@@ -49,7 +49,7 @@ Under this simplification, everything is observed, and I can tell you what most 
 At the end of this process, check the "maybe" list for each gene. 
 
 - If it has length 0, you need to consider more flexible models (or better quality data). Try again.
-- If it has length 1, congratulations! By process of elimination, and subject to the limitations discussed below in the technical appendix, you've cracked a tiny piece of the human regulatory code! Pop the champagne.
+- If it has length 1, congratulations! By process of elimination, and subject to the limitations discussed above, you've cracked a tiny piece of the human regulatory code! Pop the champagne.
 - If it has length greater than one, welcome to the club: you have an identifiability problem!
 
 The last outcome is most interesting, and it will be a key challenge for the field for the foreseeable future. Often, there's so much garbage on the list that you can't do much of what you hoped to do with these models. 

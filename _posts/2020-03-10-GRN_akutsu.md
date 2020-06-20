@@ -5,7 +5,7 @@ permalink: /GRN_akutsu/
 math: true
 ---
   
-This is not a standalone post. In the [intro](https://ekernf01.github.io/GRN_intro), I discussed opportunities and ambitions in modeling the human transcriptome and its protein and DNA counterparts. I also followed up by [discussing](https://ekernf01.github.io/GRN_stat_issues) the many statistical issues that arise. There's a very cool paper from 1999 that brings a lot of clarity to this situation, and here I have space to dig into it a bit. 
+In the [intro](https://ekernf01.github.io/GRN_intro), I discussed the puzzle of multicellular life: many cell types, one genome. I also followed up by discussing [the many statistical issues](https://ekernf01.github.io/GRN_stat_issues) that arise. There's a very cool paper from 1999 that brings a lot of clarity to this situation, and here I have space to dig into it a bit. 
 
 > Akutsu, T., Miyano, S., & Kuhara, S. (1999). Identification of
 > genetic networks from a small number of gene expression patterns 
@@ -14,7 +14,7 @@ This is not a standalone post. In the [intro](https://ekernf01.github.io/GRN_int
 
 This paper casts the problem in terms of *Boolean network models*. These models assume each genes is "on" or "off", with no other states allowed. The activity of gene A at time t+1 is determined by a Boolean function of other genes. For a made-up example, "Ccl25 is active at time t+1 if, at time t, Foxn1 is active and Gcm2 is not active." Some papers allows randomness: "Ccl25 is active with 90% probability if at time t, Foxn1 is active and Gcm2 is not active. Otherwise, it is active with probability 0.05." Surprisingly, this is totally reasonable, even in theory; more below about why.
 
- ![](/Users/erickernfeld/Dropbox (UMass Medical School)/blog posts/ekernf01.github.io/drafts/grn inference/GRN_graphics/Boolean.png)
+ ![](/images/GRN_graphics/Boolean.png)
  
 > An example of a small probabilistic Boolean network model.
 

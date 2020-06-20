@@ -5,13 +5,8 @@ permalink: /GRN_enhancers/
 math: true
 ---
 
-This is not a standalone post. Check out the [intro](https://ekernf01.github.io/GRN_intro) to this series.
 
---
-
-### Why go beyond RNA?
-
-Other posts in this series mostly deal with measuring and predicting RNA levels. But, we know that important parts of the human regulatory network are contained in other types of molecules: for example, of all mutations related to autoimmunity, [90% are not in a coding region](https://www.nature.com/articles/nature13835#close). This post discusses a class of gene-like entities called *enhancers* that have recently emerged as an interesting and potentially useful counterpart to coding genes. Teams are beginning to catalog enhancers and build them into network models. This post will survey how that's being done and will convey one important current question: how do we best connect each enhancer with the gene(s) it helps control?
+In the [intro](https://ekernf01.github.io/GRN_intro), I described a three-part scheme to unravel the mystery of multicellular life. As part of that, I talked about how I mostly am trying to predict RNA levels these days. But, we know that important parts of the human regulatory network are contained in other types of molecules: for example, of all mutations related to autoimmunity, [90% are not in a coding region](https://www.nature.com/articles/nature13835#close). This post discusses a class of gene-like entities called *enhancers* that have recently emerged as an interesting and potentially useful counterpart to genes. Teams are beginning to catalog enhancers and figure out how they help control cell state. This post will survey how that's being done and will convey one important current question: how do we best connect each enhancer with the gene(s) it helps control?
 
 ### How to measure noncoding DNA such as enhancers
 
