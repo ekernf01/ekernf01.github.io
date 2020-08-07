@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Read us! My selfish and selfless recommendations.
+title: Read us! My recommendations from across the web
 math: true
 permalink: /blogroll/
 ---
@@ -8,7 +8,7 @@ permalink: /blogroll/
 
 
 
-### My best posts 
+### What I write 
 
 My best writings are in theoretical biology. I take concepts that are easily mixed up and I separate them.
 
@@ -16,8 +16,6 @@ My best writings are in theoretical biology. I take concepts that are easily mix
 - My [critique of Perturb-ATAC](https://ekernf01.github.io/genetic_interactions/) separates genetic interactions from statistical interactions.
 
 ### What I read
-
-I love the blogosphere, hence my modest attempt to contribute. I especially like reading the following.
 
 - [Maciej Ceglowski](https://idlewords.com/about.htm) on [scurvy](https://idlewords.com/2010/03/scott_and_scurvy.htm) and [internet ads](https://idlewords.com/talks/what_happens_next_will_amaze_you.htm).
 
@@ -49,7 +47,7 @@ I love the blogosphere, hence my modest attempt to contribute. I especially like
 
 - [Will Kimball on trombone history.](http://kimballtrombone.com/trombone-history-timeline/)
 
-- [Jeff Helgeson](http://jeffhelgesen.blogspot.com/) for jazz trumpet solo transcriptions.
+- [Stephen M. Hendrick on disease ecology](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5711578/)
 
 - [Ben Thompson](https://stratechery.com/2019/uber-questions/) on tech companies.
 
