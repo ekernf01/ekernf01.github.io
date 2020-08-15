@@ -9,7 +9,7 @@ In the Maehr lab's regular journal club, we recently discussed a *Cell* paper fr
 
 > Rubin, A. J., Parker, K. R., Satpathy, A. T., Qi, Y., Wu, B., Ong, A. J., ... & Zarnegar, B. J. (2019). Coupled single-cell CRISPR screening and epigenomic profiling reveals causal gene regulatory networks. Cell, 176(1-2), 361-376.
 
-It's an impressive technical feat. In non-technical terms, they can study the accessibility of DNA -- the packaging -- in individual cells under a variety of artificially manipulated conditions. In jargon, they combine pooled CRISPR knockdowns and knockouts with a single-cell ATAC-seq readout. It's a whopper of a paper, with tons of information and very complicated analyses. Unfortunately, there's a crucial bit of interpretation that is, IMHO, just plain wrong... and it's the main point of the paper.
+It's an impressive technical feat. In non-technical terms, they can study the accessibility of DNA packaging in individual cells under a variety of artificially manipulated conditions. In jargon, they combine pooled CRISPR knockdowns and knockouts with a single-cell ATAC-seq readout. It's a whopper of a paper, with tons of information and very complicated analyses. Unfortunately, there's a crucial bit of interpretation that is, IMHO, just plain wrong. Unfortunately, it's the main point of the paper!
 
 #### Statistical interactions are not genetic interactions
 

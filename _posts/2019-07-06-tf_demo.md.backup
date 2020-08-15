@@ -21,7 +21,7 @@ The $g$'s are linear: for example, $g(x_1, x_2)$ might be $5x_1 + 2x_2 + 4$. The
 
 To do the training strategically rather than haphazardly, it helps to take the derivative of the neural net function. This is done using a thing called "reverse mode automatic differentiation" (or autodiff), but autodiff is actually also simple. It's just a loop that repeatedly applies the chain rule from high school calculus: $\frac{dx}{dy} \frac{dy}{dz} = \frac{dx}{dz}$. The clever part is that it retains certain results as it goes, reusing them instead of starting from scratch at each layer; this speeds things up and saves electricity. 
 
-You can fit a neural network without knowing any of this, though: read on.
+Like I said, you can fit a neural network without knowing any of this: read on.
 
 #### Getting started - software
 
