@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Enhancer integration (gene regulatory network post series)
-permalink: /GRN_enhancers/
+title: Enhancer integration for network modeling
+permalink: GRN_enhancers
 math: true
 ---
 
@@ -22,14 +22,14 @@ They use specially selected molecules that home in on interesting regions of DNA
 [ATAC-seq](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4374986/) measures whether DNA is "open" enough for proteins to bind it, and it does this by sending in a protein called a transposase that can cut and mark those regions. Publicly or commercially available variants of that assay can now measure DNA accessibility in [thousands](https://www.10xgenomics.com/solutions/single-cell-atac/#application-notes) of [single cells](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6297232/), sometimes [paired with RNA measurements](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6571013/) or [genetic perturbations](https://ekernf01.github.io/genetic_interactions/). This post outlines ATAC-seq and how the results might be incorporated in network inference.
 
 
-![](/Users/erickernfeld/Dropbox/blog posts/ekernf01.github.io/images/GRN_graphics/atac_cartoon.jpg)
+![](/home/ekernf01/Dropbox/blog posts/ekernf01.github.io/images/GRN_graphics/atac_cartoon.jpg)
 ![](/images/GRN_graphics/atac_cartoon.jpg)
 
 > How ATAC-seq finds accessible DNA. This is from the original ATAC-seq paper, [Buenrostro et al 2013](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3959825/).
 
 The main output of ATAC-seq and related technologies is a set of "peaks": spots on the genome with much higher signal than the surrounding areas. Here's what this looks like (alongside competing technologies called FAIRE-seq and DNase-seq). The X axis is the position on the genome, and for each row, the height is the signal strength for each assay of DNA accessibility.
 
-![](/Users/erickernfeld/Dropbox/blog posts/ekernf01.github.io/images/GRN_graphics/peaks.png)
+![](/home/ekernf01/Dropbox/blog posts/ekernf01.github.io/images/GRN_graphics/peaks.png)
 ![](/images/GRN_graphics/peaks.png)
 
 
