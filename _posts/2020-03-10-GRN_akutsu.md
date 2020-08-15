@@ -14,7 +14,7 @@ In the [intro](https://ekernf01.github.io/GRN_intro), I discussed the puzzle of 
 
 This paper casts the problem in terms of *Boolean network models*. These models assume each genes is "on" or "off", with no other states allowed. The activity of gene A at time t+1 is determined by a Boolean function of other genes. For a made-up example, "Ccl25 is active at time t+1 if, at time t, Foxn1 is active and Gcm2 is not active." Some papers allows randomness: "Ccl25 is active with 90% probability if at time t, Foxn1 is active and Gcm2 is not active. Otherwise, it is active with probability 0.05." Surprisingly, this is totally reasonable, even in theory; more below about why.
 
- ![](/images/GRN_graphics/Boolean.png)
+ ![An example of a small probabilistic Boolean network model.](/images/GRN_graphics/boolean.png)
  
 > An example of a small probabilistic Boolean network model.
 
@@ -29,7 +29,7 @@ This is a wonderful and encouraging finding. It suggests that if our consortia o
 - The insight about randomly sampling the state space is unsurprising, but it's also unorthodox. Many existing studies will densely sample a single cell type, process, or developmental trajectory in order to discover regulatory mechanisms specific to that setting. Akutsu et al suggest the opposite strategy: study many diverse cell types.
 - Another application of this theory comes when we have to make tradeoffs between the size of a network and the wiring complexity. Here's an example about a gene whose mRNA (A2) is spliced by gene C into an alternate isoform (A). Downstream, A and A2 have opposite effects on gene B.
 
- ![](/Users/erickernfeld/Dropbox (UMass Medical School)/blog posts/ekernf01.github.io/drafts/grn inference/GRN_graphics/why_isoform.png)
+ ![](/images/GRN_graphics/why_isoform.png)
 
  Now, you want to model these genes and a bunch of others in a network. Pick your poison:
 
