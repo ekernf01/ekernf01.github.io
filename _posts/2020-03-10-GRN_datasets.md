@@ -8,6 +8,8 @@ math: true
 This is not a standalone post. Check out the [intro](https://ekernf01.github.io/GRN_intro) to this series.
 
 
+AAAARRRGHHH why isn't my MARKDOWN REEEENDERIIIIINGGGGG
+
 Benchmarking
 
 - The DREAM5 competition data consist of microarray (RNA) data for yeast (Saccharomyces cerevisiae), bacteria (E. coli, S. aureus), and simulated data. This is a popular dataset for benchmarking methods, because it comes with gold-standard sets of known regulatory relationships. Note, however, that the data [may have some batch effects](https://doi.org/10.1111/j.1749-6632.2008.04100.x).
