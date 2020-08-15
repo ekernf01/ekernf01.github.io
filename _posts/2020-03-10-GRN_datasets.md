@@ -1,13 +1,11 @@
 ---
 layout: post
 title: Data resources for gene regulatory network modeling
-permalink: /GRN_datasets/
+permalink: GRN_datasets
 math: true
 ---
 
-This is not a standalone post. Check out the [intro](https://ekernf01.github.io/GRN_intro) to this series.
-
---
+This is not a standalone post -- it's just a rough list of datasets that could be useful for regulatory network models. Check out the [intro](https://ekernf01.github.io/GRN_intro) to this series for more context.
 
 Benchmarking
 
@@ -27,5 +25,5 @@ Chromatin
 RNA
 
 
-- Large, diverse collections of bulk RNA data are available from [the gTEX consortium](https://gtexportal.org/home/) and from the creators of [CellNet](http://pcahan1.github.io/cellnetr/). These have both been used for network modeling.
+- Large, diverse collections of bulk RNA data are available from [the gTEX consortium](https://gtexportal.org/home/), from the creators of [CellNet](http://pcahan1.github.io/cellnetr/), and from [recount2](https://jhubiostatistics.shinyapps.io/recount/). The prior two have both been used for network modeling.
 - Large, diverse collections of single-cell RNA data are emerging very fast right now. Some notable examples done with mice include the [MCA](http://bis.zju.edu.cn/MCA/), the [Tabula Muris](https://tabula-muris.ds.czbiohub.org/), the [sci-RNA embryo data](http://atlas.gs.washington.edu/hub/), the [mouse gastrulation map](https://marionilab.cruk.cam.ac.uk/MouseGastrulation2018/), the [early mouse organogenesis map](https://doi.org/10.1038/s41556-017-0013-z), the [developing endoderm atlas](https://www.nature.com/articles/s41586-019-1127-1), and the [entire mouse nervous system](https://www.cell.com/cell/pdf/S0092-8674(18)30789-X.pdf). Similar efforts have mapped out lineage trees in the zebrafish ([1](https://science.sciencemag.org/content/360/6392/eaar3131), [2](https://science.sciencemag.org/content/360/6392/981.abstract), [3](https://www.biorxiv.org/content/10.1101/738344v1.full.pdf)) and the planarium ([1](https://science.sciencemag.org/content/360/6391/eaaq1723), [2](https://science.sciencemag.org/content/360/6391/eaaq1736)). Of course, the most thorough ambitions are inspired by the need to understand [humans](https://elifesciences.org/articles/27041.pdf).
