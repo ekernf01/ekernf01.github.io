@@ -7,8 +7,7 @@ math: true
 
 This is not a standalone post. Check out the [intro](https://ekernf01.github.io/GRN_intro) to this series.
 
-
-AAAARRRGHHH why isn't my MARKDOWN REEEENDERIIIIINGGGGG
+--
 
 Benchmarking
 
