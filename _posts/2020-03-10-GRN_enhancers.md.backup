@@ -65,7 +65,7 @@ There are technologies to measure incoming regulators directly: for example, ChI
 
 ATAC-seq and DNase-seq data can be analyzed for recurring "motifs" in the DNA sequence where proteins tend to bind, but this type of analysis is very prone to false positives. The lowest false discovery rate I have ever seen when looking for [the Foxn1 motif](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5033077/) is about 0.4, meaning this motif is very difficult to distinguish from typical strings of nucleotides. Even if the motif is detected in a region of open chromatin, the corrresponding protein is not necessarily bound; there are [other mechanisms to consider](https://pubmed.ncbi.nlm.nih.gov/26550823-dna-dependent-formation-of-transcription-factor-pairs-alters-their-binding-specificity/?dopt=Abstract). Motif detection does not give clean enough results to confirm individual regulator-target pairs, so most practitioners clean up the signal either by averaging across many targets (as in [TERA analysis](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4336237/)) or by filtering with other types of data (as in [SCENIC](https://www.nature.com/articles/nmeth.4463) and [CellOracle](https://github.com/morris-lab/CellOracle/)). To infer incoming arrows, motif analysis could provide an initial boost, but I suspect the heavy lifting will have to be done by perturbation screens or correlation analysis rather than direct binding.
 
-### Some references
+### References
 
 - Cell Biology by the Numbers, http://book.bionumbers.org/how-many-mrnas-are-in-a-cell/
 - Lineage tracing on transcriptional landscapes links state to fate during differentiation. Caleb Weinreb, Alejo E Rodriguez-Fraticelli, Fernando D Camargo, Allon M Klein. bioRxiv 467886; doi: https://doi.org/10.1101/467886
