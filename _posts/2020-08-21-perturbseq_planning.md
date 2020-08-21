@@ -17,7 +17,7 @@ $$Var(\bar X) = \frac{Var(X_1) + ... Var(X_{n_1})}{n_x^2} =  \frac{n_xVar(X_1)}{
 
 , and a similar result holds for $Y$.
 
-#####Key result
+#### Key result
 
 If the treatment and control have variances $\sigma^2_x$ and  $\sigma^2_y$ respectively, the end result is that we want to **minimize $\frac{\sigma^2_x}{n_x} + \frac{\sigma^2_y}{n_y}$ subject to $49n_x + n_y = 16000$**. 
 
@@ -29,7 +29,7 @@ Before resuming, we could restore the square root, but this would not change the
 
 Zeroing out the derivative yields $$0 = \sigma^2_x - \frac{49\sigma^2_y}{c^2} \implies c^2 =  \frac{49\sigma^2_y}{\sigma_x^2} $$. If the variances are equal, then $c^2=49$ and it's best to have 7 times as many control cells as each individual treatment. This can be generalized to any number of cells and treatments as follows. 
 
-##### Key result
+#### Key result
 
 The control arm should be $\sqrt{k\frac{\sigma^2_y}{\sigma^2_x}}$ times bigger than any individual treatment group.
 
@@ -37,7 +37,7 @@ The actual result is slightly more complex than the post title admits: it also d
 
 ## When does this result apply and when does it fail?
 
-##### Heteroskedasticity 
+#### Heteroskedasticity 
 
 The result in the title assumes that treatment and control groups have equal variances. The more detailed result from the derivation does not -- yet it is not immediately usable, since depends on the variances, and these are seldom known prior to the experiment. Here are some considerations for planning around this issue.
 
@@ -45,10 +45,10 @@ The result in the title assumes that treatment and control groups have equal var
 - For log-transformed gene expression, variance is generally higher for high-expressed genes. If the treatment changes the mean expression level, it likely will change the variance too. For many genes with effects in both directions, it seems reasonable to **design the experiment as if the variances were the same even if you know they aren't** -- as we like to say in statistics, "under the erroneous yet tractable assumption of homoskedasticity". 
 - If you have a specific outcome of interest, pilot data could help determine the ratio between the variances.
 
-##### Non-Gaussianity 
+#### Non-Gaussianity 
 
 What about the assumption that the outcomes are Gaussian in the population of cells sampled for the experiment? **Being Gaussian is actually not essential.** Most of the calculations require only that the variances exist. The idea of forming a confidence interval whose width is proportional to the square root of the variance appears in widely used non-Gaussian methods such as edgeR or quasi-poisson regression.
 
-##### Lack of independence 
+#### Lack of independence 
 
 A more serious issue arises if you smooth or impute gene expression prior to running differential expression tests: the cells will no longer be independent. You would not get proper coverage for naive confidence intervals, because after smoothing, the cells will appear less variable than they actually are. That is, of course, the purpose of smoothing, but **this result does not apply.** 
