@@ -39,7 +39,7 @@ Most technologies suffer from measurement errors to varying degrees, but I want 
 
  > Calviello, A. K., Hirsekorn, A., Wurmus, R., Yusuf, D., & Ohler, U. (2019). Reproducible inference of transcription factor footprints in ATAC-seq and DNase-seq datasets using protocol-specific bias modeling. Genome biology, 20(1), 42.
 
-Measurement noise is too often ignored in GRN modeling. For instance, the entire exposition of the well-known package [ARACNE](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1810318/#B14) seems to assume biological variability with informative correlations among genes. The underlying mathematics, such as the [data processing equality](https://en.wikipedia.org/wiki/Data_processing_inequality), do not apply when measurement error is added, especially when the noise variance differs from gene to gene. 
+Measurement noise is too often ignored in GRN modeling. For instance, the entire exposition of the well-known package [ARACNE](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1810318/#B14) seems to assume biological variability with informative correlations among genes. The underlying mathematics, such as the [data processing equality](https://en.wikipedia.org/wiki/Data_processing_inequality), do not apply when measurement error is added, especially when the noise variance differs from gene to gene. Kasper Hansen, Stephanie Hicks, & Yi Wang notice a similar issue [here](https://doi.org/10.1101/2020.02.13.944777).
 
 ### Fundamental limitations
 
