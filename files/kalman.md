@@ -47,11 +47,11 @@ Notes and explanations to supplement Bishop:
 
 ## Learning the parameters
 
-The $-2{\rm LogL}$ for the whole model is this (plus a constant).
+The log likelihood for the whole model is this (plus a constant). I multiply by -2 just because it's cleaner to look at; otherwise there's an ugly ubiquitous $-\frac{1}{2}$. Multiplying by -2 doesn't change the expectation or the location of the optimum. We just have to minimize it instead of maximizing it later on. 
 
-$$-{\rm logdet}(P_0) + (z_1 - \mu_0)^TP_0^{-1}(z_1 - \mu_0) 
-\\ + \sum_{n = 2}^N -{\rm logdet}(\Gamma) + (z_n - Az_{n-1})^T\Gamma^{-1}(z_n - Az_{n-1}) 
-\\ + \sum_{n = 1}^N -{\rm logdet}(\Sigma) + (x_n - Cz_n)^T\Sigma^{-1}(x_n - Cz_n) $$
+$$-2LogL \equiv {\rm logdet}(P_0) + (z_1 - \mu_0)^TP_0^{-1}(z_1 - \mu_0) 
+\\ + \sum_{n = 2}^N {\rm logdet}(\Gamma) + (z_n - Az_{n-1})^T\Gamma^{-1}(z_n - Az_{n-1}) 
+\\ + \sum_{n = 1}^N {\rm logdet}(\Sigma) + (x_n - Cz_n)^T\Sigma^{-1}(x_n - Cz_n) $$
 
 For EM, we need ${\rm argmax}_\theta {\rm E_{z|X, \theta^{old}}[LogL(x, z, \theta)]}$ . The LogL depends on $z$ via a linear function of a few sufficient stats, so the following building blocks are useful and sufficient for the update. This partly depends on unrolling quadratic terms like $\mathbb E[z^TMz] = {\rm Tr}(M\mathbb E[zz^T])$.
 
@@ -59,7 +59,7 @@ For EM, we need ${\rm argmax}_\theta {\rm E_{z|X, \theta^{old}}[LogL(x, z, \thet
 - $E_{n,n} \equiv \mathbb E(z_nz_n^T|X) = \hat V_n + \hat \mu_n\hat \mu_n^T$ 
 - $E_{n-1,n} \equiv E_{n-1,n}^T \equiv \mathbb E(z_{n-1}z_n^T|X) = J_{n-1}\hat V_n + \hat \mu_{n-1}\hat \mu_n^T$ 
 
-For the actual update, the arg-maxes can be found separately for each line of the LogL as it appears above. Unless noted, the RHS uses only the "old" parameters. Here is the result.
+The actual update can be found separately for each line of the LogL as it appears above. Unless noted, the RHS uses only the "old" parameters. Here is the result.
 
 - $\mu_0 \leftarrow \hat E_n = \mu_1$ 
 - $P_0 \leftarrow E_{n,n} - E_nE_n^T = \hat V_1$ 
@@ -73,7 +73,7 @@ In the $\Sigma$ update, Bishop uses $C$ where I use $C^T$ and vice versa. I susp
 The updates for $A$ and $C$ resemble the classic regression estimate $(X^TX)^{-1}X^TY$, but they are transposed because in a typical regression looking like $Y \approx X\beta$, you would estimate $\beta$, but here we estimate $X$. The variance estimates are also basically the same as linear regression. 
 
 
-## Testing
+## Testing 
 
 If I were to code this up, Bishop or I will have made typos (probably already did), and I would need to test the code and catch them. How?
 
@@ -83,3 +83,5 @@ If I were to code this up, Bishop or I will have made typos (probably already di
 - Simple mode. For each parameter, I would want an option where it is constrained to a simple default option such as $I$ for matrices and $0$ for means. It would be easier to isolate problems if I could run simulations etc with all but one parameter fixed. 
 - Invariants. With EM, the observed-data likelihood is supposed to increase monotonically. 
 - Existing software. There is Python code out there for Kalman filtering. It may not do everything (e.g. EM), but it could help in checking the building blocks.
+
+Testing aside, another implementation consideration is that you'll have to invert a bunch of matrices. One of the biggest things [Misha Kilmer](https://mkilme01.pages.tufts.edu/) taught me was not to do this blindly. Since all the inverses are of symmetric positive definite matrices, Cholesky decomposition and forward+backward substitution would be a nice default option.
