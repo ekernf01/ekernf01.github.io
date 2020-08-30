@@ -1,1 +1,0 @@
-/home/ekernf01/Dropbox/blog posts/ekernf01.github.io/drafts/kalman.md
