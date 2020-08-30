@@ -7,8 +7,8 @@ To help me understand and perhaps implement Kalman filtering, this cheat sheet c
 The Kalman filter is a statistical model often used for tracking objects through space. It uses a sequence of hidden variables ($z_n$ below) that follows a discrete random walk. These are related to the observed data ($x_n$ below) via a regression-like model: linear plus Normal noise. Here is the full specification, with mnemonics based on the latin equivalents of the Greek letters: $G = \Gamma, S = \Sigma$.
 
 - $z_1 = \mu_0 + u$ with $u \sim N(0, P_0)$ (mnemonic: $P_0$rior)
-- $z_n = Az_{n-1} + w_n$ with $w_n \sim N(0, \Gamma)$ (mnemonic: $w_n$here it $A$ctually $\Gamma$oes)
-- $x_n = Cz_n$ with $v \sim N(0, \Sigma)$ (mnemonic: $v_n$ision is what you $C$an $\Sigma$ee)
+- $z_n = Az_{n-1} + w_n$ with $w_n \sim N(0, \Gamma)$ (mnemonic: $w$here it $A$ctually $\Gamma$oes)
+- $x_n = Cz_n + v_n$ with $v_n \sim N(0, \Sigma)$ (mnemonic: $v$ision is what you $C$an $\Sigma$ee)
 
 Bishop covers two common goals:
 
