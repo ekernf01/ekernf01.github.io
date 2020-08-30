@@ -24,17 +24,17 @@ These building blocks are computed recursively with one forward pass and one bac
 
 Forward recursion:
 
-- $P_{n-1}  \equiv {\rm Cov}(z_n|x_1, ..., x_{n-1}) = AV_{n-1}A + \Gamma$ 
-- $R_{n-1}  \equiv {\rm Cov}(x_n |x_1, ..., x_{n-1})= CP_{n-1}C^T + \Sigma$ 
+- $P_{n-1}  \equiv {\rm Cov}(z_n\vert  x_1, ..., x_{n-1}) = AV_{n-1}A + \Gamma$ 
+- $R_{n-1}  \equiv {\rm Cov}(x_n \vert  x_1, ..., x_{n-1})= CP_{n-1}C^T + \Sigma$ 
 - $K_n      \equiv P_{n-1}C(CP_{n-1}C^T + \Sigma)^{-1} = P_{n-1}CR_{n-1}^{-1}$ 
-- $V_n      \equiv {\rm Cov}(z_n|x_1, ..., x_{n}) = (I - K_nC)P_{n-1}$ 
-- $\mu_n    \equiv \mathbb{E}(z_n | x_1, ..., x_n) = A \mu_{n-1} + K_n(x_n - CA\mu_{n-1})$ 
+- $V_n      \equiv {\rm Cov}(z_n\vert  x_1, ..., x_{n}) = (I - K_nC)P_{n-1}$ 
+- $\mu_n    \equiv \mathbb{E}(z_n \vert   x_1, ..., x_n) = A \mu_{n-1} + K_n(x_n - CA\mu_{n-1})$ 
 
 Backward recursion:
 
 - $J_n         \equiv V_nAP_n^{-1} = V_nA (A V_{n}A+ \Gamma)^{-1}$ 
-- $ \hat V_n   \equiv {\rm Cov}(z_n|X) = V_n - J_n(\hat V_{n+1} - P_n)J_n^T$ 
-- $ \hat \mu_n \equiv \mathbb{E}(z_n|X) = \mu_n + J_n(\hat \mu_{n+1} - A\mu_n)$ 
+- $ \hat V_n   \equiv {\rm Cov}(z_n\vert  X) = V_n - J_n(\hat V_{n+1} - P_n)J_n^T$ 
+- $ \hat \mu_n \equiv \mathbb{E}(z_n\vert  X) = \mu_n + J_n(\hat \mu_{n+1} - A\mu_n)$ 
 
 
 Notes and explanations to supplement Bishop:
@@ -53,11 +53,11 @@ $$-2LogL \equiv {\rm logdet}(P_0) + (z_1 - \mu_0)^TP_0^{-1}(z_1 - \mu_0)
 \\ + \sum_{n = 2}^N {\rm logdet}(\Gamma) + (z_n - Az_{n-1})^T\Gamma^{-1}(z_n - Az_{n-1}) 
 \\ + \sum_{n = 1}^N {\rm logdet}(\Sigma) + (x_n - Cz_n)^T\Sigma^{-1}(x_n - Cz_n) $$
 
-For EM, we need ${\rm argmax}_\theta {\rm E_{z|X, \theta^{old}}[LogL(x, z, \theta)]}$ . The LogL depends on $z$ via a linear function of a few sufficient stats, so the following building blocks are useful and sufficient for the update. This partly depends on unrolling quadratic terms like $\mathbb E[z^TMz] = {\rm Tr}(M\mathbb E[zz^T])$.
+For EM, we need ${\rm argmax}_\theta {\rm E_{z\vert  X, \theta^{old}}[LogL(x, z, \theta)]}$ . The LogL depends on $z$ via a linear function of a few sufficient stats, so the following building blocks are useful and sufficient for the update. This partly depends on unrolling quadratic terms like $\mathbb E[z^TMz] = {\rm Tr}(M\mathbb E[zz^T])$.
 
-- $E_n \equiv \mathbb E(z_n|X) = \hat \mu_n$ 
-- $E_{n,n} \equiv \mathbb E(z_nz_n^T|X) = \hat V_n + \hat \mu_n\hat \mu_n^T$ 
-- $E_{n-1,n} \equiv E_{n-1,n}^T \equiv \mathbb E(z_{n-1}z_n^T|X) = J_{n-1}\hat V_n + \hat \mu_{n-1}\hat \mu_n^T$ 
+- $E_n \equiv \mathbb E(z_n\vert  X) = \hat \mu_n$ 
+- $E_{n,n} \equiv \mathbb E(z_nz_n^T\vert  X) = \hat V_n + \hat \mu_n\hat \mu_n^T$ 
+- $E_{n-1,n} \equiv E_{n-1,n}^T \equiv \mathbb E(z_{n-1}z_n^T\vert  X) = J_{n-1}\hat V_n + \hat \mu_{n-1}\hat \mu_n^T$ 
 
 The actual update can be found separately for each line of the LogL as it appears above. Unless noted, the RHS uses only the "old" parameters. Here is the result.
 
