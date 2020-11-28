@@ -12,7 +12,8 @@ description: Ph.D. student at JHU BME; formerly Bioinformatician at UMass Medica
 avatar: https://avatars3.githubusercontent.com/u/5271803?s=40&v=4
 
 collections:
-  - content_tags
+  content_tags:
+    output: true
 
 #
 # Flags below are optional
