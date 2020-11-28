@@ -1,0 +1,114 @@
+I"�<p>This is part 3 of a three-part post on T-cell receptors &amp; RNA data. Here are parts <a href="https://ekernf01.github.io/TCR-part-1">1</a> (intro / summary) and <a href="https://ekernf01.github.io/TCR-part-2">2</a> (technical details).</p>
+
+<p>–</p>
+
+<h5 id="bonus-post-tcr-summary-statistics">Bonus post: TCR summary statistics</h5>
+
+<p>In part 1, I showed that a simple approach allows for specific detection of TCR transcripts in mature thymocytes. In part 2, I gave the exact details of the method. The important work is done, at least as befits our lab’s priorities for that project, and this post is purely for amusement.</p>
+
+<p>As long as I had all the human TCR segments in a tidy dataframe, I decided to display some basic properties. Here’s the length and number of known segments by type and by locus.</p>
+
+<p><img src="/images/TCR_length_by_segment.pdf" alt="" /></p>
+
+<p><strong>Counts of known human TCR segments …</strong></p>
+
+<p>… from downloaded TCR recombinome</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>C</th>
+      <th>V</th>
+      <th>D</th>
+      <th>J</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td>1</td>
+      <td>119</td>
+      <td>0</td>
+      <td>68</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>1</td>
+      <td>142</td>
+      <td>3</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>G</td>
+      <td>1</td>
+      <td>22</td>
+      <td>0</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td>1</td>
+      <td>6</td>
+      <td>3</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>… from a textbook (Mak and Saunders, “Primer to the Immune Response”)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>C</th>
+      <th>V</th>
+      <th>D</th>
+      <th>J</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td>1</td>
+      <td>42</td>
+      <td>0</td>
+      <td>61</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>1</td>
+      <td>48</td>
+      <td>2</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>G</td>
+      <td>1</td>
+      <td>14</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td>1</td>
+      <td>10</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>These counts are different from what my immunology textbook gives. (I’m reading “Primer to the Immune Response” by Tak Mak and Mary Saunders, and the TCR segment counts are in table 8-2, page 137.) Most counts pulled straight from the data are bigger, and a few are much bigger. For instance, Mak and Saunders say there are only 42 V segments in the human TCRA locus, whereas the table above has 119.</p>
+
+<p>Why? Because the TRACER recombinome lists a different segment for every allele, whereas the textbook counts two different alleles as belonging to the same segment. I found this out because the names look like <code class="language-plaintext highlighter-rouge">TRAV1-1*02</code>, and the <a href="http://www.imgt.org/IMGTScientificChart/Nomenclature/IMGTnomenclature.html">IMGT IG/TR nomenclature page</a> says “Allele names comprise the IMGT gene name followed by an asterisk and a two-figure number.” (See footnote.)</p>
+
+<p>This brings up another potential improvement for TCR alignment: don’t build the reference out of near-identical segments that differ by only a single variant!</p>
+
+<p>Mak and Saunders claim there are 10 V segments in TCRD locus, whereas the recombinome only lists 6. This is the only category for which Mak and Saunders indicate more segments than TRACER does. I still don’t know why. Maybe the best available information has changed since 2008 when this copy of the textbook was printed – but it seems unlikely that the number of known segments would <em>decrease</em>.</p>
+
+<h5 id="footnote">Footnote</h5>
+
+<p>That IMGT site is amazing. If you ever need an IGK allele table for the common brush-tailed possum, <a href="http://www.imgt.org/IMGTrepertoire/Proteins/#C">look no further</a>.</p>
+:ET

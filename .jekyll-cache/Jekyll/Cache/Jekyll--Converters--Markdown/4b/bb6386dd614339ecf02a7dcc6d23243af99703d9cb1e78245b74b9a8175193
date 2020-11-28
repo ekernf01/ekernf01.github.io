@@ -1,0 +1,215 @@
+I"�A<p>Many (all?) bioinformatics groups use cloud or cluster computing to handle grunt work such as sequence alignment. They use scheduling systems such as Sun Grid Engine and LSF to submit jobs to the cluster. But, it’s becoming more common to use one of many modern pipelining tools. These pipelining tools abstract away the details of job submission, getting rid of boilerplate that would otherwise appear every time you build a pipeline.</p>
+
+<p>This makes your code <strong>much easier to read.</strong></p>
+
+<p>These tools also have secondary benefits – some have map-reduce-like constructs for simple parallelization and many can recover automatically from interruptions without re-doing completed steps.</p>
+
+<p>Here at UMass, we use LSF to submit jobs. I’ve configured a number of modern pipelining tools on our cluster, some of which more or less natively support LSF and others that I had to coax. Here’s how I did it.</p>
+
+<h3 id="underlying-pattern">Underlying pattern</h3>
+
+<p>In each case, you first download and install the pipelining tool. It will have a wrapper script for jobs to specify how it interfaces with your cluster’s job manager. The trick is to find out where that is and modify it correctly.</p>
+
+<h3 id="cromwell">Cromwell</h3>
+
+<p>Cromwell is the muscle behind the Broad Institute’s wonderfully readable <a href="???">Workflow Description Language (WDL)</a>. To install Cromwell, I got the <a href="???">download</a> and did my best to implement the LSF interface based on <a href="???">these</a> instructions. Everything almost worked, but I hit <a href="https://github.com/broadinstitute/cromwell/issues/3185">a snag</a> where Cromwell lacked permissions to execute the shell scripts that it creates. If you read that thread, you’ll see how this issue was eventually resolved: it turns out if you use <code class="language-plaintext highlighter-rouge">bash myscript.sh</code> instead of <code class="language-plaintext highlighter-rouge">./myscript.sh</code>, you won’t need execution permissions for the script itself.</p>
+
+<p>Here is the job submission/monitoring file that I used to interface between Cromwell and LSF.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>include required(classpath("application"))
+backend {
+    default = LSF
+        providers {
+            LSF {
+             actor-factory = "cromwell.backend.impl.sfs.config.ConfigBackendLifecycleActorFactory"
+             config {
+                concurrent-job-limit = 16
+
+                 runtime-attributes = """
+                 Int cpu
+                 Int nthreads
+                 Float? memory_mb
+                 """
+
+                 submit = """
+                 bsub \
+                 -J ${job_name} \
+                 -cwd ${cwd} \
+                 -R rusage[mem=${memory_mb}] \
+                 -n ${nthreads} \
+                 -W ${cpu} \
+                 -o ${out} \
+                 -e ${err} \
+                 " bash ${script} "
+                 """
+
+                 kill = "bkill ${job_id}"
+                 check-alive = "bjobs ${job_id}"
+                 job-id-regex = "Job &lt;(\\d+)&gt;.*"
+             }
+            }
+        }
+}
+</code></pre></div></div>
+
+<h5 id="room-for-improvement">Room for improvement</h5>
+
+<p>Looking back at this with more experience, I am tempted to set the concurrent job limit much higher – maybe 1000 or 2000. With LSF, my understanding is that you might as well send in lots of jobs, and if there’s not enough cores at the moment, it will just leave some of them pending. I wouldn’t send in 1,000,000 at once because my intuition is that sad things could happen, but in the past year I’ve seen that LSF can handle 1000 or so in the queue with no issue. According to the Cromwell devs, that parameter is not meant to be a <a href="https://gatkforums.broadinstitute.org/wdl/discussion/9617/is-there-a-way-to-put-a-limit-on-the-concurrency-of-a-task-during-a-scatter">full-scale solution</a>, so you can keep an eye out for what’s developed in the future.</p>
+
+<h3 id="bigdatascript">BigDataScript</h3>
+
+<p><a href="http://pcingola.github.io/BigDataScript/index.html">BigDataScript (BDS)</a> is a pipelining tool that imitates the look and feel of Java. It is used, among other places, by Anshul Kundaje’s ENCODE-compliant ChIP-seq and ATAC-seq pipelines.</p>
+
+<p>When I first tried BDS, it already had some Perl scripts for LSF job submission and monitoring. But, there were some errors I had to work through. The process is detailed in <a href="https://github.com/pcingola/BigDataScript/issues/33">issue #33</a>, and you can get the final result <a href="https://github.com/pcingola/BigDataScript/tree/master/config/clusterGeneric_LSF">here</a>.</p>
+
+<p>To install BDS and run it on LSF:</p>
+
+<ol>
+  <li>Install the <a href="http://pcingola.github.io/BigDataScript/download.html">download</a> for your OS and then do <code class="language-plaintext highlighter-rouge">export PATH=$PATH:$HOME/.bds</code>.</li>
+  <li>Move or symlink the scripts from <a href="https://github.com/pcingola/BigDataScript/tree/master/config/clusterGeneric_LSF">BigDataScript/config/clusterGeneric_LSF/</a> into <code class="language-plaintext highlighter-rouge">BigDataScript/config/clusterGeneric/</code>.</li>
+  <li>When you invoke your pipeline, pass in the option ` -s generic <code class="language-plaintext highlighter-rouge">. This tells BDS to look in </code>BigDataScript/config/clusterGeneric/` for job submission and monitoring, so it will find the interface to LSF.</li>
+</ol>
+
+<h5 id="room-for-improvement-1">Room for improvement</h5>
+
+<p>Does anyone who’s reading know how to avoid overwriting <code class="language-plaintext highlighter-rouge">clusterGeneric/</code>? Can you just point BDS somewhere else?</p>
+
+<h3 id="snakemake">Snakemake</h3>
+
+<p>By the time I sslithered into Ssnakemake, there was already a nice demo for LSF use <a href="https://slowkow.com/notes/snakemake-tutorial/">here</a> on Kamil Slowkowski’s blog. Instead of writing a whole script, you can just pass a prefix in when you call Snakemake. Slowkowski’s example is</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>snakemake --jobs 999 --cluster 'bsub -q normal -R "rusage[mem=4000]"'
+</code></pre></div></div>
+
+<p>To make this more flexible, for instance if you don’t always need 4000M of memory or you don’t always want to specify the job queue named <code class="language-plaintext highlighter-rouge">normal</code>, you can add some Snakemake wildcards.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>snakemake --jobs 999 --cluster 'bsub -n {cluster.n} -R {cluster.resources} -q {cluster.queue}'
+</code></pre></div></div>
+
+<p>Just make sure your wildcards follow the same format as mine: <code class="language-plaintext highlighter-rouge">cluster.&lt;thing&gt;</code>. This has to do with how the actual values get filled in, which is explained below. First, here is the fully flexible job-submission command that I use.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>snakemake \
+    --snakefile my_Snakefile \
+    --cluster-config cluster_config.json \
+    --jobs 999 \
+       --cluster \"bsub \
+        -J {cluster.name} \
+        -W {cluster.time} \
+        -R {cluster.resources} \
+        -n {cluster.n} \
+        -e {cluster.err} \
+        -o {cluster.output} \
+    \"
+</code></pre></div></div>
+
+<p>Notice that I added an extra option here: <code class="language-plaintext highlighter-rouge">--cluster-config cluster_config.json</code>. That’s because in Snakemake, you <a href="https://bitbucket.org/snakemake/snakemake/issues/279/unifying-resources-and-cluster-config">don’t put</a> the computational requirements inline as you would with WDL or BDS. They have to be in another file called the cluster config file. Details are <a href="https://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html#cluster-configuration">here</a>, but I’ll give a brief intro below to keep the post self-contained.</p>
+
+<p>You typically write one cluster config file for each Snakefile. The cluster config file is structured as a JSON dictionary that contains one level of (sub-)dictionaries. In the outer dictionary, keys correspond to task names in the corresponding Snakefile. There’s an extra for defaults, which uses the reserved key <code class="language-plaintext highlighter-rouge">__default__ </code>. In each inner dictionary, you specify keys that you can specify, and these correspond to the wildcards in the LSF submission command. Here’s an example.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+"__default__" :
+    {
+        "time"      : "1:00",
+        "n"         : "1",
+        "resources" : "\"rusage[mem=4000] span[hosts=1]\"",
+        "name"      : "snake_{rule}_{wildcards}",
+        "output"    : "logs_{rule}_{wildcards}.out",
+        "err"       : "logs_{rule}_{wildcards}.err"
+    },
+
+    "some_memory_intensive_task" :
+    {
+        "resources" : "\"rusage[mem=30000] span[hosts=1]\""
+    }, 
+    
+    "a_quick_task" :
+    {
+        "time" : "0:10"
+    }
+}
+</code></pre></div></div>
+
+<p>The cluster config file has to be valid JSON or YAML. To avoid hassle when you write your own:</p>
+
+<ol>
+  <li>Don’t use tab characters.</li>
+  <li>Check the line endings for missing commas every time you edit the file.</li>
+</ol>
+
+<p>You may notice that my cluster config file has lines that refer to <code class="language-plaintext highlighter-rouge">{rule}</code> and <code class="language-plaintext highlighter-rouge">{wildcards}</code>. Those allow Snakemake to cross-reference the cluster config file with the corresponding Snakefile. For example, look at the stderr output file. This is ultimately fed to LSF’s <code class="language-plaintext highlighter-rouge">-e</code> argument in the submission script. To get to the submission script, it comes from the wildcard <code class="language-plaintext highlighter-rouge">{cluster.err}</code>, and so in the example <code class="language-plaintext highlighter-rouge">cluster_config.json</code> file, it comes from value at the <code class="language-plaintext highlighter-rouge">err</code> key. This value is, by default, <code class="language-plaintext highlighter-rouge">"logs_{rule}_{wildcards}.err"</code>. Thus, Snakemake will look in the Snakefile, and if it’s submitting a job for a rule called <code class="language-plaintext highlighter-rouge">align</code> with wildcards describing the file to be aligned – say <code class="language-plaintext highlighter-rouge">S1_L001_R1.fastq</code> – then this is the final error log name.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>logs_align_S1_L001_R1.fastq 
+</code></pre></div></div>
+
+<p>This gets dumped straight into Snakemake’s working directory when the job finishes. If you want things a little more organized, you can make two changes.</p>
+
+<ol>
+  <li>Change <code class="language-plaintext highlighter-rouge">"logs_{rule}_{wildcards}.err"</code> to <code class="language-plaintext highlighter-rouge">"logs/{rule}/{wildcards}.err"</code>.</li>
+  <li>Early on your Snakefile, make the folder <code class="language-plaintext highlighter-rouge">logs/{rule}/</code> for each rule.</li>
+</ol>
+
+<p><strong>Don’t do step 1 without step 2.</strong> LSF will complain that it can’t find the spot where you want the error file, and very probably <strong>it will instead email you the stderr output for each job submitted under that rule.</strong> Unless you want to clog the outgoing email queue and look silly in front of the sysadmins, take care of this first and test it with a small job. If you want to be extra cautious here, there are also other <a href="https://www.ibm.com/support/knowledgecenter/en/SSETD4_9.1.2/lsf_admin/job_email_disable.html">ways to tell LSF</a> not to email you.</p>
+
+<h5 id="room-for-improvement-2">Room for improvement</h5>
+
+<p>The process above gets cumbersome, especially writing a new cluster config for every snakefile. There is actually now <a href="https://bitbucket.org/snakemake/snakemake/issues/279/unifying-resources-and-cluster-config">a better way</a>. Maybe I will dig into this and write another tutorial if I do more with Snakemake in the future. UPDATE 2020FEB08: I am learning how to use the <code class="language-plaintext highlighter-rouge">resources</code> keyword in a snakemake rule and <a href="https://snakemake.readthedocs.io/en/v4.5.1/executable.html">make my own custom jobscript</a>.</p>
+
+<h3 id="martian">Martian</h3>
+
+<p>Martian is an awesome open-source pipelining tool built by the folks at 10X Genomics. When I installed it as part of cellranger, it worked for LSF out of the box! But, I still ended up tinkering with the configuration, because there were a couple of weeks over the summer when one of the job queues on the UMass cluster was very heavily used, and I wanted an option to avoid that queue. I’ll describe this in the context of 10X cellranger, because I’ve never used Martian elsewhere. First, find the Martian installation inside cellranger and go to the job templates.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /path/to/your/bioinformatics/tools/cellranger-2.1.0/martian-cs/2.3.0/jobmanagers
+</code></pre></div></div>
+
+<p>Copy the LSF one. I named mine after the queue I wanted to avoid.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cp lsf.template lsf_nolong.template
+</code></pre></div></div>
+
+<p>Edit it. I changed the walltime from <code class="language-plaintext highlighter-rouge">-W 10:00</code> to <code class="language-plaintext highlighter-rouge">-W 4:00</code> to shorten my jobs and make them eligible for a quicker queue. (Quit quagmire queues. Quicker queues compute quite quickly.) This could cause problems if cellranger sends in a big job that takes longer than 4 hours, but in my experience it always submits many small jobs.</p>
+
+<p><strong>Crucial step</strong>: Martian does not yet know that your new config file exists. Tell it where to look by <em>carefully</em> modifying <code class="language-plaintext highlighter-rouge">config.json</code>. It’s a JSON dictionary with lots of nesting. Look for a key “jobmodes” whose value is a dictionary with entries that look like this. (Here’s the default one for LSF.)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"lsf": {
+          "cmd": "bsub",
+          "envs": [
+              {
+                  "name":"LSF_SERVERDIR",
+                  "description":"path/to/lsf/server"
+              },
+              {
+                  "name":"LSF_LIBDIR",
+                  "description":"path/to/lsf/lib"
+              },
+              {
+                  "name":"LSF_BINDIR",
+                  "description":"path/to/lsf/commands"
+              },
+              {
+                  "name":"LSF_ENVDIR",
+                  "description":"path/to/lsf/env"
+              }
+          ]
+      },
+</code></pre></div></div>
+
+<p>Copy it. Modify the key (<code class="language-plaintext highlighter-rouge">"lsf"</code>) to match your new file (<code class="language-plaintext highlighter-rouge">"lsf_nolong"</code>).</p>
+
+<p>To test out your new configuration, you can invoke <code class="language-plaintext highlighter-rouge">cellranger count</code> as usual, but with <code class="language-plaintext highlighter-rouge">--jobmode lsf_nolong</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bsub -W 20:00 -R rusage[mem=4000] -n 1 -R span[hosts=1] "cellranger count \
+--id=my_sample \
+--transcriptome=/project/umw_rene_maehr/programs/cellranger-2.1.0/refdata-cellranger-hg19-1.2.0 \
+--fastqs=path/to/fastq \
+--sample=fastq_prefix \
+--jobmode=lsf_nolong --maxjobs=200 --mempercore=8"
+</code></pre></div></div>
+
+<h3 id="takeaways">Takeaways</h3>
+
+<p>If you’ve reached this post, it’s probably because you have downloaded a pipelining tool and you need to configure it. But, if you’re still choosing which one to use, my pick is WDL, and I strongly recommend against Snakemake.</p>
+
+<h3 id="disclaimers">Disclaimers</h3>
+
+<p>You’re free to reuse the code snippets I provide here, but it’s given without any guarantees on performance or behavior. In particular, <em>I know nothing about security</em> and my solutions may contain loopholes.</p>
+:ET

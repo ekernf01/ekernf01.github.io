@@ -1,0 +1,2 @@
+I"<p>When we screened transcription factors influencing endoderm differentiation (<a href="https://ekernf01.github.io/DE_screen">post</a>, <a href="https://pubmed.ncbi.nlm.nih.gov/30995470/">paper</a>), we ran into an interesting design problem. The experiment had 49 different treatment conditions and one control. Treatments were not allowed to overlap. We were able to measure outcomes in a fixed number of cells – as it turned out, about 16,000. What is the optimal proportion of cells to use as controls?</p>
+:ET

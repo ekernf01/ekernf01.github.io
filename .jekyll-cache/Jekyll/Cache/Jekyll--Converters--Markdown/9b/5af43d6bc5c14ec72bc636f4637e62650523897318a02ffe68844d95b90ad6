@@ -1,0 +1,71 @@
+I"�<h3 id="the-mystery-of-life">The mystery of life</h3>
+
+<p>Human cells have a remarkable ability to differentiate and respond to their environment. A single fertilized egg can give rise to placenta, germ cells, muscle, liver, skin, neurons, and all the tissues of the body. Individual cells alter their shape, stiffness, organelle content, DNA packaging, and surface receptor composition. They migrate, contract, metabolize, secrete, multiply, kill, and die, according to the sequence of stimuli they “detect” beginning at conception. Despite their common origins in a pluripotent stem cell state, these cells are dramatically different in every aspect except one: they all contain more or less the same genome. It’s a long-standing challenge to build predictive models showing how this genome and its related proteins and RNA can control cellular “behaviors” and the developmental sequences by which each cell type emerges.</p>
+
+<p><img src="https://ekernf01.github.io/images/GRN_graphics/differentiate.png" alt="" /></p>
+
+<p>The biochemical systems controlling cells have a long parts list: tens of thousands of genes and RNA transcripts, hundreds of thousands of enhancers, and also proteins and signaling molecules. (If this is starting to sound foreign to readers low on biology background, check out the <a href="https://ekernf01.github.io/bio_intro/">bio intro post</a>.) It is useful to simplify these biochemical systems into networks: if transcript A is translated into protein A, which binds at locus B and inhibits transcription of transcript B, then the network would have a connection from A to B. The hope is that the network won’t be fully connected: each molecule type will have a manageable number of others that it interacts with.</p>
+
+<p>Typical approaches have used purpose-built biotech tools (e.g. genetic knockout mice, fluorescent “reporter” cell lines) to identify pieces of the network that are important for function or development. Often, there is enough information to detail entire “pathways” within the network; this has been done, for examples, with <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2117903/">programmed cell death</a>, <a href="https://www.cell.com/action/showPdf?pii=S1074-7613%2816%2930107-8">nucleic acid sensing</a>, and Wnt signaling (<a href="http://web.stanford.edu/group/nusselab/cgi-bin/wnt/">resource site</a>, <a href="http://web.stanford.edu/group/nusselab/cgi-bin/wnt/sites/default/files/reviews/Cell%202012%20Clevers.pdf">article</a>). But with modern technologies, we are fast gaining the ability to observe phenotypes, assess molecular states, and perturb genes on a massive scale. We may not need to reconstruct the entire human control network one element at a time using labor-intensive methods. I am interested in automated, large-scale network modeling based on screens and observational data.</p>
+
+<p>Unfortunately, there are many obstacles we must overcome in order to build convincing and useful models of cellular control from modern datasets. This post series will lay out a broad strategy and some of the current problems.</p>
+
+<h3 id="a-vague-modeling-strategy">A vague modeling strategy</h3>
+
+<p>General simulators of cell state will be built in discrete steps.</p>
+
+<p><img src="https://ekernf01.github.io/images/GRN_graphics/strategy v2.png" alt="" /></p>
+
+<ul>
+  <li>Protein content can be naïvely predicted from RNA content through <a href="https://ekernf01.github.io/bio_intro/">the central dogma (DNA -&gt; RNA -&gt; protein)</a>, but increasingly sophisticated methods will improve predictions allowing for factors other than transcription.</li>
+  <li>Many specific molecules have already been linked to cellular phenotypes such as apoptosis and proliferation. This work will continue as before and with the aid of new technologies such as genome-wide CRISPR screens.</li>
+  <li>RNA content is difficult to predict, but we will see continuous improvement of mathematical models that incorporate DNA binding proteins, chromatin shape/state, external stimuli, and splicing.</li>
+</ul>
+
+<p>I am interested in all of these tasks (studying phenotypes, predicting protein content, and predicting RNA content), but of the three, modeling RNA content is my current focus. From a statistical perspective, modeling of transcription raises fascinating questions about what data to generate, what inferences are possible, and how to represent the remaining uncertainty. From a stem cell biology perspective, I believe that control of transcription is necessary for control of cell identity and possibly even sufficient. From a technological perspective, it seems the time is ripe for additional development of this subfield: diverse relevant datasets are available, and models derived from them are beginning to show practical utility. Here are my thoughts and my plans moving forward.</p>
+
+<h3 id="table-of-contents">Table of Contents</h3>
+
+<p>(Note: this series is a work in progress; some linked posts below are actually not up yet.)</p>
+
+<ul>
+  <li>Quick &amp; dirty biology for people from other fields: <a href="https://ekernf01.github.io/bio_intro">show me the basics</a></li>
+  <li>What types of data do we have to work with?
+    <ul>
+      <li>The <a href="https://ekernf01.github.io/GRN_sc_rev">single-cell revolution in genomics</a>
+        <ul>
+          <li>A list of relevant <a href="https://ekernf01.github.io/GRN_datasets">datasets</a></li>
+        </ul>
+      </li>
+      <li>Discovering and modeling <a href="https://ekernf01.github.io/GRN_enhancers">enhancers</a></li>
+    </ul>
+  </li>
+  <li>
+    <p>Is this just going to crash and burn?</p>
+
+    <ul>
+      <li><a href="https://ekernf01.github.io/GRN_akutsu">How much data will we need to “solve” human transcriptional regulation? What kind of data is best?</a></li>
+      <li><a href="https://ekernf01.github.io/GRN_stat_issues">What type of inference is possible, and what obstacles arise?</a></li>
+      <li>How do we handle the constant threat of <a href="https://ekernf01.github.io/GRN_missing/">missing information</a>?</li>
+    </ul>
+  </li>
+  <li>What are other people doing in this field and how well does it work? (all forthcoming)
+    <ul>
+      <li>CellNet, Mogrify, and CellOracle</li>
+      <li>DREAM5 and various modeling techniques</li>
+    </ul>
+  </li>
+  <li>What is Eric fantasizing about doing and why? (all forthcoming)
+    <ul>
+      <li>Summary and connections among topics</li>
+      <li>Large-scale batch-corrected GRN inference</li>
+      <li>GRN inference with RNA velocity</li>
+      <li>Out-of-sample estimation of <a href="https://ekernf01.github.io/GRN_cmap">CMAP perturbations</a></li>
+      <li><a href="https://ekernf01.github.io/GRN_dev_progeny">Pathway response inference</a> in stem cell and embryo RNA data</li>
+      <li><a href="https://ekernf01.github.io/GRN_isoforms">Isoform estimation in single-cell data</a></li>
+      <li>Reverse inference of binding motifs</li>
+      <li>Protein content prediction from RNA measurements</li>
+    </ul>
+  </li>
+</ul>
+:ET

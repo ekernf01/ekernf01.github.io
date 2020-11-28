@@ -1,0 +1,96 @@
+I"� <p>This is part 2 of a three-part post on T-cell receptors &amp; RNA data. Here are parts <a href="https://ekernf01.github.io/TCR-part-1">1</a> (intro / summary) and <a href="https://ekernf01.github.io/TCR-part-3">3</a> (bonus material).</p>
+
+<p>–</p>
+
+<h5 id="implementation-details">Implementation details</h5>
+
+<p>In part 1, I fished out TCR transcripts from the thymus atlas dataset, showing that a simple approach allows for specific detection of TCR transcripts in mature thymocytes. Here’s exactly what I did.</p>
+
+<ul>
+  <li>Grab copies of the TCR segment reference from TRACER’s public github page <a href="https://github.com/Teichlab/tracer/tree/master/resources">here</a> – look for FASTA files (ending in <code class="language-plaintext highlighter-rouge">.fa</code>) under the folder for <code class="language-plaintext highlighter-rouge">raw_seqs</code>.</li>
+  <li>Write an R script to concatenate them, spitting out a FASTA file. Also keep track of where the “splice junction” boundaries should go, creating a GTF file to use later on in STAR index generation and a refFlat file for use in the Drop-seq tools’ gene tagging step. The original script I wrote was clumsy; here’s an <a href="/files/make_human_recombinome.R">improved version</a>.</li>
+  <li>Generate a tiny STAR index for the resulting tiny reference genome (or perhaps it should be called a reference “recombinome”).</li>
+  <li>Try realigning some of our data. Fail miserably. Apparently, STAR does not scale well when a high fraction of reads don’t align to the reference, and most of our reads were not from TCR genes. For more on this topic, see <a href="https://groups.google.com/forum/#!msg/rna-star/hJL_DUtliCY/G1IOpvgx3H4J">Alex Dobin’s comments on the STAR grougle goop</a>.</li>
+  <li>Concatenate the tiny TCR reference recombinome with the rest of the mm10 mouse reference genome. Using this as a reference allowed STAR to deal with most non-TCR reads in its typical efficient manner.</li>
+  <li>Subset reads falling into the TCR recombinome, then send them through <code class="language-plaintext highlighter-rouge">DigitalExpression</code>, the counting utility from the Drop-seq pipeline. Since it was only the TCR-aligned reads, I set <code class="language-plaintext highlighter-rouge">MIN_NUM_GENES_PER_CELL=1</code>.  I also set <code class="language-plaintext highlighter-rouge">READ_MQ=1</code> since the alignments were, not surprisingly, of low quality.</li>
+</ul>
+
+<h5 id="try-it-yourself">Try it yourself</h5>
+
+<p>You can download my simple TCR recombinomes here (<a href="/files/human.zip">human</a>, <a href="/files/mouse.zip">mouse</a>). To keep the file sizes down, those links include only the TCR recombinome, not the rest of the genome. You’ll need to concatenate them onto the regular human or mouse reference genomes before using them. These can be found from the McCarroll lab (<a href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM1629193">human</a>, <a href="ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE63nnn/GSE63472/suppl/GSE63472_mm10_reference_metadata.tar.gz">mouse</a>). The code would look something like this.</p>
+
+<ul>
+  <li>
+    <p>Concatenate onto the regular mm10 reference.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  mm10=&lt;path_to_mm10&gt;
+  cat simple_recombinome.gtf  ${mm10}/mm10.gtf &gt; mm10_plus_TCR.gtf
+  cat simple_recombinome.refFlat ${mm10}/mm10.refFlat &gt; mm10_plus_TCR.refFlat
+  cat simple_recombinome.fa ${mm10}/mm10.fasta &gt; mm10_plus_TCR.fa
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Make sure they look right.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  less mm10_plus_TCR.gtf
+  less mm10_plus_TCR.refFlat
+  less mm10_plus_TCR.fa
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Feed them into STAR to build a genome index.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  star --runMode genomeGenerate 
+       --sjdbOverhang 49 \
+       --genomeDir        mm10_plus_TCR \
+       --genomeFastaFiles mm10_plus_TCR.fa \
+       --sjdbGTFfile      mm10_plus_TCR.gtf 
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>When using the Drop-seq tools, there’s a step that merges two BAM files to combine alignment info with cell and molecular barcodes. For this, you’ll need to build a Picard dictionary for the new reference FASTA.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  java -Xmx6g -jar &lt;path_to_picard1&gt;/CreateSequenceDictionary.jar \
+   REFERENCE=mm10_plus_TCR.fa \
+   O=mm10_plus_TCR.dict
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Run the Drop-seq tools as you would normally, but using this reference. I have a wrapper that does this, but I am not ready to make it public. For now, check out the <a href="http://mccarrolllab.org/wp-content/uploads/2016/03/Drop-seqAlignmentCookbookv1.2Jan2016.pdf">Drop-seq alignment cookbook</a>.</p>
+  </li>
+  <li>
+    <p>Recount the TCR reads with permissive settings. You’ll need a BAM file with tags for cell barcode, molecular barcode, and gene name.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  samtools index merged_exon_tagged.bam
+  samtools view -bh merged_exon_tagged.bam  chrTCR_recombinome &gt;  tcr.bam
+  path/to/Drop-seq_tools/DigitalExpression \
+    SUMMARY=TCR.dge.summary.txt  \
+    I=tcr.bam  \
+    O=TCR.dge.txt.gz  \
+    MIN_NUM_GENES_PER_CELL=1 \
+    READ_MQ=1 
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>If you want to save yourself some hassle down the line, specify a cell barcode whitelist in the above step (using <code class="language-plaintext highlighter-rouge">CELL_BC_FILE=&lt;your_whitelist.tsv&gt;</code>) instead of doing all the cells (like I do in my example).</p>
+  </li>
+</ul>
+
+<h5 id="room-for-improvement">Room for improvement</h5>
+
+<p>This problem is complicated enough that one could probably write a Ph.D. thesis on it. I only spent the better part of a week. So, this could no doubt be optimized much further.</p>
+
+<p>If I were to stick with the same quick and dirty strategy and refine it a bit, the first thing I would want to know is what’s the minimal version of this strategy. How is the TCR locus represented in the McCarroll lab reference data, and are there any reads already aligning to the TCR loci? If yes, then are they simply not tagged during the exon tagging step? Depending on the answers to these questions, it’s possible that I wasted some of efforts on this problem; maybe I could have tried something simpler first.</p>
+
+<p>If I were working full-time on this, I would probably focus on getting the alignment and quantification process to handle ambiguity. If the uncertainty is somehow represented in the count matrix, it might be possible to resolve some puzzles after the fact in a simple way. For instance, if a cell has ambiguous J-segment reads that could be from TCRA or TCRG, but it clusters with gamma-delta T cells and has reads that unambiguously originate from TCRD, then it’s unlikely that the ambiguous J-segment reads are from TCRA.</p>
+
+<p>T cell subpopulations are frequently biased towards certain segments. This suggests another possible focus: a tool to say “The V segment is <code class="language-plaintext highlighter-rouge">TRAV9N</code>, there are 2 D segments but I don’t know exactly which, and the J section is <code class="language-plaintext highlighter-rouge">TRAJ26</code> or <code class="language-plaintext highlighter-rouge">TRAJ55</code>.” The method outlined in this post could in theory give segment-level information, but in practice, the alignment is too difficult, and for the Atlas data, the segment-level results did not make any sense given the literature. You might do better by incorporating known TCR biology into a customized model, as TRAPeS and TRACER do.</p>
+
+<h5 id="bonus-info">Bonus info</h5>
+
+<p>For a bit of fun bonus info, check out <a href="https://ekernf01.github.io/TCR-part-3">part 3</a>.</p>
+
+<h5 id="acknowledgments">Acknowledgments</h5>
+
+<p>Thanks to B cell receptor expert Namita Gupta for reading a draft of this post series. (All errors are my own, though.)</p>
+:ET

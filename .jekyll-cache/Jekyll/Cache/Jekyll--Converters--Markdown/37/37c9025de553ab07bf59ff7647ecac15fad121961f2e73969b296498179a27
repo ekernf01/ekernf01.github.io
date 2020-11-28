@@ -1,0 +1,42 @@
+I"}<p>The Maehr Lab recently published another paper! Hooray! I want to recap it with a quick summary and some technical things I learned on the project.</p>
+
+<p>This paper is about endoderm, which, along with mesoderm and ectoderm, is one of the first types of specialized tissues that arise in the embryo. <em>Endo-</em>, <em>meso-</em>, and <em>ecto-</em> mean inside, in the middle, and outside; <em>derm</em> literally means skin (epidermis, dermatologist), but here it’s used to mean any layer of tissue. True to the prefixes, endoderm gives rise to most internal organs, while mesoderm gives rise to muscles, bones, and connective tissue and ectoderm gives rise to the skin. The organs that come from endoderm include liver, pancreas, stomach &amp; intestines, lungs, parathyroid, thyroid, and the thymus, which is the <a href="https://ekernf01.github.io/about_maehrlab">Maehr lab’s topic of interest</a>.</p>
+
+<p>Because endoderm is of such broad interest to biologists, it has been studied a lot, but the findings are not always comprehensive or widely applicable. Many genes have been found that matter to endoderm development, but it is possible that some are still out there hiding from us. It’s also possible that some of the familiar ones don’t act exactly as we would expect, because many studies are done in mice, and genes that are essential in mice may not be essential in humans or vice versa. Even when a gene is definitively shown to be important, the type of effect is often unclear: for example, is it a simple block in development – a failure to progress beyond a certain stage – or is it something more complicated? Is the gene acting within each cell, or does it work through signals sent by one cell type and received by another? In this paper, several technologies adopted by the lab allowed us to answer all of these objections. We combined a clean, simple system with a very detailed readout and an unbiased method for selecting genes to test. Specifically, we:</p>
+
+<ul>
+  <li>Start with a cell culture system that produces endoderm from stem cells in isolation from other tissue types (&gt;95% purity).</li>
+  <li>Analyze motifs in accessible DNA to select 50 factors that seemed important to endoderm. There’s a nice general explanation of “motif analysis” <a href="http://homer.ucsd.edu/homer/motif/">here</a>. This technique is biased in the sense that it only looks for proteins that directly bind DNA, but it is unbiased in the sense that any such protein could emerge from the screen. (Motif databases typically contain about 500 proteins.)</li>
+  <li>During the differentiation, perturb the top 50 factors with CRISPRi. There’s a nice general explanation of CRISPRi <a href="https://www.cellecta.com/technology-portfolio/crispri-and-crispra-beyond-gene-knockout/">here</a>.</li>
+  <li>Tease out the results with single-cell sequencing (<a href="http://www.medical-epigenomics.org/papers/datlinger2017/">CROP-seq</a>), so that we can figure out which gene was repressed in which cells and what else happened as a result.</li>
+</ul>
+
+<p>The strongest signals we found were from familiar, well-studied genes (FOXH1, SOX17, SMAD2, SMAD4). We also found multiple less dramatic effects. We focused on a gene called FOXA2 for follow-up, and my coauthor Ryan demonstrated that FOXA2 is necessary for normal liver differentiation.</p>
+
+<h4 id="technical-takeaways">Technical takeaways</h4>
+
+<p>Like all CRISPR techniques, ours uses a combination of two ingredients: an effector protein based on Cas9, and a guide RNA that tells the effector where to go.</p>
+
+<h5 id="guide-assignment">Guide assignment</h5>
+
+<p>One new aspect of this project was learning how to analyze the guide RNAs. Unfortunately, the data were quite noisy, and it was not always clear which guide RNA was present in a given cell. Due to the details of the experiment, each cell should have had exactly one type of guide RNA, but many different guides were nominally detected in each cell, perhaps due to alignment errors or ambient RNA. If you plot the highest and second-highest expressed guide RNA’s (below), there is a clear line at $y=x$, presumably doublets, and another below $y=x$, with the rest of the cells.</p>
+
+<p><img src="https://ekernf01.github.io/images/de_screen_doublets.png" alt="" /></p>
+
+<p>For cells with more reads, you could tell doublets (yellow) from singlets (blue), but for shallower cells, it became hard to tell (grey), and even if the cells were guaranteed singlets, the guide to which they should be assigned is uncertain. This type of uncertainty can be accounted for downstream, for example by <a href="https://github.com/asncd/MIMOSCA">MIMOSCA</a>, which we use in the paper.</p>
+
+<h5 id="complexity-of-a-single-cell-readout">Complexity of a single-cell readout</h5>
+
+<p>Another new experience in this screen was the diversity of effects that might be expected. Perturbations could block differentiation or re-route the cells towards another fate, and that is what we were on the lookout for. But, they could also cause cells to proliferate, or they could be toxic or suppress proliferation. If you’re designing a study, take these possibilities into account, because they can really affect the number of cells sequenced and so also the statistical power.</p>
+
+<p>One of the coolest effects we saw is that toxic guides correlated with decreased expression of the Cas9 protein we used. This is probably not because they directly regulate the Cas9, which sits inside an artificial construct controlled by the experimenter. Rather, the correlation is due to selection bias. The Cas9 is spontaneously silenced in some cells, and because the guides have no effect without the Cas9, those cells can survive even with a toxic guide present.</p>
+
+<h5 id="reproducibility-reproducilibity-reproducibitily-reprodicubility">Reproducibility, reproducilibity, reproducibitily, reprodicubility</h5>
+
+<p>This was my second major project in the lab. I managed to keep the code very nicely organized, so that I could re-run and re-purpose scripts later on without too much trouble. This came in handy when we realized that <a href="https://ekernf01.github.io/pipeline_best_practices/">part of our pipeline had thrown away about 1/3 of the reads</a>! This resulted in an extended hassle, since we had lots of single cell data with similar problems. Due to the solid organization of this particular project, though, we managed to redo most of the figures very quickly. You can find <a href="http://github.com/maehrlab">the code</a> on Github.</p>
+
+<h5 id="biological-lessons-learned">Biological lessons learned</h5>
+
+<p>It is a little discouraging that we didn’t find any really surprising results here. It seems older methods did a very effective job at laying out the molecular players in endoderm differentiation – good for them! Our approach still had the advantage of being systematic and unbiased, but we might have had more impact by applying it to systems that are less well studied.</p>
+
+:ET

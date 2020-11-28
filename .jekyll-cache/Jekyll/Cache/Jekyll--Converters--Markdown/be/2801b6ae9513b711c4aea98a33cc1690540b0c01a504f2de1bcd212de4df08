@@ -1,0 +1,26 @@
+I"<p>This is not a standalone post – it’s just a rough list of datasets that could be useful for regulatory network models. Check out the <a href="https://ekernf01.github.io/GRN_intro">intro</a> to this series for more context.</p>
+
+<p>Benchmarking</p>
+
+<ul>
+  <li>The DREAM5 competition data consist of microarray (RNA) data for yeast (Saccharomyces cerevisiae), bacteria (E. coli, S. aureus), and simulated data. This is a popular dataset for benchmarking methods, because it comes with gold-standard sets of known regulatory relationships. Note, however, that the data <a href="https://doi.org/10.1111/j.1749-6632.2008.04100.x">may have some batch effects</a>.</li>
+  <li>The <a href="https://www.broadinstitute.org/connectivity-map-cmap">Connectivity Map</a> at the Broad Institute offers transcriptomic profiles for several cell lines under thousands of different genetic and chemical perturbations. This seems like a gold mine for testing regulatory network models, and I can’t figure out why it isn’t more heavily used in stem cell biology. I am planning to find out the hard way soon. It is part of a consortium called <a href="http://www.lincsproject.org/">LINCS</a>, which I am just digging into.</li>
+</ul>
+
+<p>Chromatin</p>
+
+<ul>
+  <li>The FANTOM5 consortium has gathered CAGE-seq data in a wide array of human tissues and cell lines (about 400 total). CAGE-seq captures enhancers and genes, and it has been used for global network inference based on locations of active transcription factor binding motifs (http://regulatorycircuits.org/). It has also been used for prediction of reprogramming factors (http://www.mogrify.net/).</li>
+  <li>The ENCODE project has produced DNase-seq data on a wide range of human cell types, measuring active transcription factor binding motifs. For more information, visit <a href="http://www.regulatorynetworks.org/">http://www.regulatorynetworks.org/</a>  and look for the “about” page.</li>
+  <li>The <a href="http://atlas.gs.washington.edu/mouse-atac/">sci-ATAC atlas</a> covers eight organs in the adult mouse.</li>
+  <li>The ImmGen consortium has produced a dataset covering chromatin accessibility in 86 mouse immune cell types, discussed <a href="https://doi.org/10.1016/j.cell.2018.12.036">here</a>.</li>
+  <li><a href="https://www.encodeproject.org/search/?type=experiment&amp;replicates.library.biosample.uuid=d8ca0867-13cd-40df-9de0-29f9da53d935&amp;status!=deleted&amp;status!=revoked&amp;status!=replaced&amp;limit=all">ENCODE</a> and <a href="https://www.ncbi.nlm.nih.gov/pubmed/20709693">ChEA</a> have direct measurements of transcription factor binding, though people often prefer the data above because the direct measurements aren’t even close to measuring every transcription factor in every cell type, whereas accessibility data can get closer to this ideal.</li>
+</ul>
+
+<p>RNA</p>
+
+<ul>
+  <li>Large, diverse collections of bulk RNA data are available from <a href="https://gtexportal.org/home/">the gTEX consortium</a>, from the creators of <a href="http://pcahan1.github.io/cellnetr/">CellNet</a>, from <a href="https://pubmed.ncbi.nlm.nih.gov/29636450/">ARCHS4</a>, and from <a href="https://jhubiostatistics.shinyapps.io/recount/">recount2</a>. CellNet and gTEX have both been used for network modeling.</li>
+  <li>Large, diverse collections of single-cell RNA data are emerging very fast right now. Some notable examples done with mice include the <a href="http://bis.zju.edu.cn/MCA/">MCA</a>, the <a href="https://tabula-muris.ds.czbiohub.org/">Tabula Muris</a>, the <a href="http://atlas.gs.washington.edu/hub/">sci-RNA embryo data</a>, the <a href="https://marionilab.cruk.cam.ac.uk/MouseGastrulation2018/">mouse gastrulation map</a>, the <a href="https://doi.org/10.1038/s41556-017-0013-z">early mouse organogenesis map</a>, the <a href="https://www.nature.com/articles/s41586-019-1127-1">developing endoderm atlas</a>, and the <a href="https://www.cell.com/cell/pdf/S0092-8674(18)30789-X.pdf">entire mouse nervous system</a>. Similar efforts have mapped out lineage trees in the zebrafish (<a href="https://science.sciencemag.org/content/360/6392/eaar3131">1</a>, <a href="https://science.sciencemag.org/content/360/6392/981.abstract">2</a>, <a href="https://www.biorxiv.org/content/10.1101/738344v1.full.pdf">3</a>) and the planarium (<a href="https://science.sciencemag.org/content/360/6391/eaaq1723">1</a>, <a href="https://science.sciencemag.org/content/360/6391/eaaq1736">2</a>). Of course, the most thorough ambitions are inspired by the need to understand <a href="https://elifesciences.org/articles/27041.pdf">humans</a>.</li>
+</ul>
+:ET

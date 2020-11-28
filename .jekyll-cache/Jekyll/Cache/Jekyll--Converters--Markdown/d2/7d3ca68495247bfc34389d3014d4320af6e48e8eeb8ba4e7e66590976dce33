@@ -1,0 +1,40 @@
+I"2<p>I’ve been reading recently about debugging methods, starting with <a href="https://jvns.ca/blog/2019/06/23/a-few-debugging-resources/">this post by Julia Evans</a>. All the links I followed from that point have something in common: the scientific method. Evans quotes <a href="https://twitter.com/act_gardner">@act_gardner</a>’s summary:</p>
+
+<blockquote>
+  <p>What’s happening? What do you expect to happen? … [G]uess at what could be breaking and come up with experiments.</p>
+</blockquote>
+
+<p>This principle applies generally, not just in finding software bugs.  Here, I want to discuss a machine learning paper I really admire, the <a href="https://arxiv.org/pdf/1512.03385.pdf">He et al 2015 resnet paper</a>, which uses the same scientific method to rapidly improve performance in deep learning. With a simple and clever technique, derived from detailed knowledge of the state of the art followed by careful experimentation, they won first place in multiple image processing competitions in 2015.</p>
+
+<h5 id="whats-happening">What’s happening?</h5>
+
+<p>Performance degrades when you add layers to a neural net.</p>
+
+<p><em>N.B. If you don’t know what a neural net is, you can think of it as a sequence of mathematical transformations that are automatically adjusted or optimized to achieve a particular goal. Adding a layer means adding another transformation to the sequence. Deep learning means machine learning with neural nets with many layers.</em></p>
+
+<h5 id="what-do-you-expect-to-happen">What do you expect to happen?</h5>
+
+<p>Deep learning should be great! The deeper, the better! If the extra layers aren’t helping, then they should be able to at least preserve the already-good output from a shallower model. (Let’s call this The Big Bad Assumption.)</p>
+
+<h5 id="guess-at-what-could-be-breaking-and-come-up-with-experiments">Guess at what could be breaking and come up with experiments.</h5>
+
+<p>He et al name three possibilities:</p>
+
+<ul>
+  <li>they could be <a href="https://www.coursera.org/lecture/ml-regression/overfitting-demo-o6wzg">overfitting</a></li>
+  <li>they might suffer from an optimization problem called vanishing gradients.</li>
+  <li>they might be unable to preserve high-quality output from middle layers. (This is a failure of the Big Bad Assumption.)</li>
+</ul>
+
+<p>Through experimentation in previous papers – some with He as a first author – the first two problems are ruled out. For example, the overfitting explanation implies low training error as well as test error, but training error actually also increased with depth. This leaves the third explanation: the Big Bad Assumption has failed.</p>
+
+<p>He et al tested for the failure of the Big Bad Assumption by modifying their neural networks. They made a new structure, the resnet, that has an easier time leaving good output alone when necessary. Then, they fit it to data and found that indeed, it was leaving good output alone (or making only minor modifications).</p>
+
+<blockquote>
+  <p>Replace $H(x)$ with $H(x) + x$. If $H(x)$ can learn to be $0$, then $H(x) + x$ can learn to be $x$, leaving good output unmolested.</p>
+
+  <p>Now check: is $H(x)$ actually close to $0$ in fitted resnets?</p>
+</blockquote>
+
+<p>This final experiment succeeded and paved the way for He et al to fit extremely deep neural networks with unprecedented performance.</p>
+:ET

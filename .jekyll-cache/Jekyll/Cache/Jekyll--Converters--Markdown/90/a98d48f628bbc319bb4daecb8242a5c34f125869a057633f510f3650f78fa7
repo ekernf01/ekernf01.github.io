@@ -1,0 +1,2 @@
+I"+<p>To help me understand and perhaps implement Kalman filtering, this cheat sheet condenses and complements the explanation of the Kalman filter in Bishop PRML (<a href="http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf">pdf</a>) section 13.3. I’m having trouble with math typesetting on the web, so here’s the <a href="https://ekernf01.github.io/files/kalman.md">markdown</a> and <a href="https://ekernf01.github.io/files/kalman.pdf">pdf</a> of this post.</p>
+:ET

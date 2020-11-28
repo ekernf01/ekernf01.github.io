@@ -1,0 +1,66 @@
+I"0<p>In the Maehr lab’s regular journal club, we recently discussed a <em>Cell</em> paper from the research groups of Howard Chang, Will Greenleaf, and Paul Khavari (henceforth “Rubin et al.”).</p>
+
+<blockquote>
+  <p>Rubin, A. J., Parker, K. R., Satpathy, A. T., Qi, Y., Wu, B., Ong, A. J., … &amp; Zarnegar, B. J. (2019). Coupled single-cell CRISPR screening and epigenomic profiling reveals causal gene regulatory networks. Cell, 176(1-2), 361-376.</p>
+</blockquote>
+
+<p>It’s an impressive technical feat. In non-technical terms, they can study the accessibility of DNA – the packaging – in individual cells under a variety of artificially manipulated conditions. In jargon, they combine pooled CRISPR knockdowns and knockouts with a single-cell ATAC-seq readout. It’s a whopper of a paper, with tons of information and very complicated analyses. Unfortunately, there’s a crucial bit of interpretation that is, IMHO, just plain wrong… and it’s the main point of the paper.</p>
+
+<h4 id="statistical-interactions-are-not-genetic-interactions">Statistical interactions are not genetic interactions</h4>
+
+<p>Their figures 4 and 7 are themed around genetic interactions. They knock down Gene A and Gene B separately, then predict what the joint effects would be. Then they test their predictions by knocking down A and B in the same set of cells. Here is an example (their figure 4B); they describe this as an interaction.</p>
+
+<p><img src="https://ekernf01.github.io/images/interaction_example.png" alt="EBER1 and TET2 interact ... or do they?" /></p>
+
+<p>Unfortunately, “interaction” means one thing when you’re writing down regression models and another when you’re drawing biochemical networks. They gloss over this difference and get the biology wrong. In the statistical sense, they are right to call it an interaction: a model with terms for EBER1 and TET2 won’t fit the data very well, and an “interaction term” is needed:</p>
+
+\[\beta_0 + \beta_{EBER1} + \beta_{TET2} \not\approx Y_{both}\]
+
+<p>-</p>
+
+\[\beta_0 + \beta_{EBER1} + \beta_{TET2} + \beta_{EBER1, TET2} \approx Y_{both}\]
+
+<p>But in biochemistry, EBER1 is a non-coding RNA, and TET2 is a protein. An interaction means they interact physically, for instance if one binds to and degrades the other. The simplest biological model compatible with their data does <em>not</em> require any physical interaction between EBER1 and TET2. In fact, using the typical language of gene knockouts, TET2 and EBER1 are <em>redundant</em>. Successful repression of the loci in question can be carried out by EBER1, even when TET2 is gone, and by TET2, even without EBER1. Repression fails only when both EBER1 and TET2 are removed. Since each one works without the other present, this actually argues <em>against</em> physical binding between them.</p>
+
+<p>Rubin et al repeat this mistake further down when discussing EZH2, saying it “cooperates” with EBF1, IRF8, and RELA to prevent stem cells from entering certain specialized lineages. But their figure specifically indicates differences observed between two groups that both have EZH2 knockdowns.</p>
+
+<p><img src="https://ekernf01.github.io/images/interaction_example_EZH2.png" alt="EBF1, IRF8, and RELA repress non-B-cell lineages even in the absence of EZH2." /></p>
+
+<p>So each of these extra factors works even in the absence of EZH2. Rather than facilitating each others’ actions, these genes are working independently towards the same end.</p>
+
+<h4 id="an-improved-set-of-concepts-to-relate-multiple-perturbations-with-biochemical-interactions">An improved set of concepts to relate multiple perturbations with biochemical interactions</h4>
+
+<p>In figure 7, Rubin et al go on to classify dozens of pairs of knockouts by the (statistical) interactions or lack thereof.</p>
+
+<p><img src="https://ekernf01.github.io/images/genetic_interaction_keratinocytes.png" alt="A snippet of Rubin et al's catalogue of genetic interactions relevant to keratinocyte differentiation." /></p>
+
+<p>They seem to borrow terminology from <a href="https://www.cell.com/cell/fulltext/S0092-8674(16)31610-5?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867416316105%3Fshowall%3Dtrue">Dixit et al 2016</a>, who write:</p>
+
+<blockquote>
+  <p>For each pair of perturbed TFs, we assessed the relative proportion of target genes where their relation is additive (no interaction), synergistic, buffering (antagonistic), or dominant (when the two factors have opposing effects and the interaction term enhances one of them).</p>
+</blockquote>
+
+<p>These terms are a creative, quick way to give practical meaning to regression results that are otherwise biologically opaque. But, if we are going to start cataloguing genetic interations, it’s time to replace them with something more detailed and mechanistic.</p>
+
+<p>How? First, we need to stop using only the interaction term of the regression. We must consider activity in all four settings: the control, knockdown of gene A alone, knockdown of of gene B alone, and knockdown of both genes together. Once we have all the information, we can posit mechanistic models and see which ones fit the data. Here are the terms I would use.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A and B form a complex activating the target. \
+The complex require both pieces to work.   | + | -    | -    | -
+B maintains the target's activity alone.   | + | +    | -    | -
+A maintains the target's activity alone.   | + | -    | +    | -
+???                                        | + | -    | -    | +
+A and B are redundant.                     | + | +    | +    | -
+???                                        | + | +    | -    | +
+???                                        | + | -    | +    | +
+</code></pre></div></div>
+
+<p>If you see the inverse of a pattern from the table, just replace “activating” or “activity” with “repressing” or “repression”. In my opinion, if two factors are redundant, there is no particular reason to suspect they form a complex together. I would expect most complexes require all of their components, meaning the components are <em>non</em>-redundant.</p>
+
+<h4 id="fin">Fin</h4>
+
+<p>Does anyone have biological examples of behavior falling under the “???” categories? Drop me a line and explain what you think is going on.</p>
+
+<h4 id="ps-what-i-like-about-this-paper">P.S. What I like about this paper</h4>
+
+<p>Let’s be clear: despite my disagreement with their terms, I am a huge fan of this paper. It’s technically impressive and thoughtful. One really cool detail is their trick for increasing statistical power: they claim to see meaningful results with as few as five cells (five! five!) for any given perturbation. The trick is to average data across locations on the genome that share binding motifs for a transcription factor under study. This turns the analysis from something noisy and difficult to interpret – a bunch of weak signals at mostly in non-coding regions of unknown function – into something intuitive: a measure of protein activity for a relatively well-studied transcription factor.</p>
+:ET

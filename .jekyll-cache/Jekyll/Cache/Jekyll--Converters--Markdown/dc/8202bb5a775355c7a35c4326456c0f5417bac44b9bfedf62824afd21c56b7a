@@ -1,0 +1,17 @@
+I"'<p>The programming language <code class="language-plaintext highlighter-rouge">R</code> typically offers functions prefixed by <code class="language-plaintext highlighter-rouge">d</code>, <code class="language-plaintext highlighter-rouge">p</code>, <code class="language-plaintext highlighter-rouge">q</code>, and <code class="language-plaintext highlighter-rouge">r</code> for pdf, cdf, inverse cdf, and sampling. These are useful for fitting statistical models – especially MCMC since you’re usually sampling and computing densities. You can even get the log density from the <code class="language-plaintext highlighter-rouge">d</code> function with an extra argument.</p>
+
+<p>But, for everyday fitting via likelihoods or empirical Bayes, you need derivatives.</p>
+
+<p>I wish they would have included functions prefixed with <code class="language-plaintext highlighter-rouge">g</code> for the gradient of the log density w.r.t. the parameters and <code class="language-plaintext highlighter-rouge">h</code> for the hessian. Imagine if you could code up a Newton-Raphson update in two lines:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mean_sd = c('mean'=0, 'sd'=1)
+mean_sd = mean_sd - solve( 
+    hnorm(x, mean_sd['mean'], mean_sd['sd']), 
+    gnorm(x, mean_sd['mean'], mean_sd['sd']) 
+    )
+</code></pre></div></div>
+
+<p>The interface would have to be considered, but here I am thinking of $x$ as a vector, and the return value is the gradient or hessian assuming the entries of $x$ are i.i.d.</p>
+
+<p>Does this functionality exist? I suspect it doesn’t, because I’ve looked a bit, and people seem to do it from scratch, for instance in this <a href="https://r-forge.r-project.org/scm/viewvc.php/*checkout*/paper/CompStat/maxLik.pdf?revision=1114&amp;root=maxlik&amp;pathrev=1114">vignette about maximum likelihood inference</a>. I started a <a href="https://stats.stackexchange.com/questions/386860/does-any-r-package-offer-gnorm-hnorm-and-similar-what-about-other-langu">discussion on CV</a> on this topic.</p>
+:ET

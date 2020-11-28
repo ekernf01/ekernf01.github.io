@@ -1,0 +1,59 @@
+I"<p>I work in a small lab. The number of bioinformaticians hovers around 1 to 1.5. We prioritize interaction with the data, so we do not spend the effort to implement things from scratch unless we absolutely need to. We start with what’s out there and adapt it as necessary. That means I have installed, used, adapted, or repurposed many shapes or sizes of bioinformatics tools. In terms of usefulness, they run the gamut from “I deeply regret installing this” to “Can I have your autograph?”. Some patterns emerge distinguishing those that are most pleasant to work with, and that’s the topic of today’s post.</p>
+
+<p>Here’s what a great tool should do.</p>
+
+<ul>
+  <li>Separate code from data.</li>
+  <li>Proactively offer lots of QC reports. Lots more tips on this below.</li>
+  <li>Don’t leave tons of big files lying around. Usually I would advise keeping a single BAM file of aligned, filtered reads as the biggest output.</li>
+  <li>Offer a general-use tool or a single-use pipeline, or (preferably) both separately. Don’t expect users to tease out individual components from a pipeline.</li>
+  <li>If you use Python, then offer a Conda environment or a virtual environment with the right package versions. Don’t expect users to install all the right stuff from scratch. My big brother wrote more about reproducible python package management <a href="https://medium.com/knerd/best-practices-for-python-dependency-management-cc8d1913db82">here</a>.</li>
+  <li>If you offer a pipeline, don’t build everything from scratch. Use a modern pipelining tool. I explain more about this below, and for LSF users I have written configuration advice <a href="https://ekernf01.github.io/pipeline_lsf/">here</a>.</li>
+</ul>
+
+<h3 id="about-pipelining-tools">About pipelining tools</h3>
+
+<p><img src="/images/pipeline_WDL-workflow.png" alt="WDL syntax" /></p>
+
+<p>(This image is from the <a href="https://software.broadinstitute.org/wdl/documentation/structure">Broad WDL guide</a>.)</p>
+
+<p>There’s a class of tools for pipelining. Examples include Workflow Description Language,  Snakemake, Martian, and BigDataScript. They don’t all have all the same features, but there’s a lot of overlap in the advantages they carry. From least to most important:</p>
+
+<ul>
+  <li>If a run is interrupted, you can often pick up where you left off automatically.</li>
+  <li>You can move your pipelines easily from one machine to another, even if one uses LSF and the other uses SGE or SLURM. Some of these tools even let you send jobs to an AWS account.</li>
+  <li>Since the interface with the job scheduler is already built, you can often parallelize things trivially.</li>
+  <li>The core syntax of your pipeline is <strong>clean and easy to read</strong>, even as you’re enjoying all the benefits mentioned above.</li>
+</ul>
+
+<p>I am not an expert on this topic, but my top recommendation is WDL, because it prioritizes readability. Learn more about it <a href="https://software.broadinstitute.org/wdl/documentation/quickstart">here</a>.</p>
+
+<h3 id="about-qc-and-metadata">About QC and metadata</h3>
+
+<p>For every new NGS-based method we implement in the lab, we end up asking the same question: where are the inefficiencies? A pipeline will often trim adaptors, align reads, remove PCR duplicates, detect signals (e.g. peaks in ATAC-seq; cells in single-cell RNA-seq) and produce counts (e.g. reads in peaks in ATAC-seq or transcript counts in RNA-seq). If you end up getting back less information than expected, it’s natural to ask where the loss is happening: too many PCR duplicates? Low alignment rates? Lots of reads outside your ATAC peaks? Barcode problems? You will usually benefit from logging the following basic items.</p>
+
+<ul>
+  <li>the total number of raw reads</li>
+  <li>the number of useful reads after all filtering</li>
+  <li>the rate of unique alignment and multiple alignment</li>
+  <li>the PCR duplication rate</li>
+  <li>the fraction of reads in peaks versus outside them (for ChIP/ATAC)</li>
+  <li>the fraction of intronic / exonic / intergenic reads (for RNA-seq)</li>
+  <li>the fraction in cells versus empty droplets (for single-cell assays)</li>
+  <li>the fraction with valid barcodes, wherever barcodes are used</li>
+  <li>the signal track as a bam, bedgraph, or bigwig, so you can look up specific features in IGV.</li>
+  <li>the rates of paired-end alignment: how often do zero, one, or both reads align? How far from each other do they align?</li>
+</ul>
+
+<p><img src="/images/pipeline_10x_qc_screenshot_clipped.png" alt="Cellranger's QC display" /></p>
+
+<p>(Image is a screenshot of Cellranger’s QC summary for single cell RNA-seq, which shows cellcount, per-cell depth metrics, reads in cells, alignment and PCR duplication rates, and barcoding/Q30 metrics.)</p>
+
+<p>There are certain items that are more important for particular assays. For single cell assays, it’s useful to have various measurements per cell in addition to having totals. For well-based assays, you should work out a way to display the pattern of low-quality wells as they appear physically on the plate. Sometimes there’s a barcoding mistake, and it will show up as a near-empty row or column. For ATAC-seq, you should plot the insert size distribution – sometimes you’ll see size selection batch effects.</p>
+
+<p>This year, we’ve explained or fixed a lot of technical questions by keeping a close eye on this type of quality control. Most of these were either wet-lab errors or weaknesses of the protocol that were not explicitly named in the publication. Sometimes, though, we might uncover a problem with the exon annotations, or the alignment rates might reveal that I aligned a human sample to the mouse genome <code class="language-plaintext highlighter-rouge">:/</code>. It feels good to get to the bottom of these things.</p>
+
+<h5 id="qc-footnote">QC Footnote</h5>
+
+<p>We ran into a particularly sneaky issue this summer working with 10X single-cell RNA data. If we download the reads from illumina, rather than downloading the images and calling reads using <code class="language-plaintext highlighter-rouge">cellranger mkfastq</code>, we lose about 30% of the reads! It’s important to keep an eye on this type of thing. We’ve also had other issues appearing in the very earliest steps of the pipeline: grumpy old sequencing machines or bad kits where the read quality suffered.</p>
+:ET

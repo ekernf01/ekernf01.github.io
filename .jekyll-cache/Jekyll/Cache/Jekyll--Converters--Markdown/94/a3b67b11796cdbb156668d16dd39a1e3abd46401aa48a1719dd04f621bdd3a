@@ -1,0 +1,2 @@
+I"z<p>This is not a standalone post. Check out the <a href="https://ekernf01.github.io/GRN_intro">intro</a> to this series. This particular post is about the number one limitation in causal network inference: missing layers. In the most common type of experiment, we measure gene activity by sampling RNA transcripts, reading them out, and counting them. We can only guess at:</p>
+:ET

@@ -2,8 +2,9 @@
 # docker pull elementary/docker:hera-stable #latest
 cd ~/Downloads
 
-# ==== Make apt better ==== 
+# ==== Make package managers better ==== 
 sudo apt-get install -y software-properties-common
+sudo apt install dpkg-sig
 
 # ==== OS enhancements ====
 sudo apt-get install com.github.spheras.desktopfolder
@@ -55,10 +56,14 @@ if [ $(dpkg-query -W -f='${Status}' r-base 2>/dev/null | grep -c "ok installed")
     sudo apt-get update
     sudo apt-get install -y r-base
 fi
-# Rstudio
+# Rstudio (untested)
 if [ $(dpkg-query -W -f='${Status}' rstudio 2>/dev/null | grep -c "ok installed")  != 1 ]; then
+    sudo apt --fix-broken install
+    sudo apt install libclang-dev
+    gpg --keyserver keys.gnupg.net --recv-keys 3F32EE77E331692F
     wget https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.3.1073-amd64-debian.tar.gz
-    dpkg -i rstudio-1.3.1073-amd64-debian.tar.gz
+    dpkg-sig --verify ~/Downloads/rstudio-1.3.1073-amd64-debian.tar.gz
+    dpkg -i           ~/Downloads/rstudio-1.3.1073-amd64-debian.tar.gz
 fi
 
 # MiKTeX
@@ -74,6 +79,12 @@ if [ $(dpkg-query -W -f='${Status}' pandoc 2>/dev/null | grep -c "ok installed")
 fi
 
 # ==== Everyday stuff ==== 
+# Kent utils
+sudo rsync -aP rsync://hgdownload.soe.ucsc.edu/genome/admin/exe/linux.x86_64/ /usr/local/bin
+
+# curl
+sudo apt install libcurl4-openssl-dev
+
 # LibreOffice
 sudo apt install -y libreoffice libreoffice-gtk3 libreoffice-style-elementary
 # Firefox
@@ -82,6 +93,7 @@ sudo apt-get install -y firefox
 sudo add-apt-repository ppa:inkscape.dev/stable
 sudo apt update --force-yes 
 sudo apt install -y --force-yes inkscape
+sudo apt-get install -y --force-yes qpdfview
 
 # ==== Things that make other things work ====
 # GCC
@@ -111,4 +123,5 @@ if [ $(dpkg-query -W -f='${Status}'  docker 2>/dev/null | grep -c "ok installed"
     sudo apt-get install -y docker-ce docker-ce-cli containerd.io
     sudo dpkg --configure -a
 fi
+
 
