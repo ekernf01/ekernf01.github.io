@@ -3,6 +3,7 @@ layout: post
 title: Coping with missing data in biological network modeling
 permalink: /GRN_missing/
 math: true
+tags: grn
 ---
 
 This is not a standalone post. Check out the [intro](https://ekernf01.github.io/GRN_intro) to this series. This particular post is about the number one limitation in causal network inference: missing layers. In the most common type of experiment, we measure gene activity by sampling RNA transcripts, reading them out, and counting them. We can only guess at: 

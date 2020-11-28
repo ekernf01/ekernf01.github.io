@@ -3,6 +3,7 @@ layout: post
 title: Data resources for gene regulatory network modeling
 permalink: GRN_datasets
 math: true
+tags: grn
 ---
 
 This is not a standalone post -- it's just a rough list of datasets that could be useful for regulatory network models. Check out the [intro](https://ekernf01.github.io/GRN_intro) to this series for more context.

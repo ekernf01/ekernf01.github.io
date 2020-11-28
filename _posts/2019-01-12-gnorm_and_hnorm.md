@@ -3,6 +3,7 @@ layout: page
 title: We want R functions for gradients and hessians
 permalink: /gnorm_hnorm/
 math: true
+tags: stat_ml
 ---
 
 

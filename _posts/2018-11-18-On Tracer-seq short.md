@@ -3,6 +3,8 @@ layout: page
 title: Tracer-seq does not infer lineage trees, per se
 permalink: /tracerseq_short/
 math: true
+tags: single_cell 
+
 ---
 
 This is a short version of the [full post](https://ekernf01.github.io/tracerseq/) about TracerSeq. 

@@ -3,6 +3,7 @@ layout: post
 title: DNA ==> RNA ==> Protein
 permalink: /bio_intro/
 math: true
+tags: grn
 ---
 
 This post is part of the GRN series. Check out the [intro](https://ekernf01.github.io/GRN_intro).

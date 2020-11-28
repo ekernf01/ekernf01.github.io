@@ -3,6 +3,7 @@ layout: post
 title: Inferring developmental signals from RNA-seq data
 permalink: /GRN_dev_progeny/
 math: true
+tags: grn
 ---
 
 Back in the Maehr lab, any given experiment that my coworkers ran was expensive and hard. Our most common measurements -- flow cytometry, imaging, and qPCR -- could take hours or a day or two. Making a batch of virus containing CRISPR guide RNAs could take days or a week or two. Running a directed differentiation could take weeks or a month or two, especially if the cells died. Making a cell line could take months. So if they are going to design an screen, they really want a good chance to find something in there that works for whatever result they are trying to obtain.

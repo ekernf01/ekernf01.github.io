@@ -3,6 +3,7 @@ layout: post
 title: How much data? A cool perspective from 1999 (gene regulatory network series)
 permalink: /GRN_akutsu/
 math: true
+tags: grn
 ---
   
 In the [intro](https://ekernf01.github.io/GRN_intro), I discussed the puzzle of multicellular life: many cell types, one genome. I also followed up by discussing [the many statistical issues](https://ekernf01.github.io/GRN_stat_issues) that arise. There's a very cool paper from 1999 that brings a lot of clarity to this situation, and here I have space to dig into it a bit. 

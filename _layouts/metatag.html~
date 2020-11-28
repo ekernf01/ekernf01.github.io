@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<div class="post">
+<h1>Topics</h1>
+    <div id="main" role="main" class="container">
+      {{ content }}
+    </div>
+  {% for toc in site.content_tags %}
+      <li>
+      <a href="/content_tags/{{ toc }}"><code class="highligher-rouge"><nobr>{{ tagname }}</nobr></code> </a> {{toc.content}}
+      </li>
+    {% endfor %}
+</div>
+<hr>

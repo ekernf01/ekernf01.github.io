@@ -2,6 +2,7 @@
 layout: post
 title: Favorite machine learning papers (resnets)
 math: true
+tags: stat_ml
 ---
 
 I've been reading recently about debugging methods, starting with [this post by Julia Evans](https://jvns.ca/blog/2019/06/23/a-few-debugging-resources/). All the links I followed from that point have something in common: the scientific method. Evans quotes [@act_gardner](https://twitter.com/act_gardner)'s summary:

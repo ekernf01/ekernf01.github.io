@@ -3,6 +3,7 @@ layout: page
 title: What I wish I knew two years ago, or, best practices for command-line tools in bioinformatics 
 permalink: /pipeline_best_practices/
 math: true
+tags: misc
 ---
 
 I work in a small lab. The number of bioinformaticians hovers around 1 to 1.5. We prioritize interaction with the data, so we do not spend the effort to implement things from scratch unless we absolutely need to. We start with what's out there and adapt it as necessary. That means I have installed, used, adapted, or repurposed many shapes or sizes of bioinformatics tools. In terms of usefulness, they run the gamut from "I deeply regret installing this" to "Can I have your autograph?". Some patterns emerge distinguishing those that are most pleasant to work with, and that's the topic of today's post.

@@ -3,6 +3,7 @@ layout: post
 title: Contra Rubin et al on genetic interations 
 math: true
 permalink: /genetic_interactions/
+tags: single_cell
 ---
 
 In the Maehr lab's regular journal club, we recently discussed a *Cell* paper from the research groups of Howard Chang, Will Greenleaf, and Paul Khavari (henceforth "Rubin et al.").

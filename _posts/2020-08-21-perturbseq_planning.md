@@ -3,6 +3,7 @@ layout: post
 title: Experiments with one control and $k$ treatments have highest power when the control arm is $\sqrt k$ times bigger than each individual treatment arm
 math: true
 permalink: perturbseq_planning
+tags: stat_ml single_cell
 ---
 
 When we screened transcription factors influencing endoderm differentiation ([post](https://ekernf01.github.io/DE_screen), [paper](https://pubmed.ncbi.nlm.nih.gov/30995470/)), we ran into an interesting design problem. The experiment had 49 different treatment conditions and one control. Treatments were not allowed to overlap. We were able to measure outcomes in a fixed number of cells -- as it turned out, about 16,000. What is the optimal proportion of cells to use as controls?

@@ -3,6 +3,7 @@ layout: page
 title: About the Maehr lab
 permalink: /about_maehrlab/
 math: true
+tags: maehrlab 
 ---
 
 We're a **stem cell lab** in a **diabetes center**. Stem cell biology is the hammer; Type I diabetes is the nail. The connection is rather complicated. 

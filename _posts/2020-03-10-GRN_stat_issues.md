@@ -3,6 +3,7 @@ layout: post
 title: Problems in causal modeling of transcriptional regulation
 permalink: /GRN_stat_issues/
 math: true
+tags: grn
 ---
 
 [Earlier](https://ekernf01.github.io/GRN_intro), I discussed opportunities and ambitions in modeling the human transcriptome and its protein and DNA counterparts. I also promised a discussion of the many statistical issues that arise. To begin that discussion, I am trying to identify statistical issues and position them into some type of structure.

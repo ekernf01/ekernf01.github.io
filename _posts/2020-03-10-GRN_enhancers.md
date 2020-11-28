@@ -3,6 +3,7 @@ layout: post
 title: Enhancer integration for network modeling
 permalink: GRN_enhancers
 math: true
+tags: grn
 ---
 
 

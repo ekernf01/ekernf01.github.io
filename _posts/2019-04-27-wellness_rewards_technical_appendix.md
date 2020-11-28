@@ -3,6 +3,7 @@ layout: post
 title: Wellness rewards programs allow discrimination (technical appendix)
 permalink: /wellness_rewards_appendix/
 math: true
+tags: misc
 ---
 
 
