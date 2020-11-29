@@ -1,0 +1,2 @@
+I"(<p>For a while, I experimented with writing all of my R packages in R markdown. In order to facilitate this, I built <code class="language-plaintext highlighter-rouge">kniterati</code>, which knits all the <code class="language-plaintext highlighter-rouge">Rmd</code> files into <code class="language-plaintext highlighter-rouge">R</code> files prior to the usual <code class="language-plaintext highlighter-rouge">devtools</code> workflow. Check it out at <a href="https://github.com/ekernf01/kniterati">https://github.com/ekernf01/kniterati</a>.</p>
+:ET
