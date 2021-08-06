@@ -66,13 +66,10 @@ if [ $(dpkg-query -W -f='${Status}' rstudio 2>/dev/null | grep -c "ok installed"
     dpkg -i           ~/Downloads/rstudio-1.3.1073-amd64-debian.tar.gz
 fi
 
-# MiKTeX
-if [ $(dpkg-query -W -f='${Status}' miktex 2>/dev/null | grep -c "ok installed")  != 1 ]; then
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D6BC243565B2087BC3F897C9277A7293F59E4889
-    echo "deb http://miktex.org/download/ubuntu bionic universe" | sudo tee /etc/apt/sources.list.d/miktex.list
-    sudo apt-get update
-    sudo apt-get install -y miktex
-fi
+
+sudo apt-get install xzdec
+sudo apt-get install texlive-latex-base
+
 # Pandoc 
 if [ $(dpkg-query -W -f='${Status}' pandoc 2>/dev/null | grep -c "ok installed")  != 1 ]; then
     sudo apt install -y pandoc
@@ -124,4 +121,12 @@ if [ $(dpkg-query -W -f='${Status}'  docker 2>/dev/null | grep -c "ok installed"
     sudo dpkg --configure -a
 fi
 
-
+if [ $(dpkg-query -W -f='${Status}'  singularity-container 2>/dev/null | grep -c "ok installed")  != 1 ]; then
+    $ singularity --version
+    # Singularity
+    wget -O- http://neuro.debian.net/lists/bionic.us-tn.full | sudo tee /etc/apt/sources.list.d/neurodebian.sources.list
+    sudo apt-key adv --recv-keys --keyserver hkp://pool.sks-keyservers.net:80 0xA5D32F012649A5A9
+    sudo apt-get update
+    sudo apt-get install -y singularity-container
+    singularity --version
+fi
