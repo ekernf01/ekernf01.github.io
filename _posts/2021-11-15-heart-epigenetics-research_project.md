@@ -5,7 +5,7 @@ math: true
 tags: misc
 ---
 
-This is a description of the research project from [my class on epigenetics](https://ekernf01.github.io/2021-11-15-heart-epigenetics).
+This is a description of the research project from [my class on epigenetics](https://ekernf01.github.io/heart-epigenetics).
 
 
 ---
