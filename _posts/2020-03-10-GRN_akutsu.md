@@ -59,6 +59,11 @@ Together, these papers span from particles colliding in solution to the orderly 
 
 #### Show me more
 
+Another classic on this topic, which I have yet to read fully, is:  
+
+> D. Cheng, H. Qi and Z. Li, "Model Construction of Boolean Network via Observed Data," in IEEE Transactions on Neural Networks, vol. 22, no. 4, pp. 525-536, April 2011, doi: 10.1109/TNN.2011.2106512.
+
+
 If you enjoy super intense Boolean modeling and you want to know what has happened more recently, check out this next paper. Many empirically derived rules are simpler-than-Boolean in certain useful ways: for example, they are often strictly increasing or strictly decreasing in most inputs. This paper takes advantage of that to prune models faster (in terms of the runtime) and better (in terms of the required amount of data). I don't understand this very well but I think the scaling is ultimately very similar to Akutsu et al's result.
 
 > Schober, S., Kracht, D., Heckel, R., & Bossert, M. (2011). Detecting 
