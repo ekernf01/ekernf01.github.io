@@ -14,7 +14,7 @@ I know I said 3, but here's a bonus. Unlike the other miracles, you will need to
 
 The usual Bayesian take on variational inference goes something like this. We have a Bayesian model $P(X, Z; \theta)$ where $X$ is observed, $Z$ contains parameters of interest, and $\theta$ controls the prior on $Z$. The posterior on $Z$ is hard to find, so instead, we "look under the lamppost". We choose a family $\{Q_\psi(Z)\}_{\psi \in \Psi}$ and look for the closest approximation to the posterior, usually in the KL "distance": 
 
-$$\argmin_\psi D_{KL}(Q_\psi, P(Z|X;\theta))$$
+$$\underset{\psi}{\mathrm{arg\min}}D_{KL}(Q_\psi, P(Z|X;\theta))$$
 
 . 
 
