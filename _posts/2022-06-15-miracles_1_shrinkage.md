@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Four miracles of modern frequentist statistics
+title: A miracle of modern frequentist statistics
 math: true
 permalink: miracles_1
 tags: stat_ml

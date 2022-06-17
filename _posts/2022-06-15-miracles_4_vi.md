@@ -1,14 +1,12 @@
 ---
 layout: post
-title: Four miracles of modern frequentist statistics
+title: A fourth miracle of modern frequentist statistics
 math: true
 permalink: miracles_4
 tags: stat_ml
 ---
 
-Over the past N years I've heard lots of smart people that I respect say things like "inside every frequentist there's a Bayesian waiting to come out" and "Everybody who actually analyzes data uses Bayesian methods." These people are not seeing what I'm seeing, and that's a shame, because what I'm seeing is frankly astonishing.
-
-Here's post #4 of 4 on tools from modern frequentist statistics, each with a distinctive advantage that nearly defies belief in terms of how much can be accomplished on the basis of very limited or seemingly wrong building blocks. I hope this makes you curious about what's out there and excited to learn more stats! 
+Here's post #4 of 4 on tools from modern frequentist statistics that a guaranteed to work despite their basis in very limited or seemingly wrong building blocks. I hope this makes you curious about what's out there and excited to learn more stats! 
 
 ### Standard errors for variational inference
 
