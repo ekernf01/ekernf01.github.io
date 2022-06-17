@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Are we using context-specific GRN's for their nominal purpose? No.
+title: Are we using really context-specific GRN's for their nominal purpose? 
 math: true
 tags: GRN 
 ---
 
-Consider two of the major unmet needs for predicting gene function in stem cell biology:  
+Warning: near-delirious rant initiating. Consider two of the major unmet needs for predicting gene function in stem cell biology:  
 
 - (optimizing cell function) What (if any) genes could be overexpressed or knocked down to improve functional outcomes in stem cell products?
 - (reprogramming cell type) What genes could be overexpressed to induce a transition from cell type C to cell type D?

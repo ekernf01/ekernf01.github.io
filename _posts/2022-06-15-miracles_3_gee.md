@@ -39,4 +39,4 @@ There are ways to make this more sophisticated to handle GLM stuff (link functio
 
 ### That's all
 
-That's all for now, but if you're hungry for more, check out the [next post](posts/miracles_4) on standard errors for point estimates from variational expectation maximization!
+That's all for now, but if you're hungry for more, check out the [next post](miracles_4) on standard errors for point estimates from variational expectation maximization!

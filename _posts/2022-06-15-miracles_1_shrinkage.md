@@ -24,4 +24,4 @@ $$\frac{\sum_{i=1}^p Var(U_i) - Cov(U_i, T_i) }{\sum_{i=1}^p E[(T_i-U_i)^2]}$$
 
 ### That's all
 
-That's all for now, but if you're hungry for more, check out the [next post](posts/miracles_2) on calibrated conditional independence testing!
+That's all for now, but if you're hungry for more, check out the [next post](miracles_2) on calibrated conditional independence testing!

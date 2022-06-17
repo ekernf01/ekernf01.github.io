@@ -34,4 +34,4 @@ This is all done with no assumptions whatsoever on $P(Y|X)$. It can be complicat
 
 ### That's all
 
-That's all for now, but if you're hungry for more, check out the [next post](posts/miracles_3) on standard errors for regression coefficients with non-IID data!
+That's all for now, but if you're hungry for more, check out the [next post](miracles_3) on standard errors for regression coefficients with non-IID data!
