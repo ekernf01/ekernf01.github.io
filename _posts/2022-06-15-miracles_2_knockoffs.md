@@ -10,11 +10,11 @@ Here's post #2 of 4 on the theme of "Do 👏 not 👏 ignore 👏 the 👏 magni
 
 ### Conditional randomization and model-X knockoffs
 
-If you analyze data, then at some point, you will need to test if $X_1$ has an association with $Y$ after controlling for $X_2$. This act is a fundamental building block in causal statistics, and it appears all over the social and biomedical sciences. This is especially trickly when the form of $P(Y|X)$ is either uncooperative -- like when you fit [certain advanced regression models](https://stat.ethz.ch/pipermail/r-help/2006-May/094765.html) -- or worse, completely unknown, as it might be when fitting a random forest. 
+If you analyze data, then at some point, you will need to test if $X_1$ has an association with $Y$ after controlling for $X_2$. This act is a fundamental building block in causal statistics, and it appears all over the social and biomedical sciences. This is especially trickly when the form of $P(Y\mid X)$ is either uncooperative -- like when you fit [certain advanced regression models](https://stat.ethz.ch/pipermail/r-help/2006-May/094765.html) -- or worse, completely unknown, as it might be when fitting a random forest. 
 
-For testing regression coefficients when $P(Y|X)$ is unknown, the usual approach is permutation. This does not correctly test conditional effects like $Y \perp \!\!\! \perp X_1 | X_2$. Even under the null hypothesis, negative controls should reflect indirect effects like $Y \rightarrow X_2 \rightarrow X_1$. Permuted copies lack these indirect effects, and they are thus poor negative controls. 
+For testing regression coefficients when $P(Y\mid X)$ is unknown, the usual approach is permutation. This does not correctly test conditional effects like $Y \perp \!\!\! \perp X_1 \mid  X_2$. Even under the null hypothesis, negative controls should reflect indirect effects like $Y \rightarrow X_2 \rightarrow X_1$. Permuted copies lack these indirect effects, and they are thus poor negative controls. 
 
-Our second miracle of modern statistics is *conditional randomization*, discussed in section 4 of [this paper](https://arxiv.org/abs/1610.02351). The principle is to formulate a model for $P(X_1|X_2)$, which is often easier than modeling $P(Y|X)$. Once you have it, you can sample negative control copies of $X_1$ and build a null distribution for an arbitrary test statistic. For instance, in [this work on CRISPR screens](https://www.biorxiv.org/content/10.1101/2020.08.13.250092v7), models for transcript counts, i.e. $P(Y|X)$, cannot be calibrated correctly, but the null distribution is adequately described by a model for the detection of CRISPR guide RNA's, $P(X_1|X_2)$. 
+Our second miracle of modern statistics is *conditional randomization*, discussed in section 4 of [this paper](https://arxiv.org/abs/1610.02351). The principle is to formulate a model for $P(X_1\mid X_2)$, which is often easier than modeling $P(Y\mid X)$. Once you have it, you can sample negative control copies of $X_1$ and build a null distribution for an arbitrary test statistic. For instance, in [this work on CRISPR screens](https://www.biorxiv.org/content/10.1101/2020.08.13.250092v7), models for transcript counts, i.e. $P(Y\mid X)$, cannot be calibrated correctly, but the null distribution is adequately described by a model for the detection of CRISPR guide RNA's, $P(X_1\mid X_2)$. 
 
 If that still seems pedestrian rather than miraculous, don't worry -- there's more. Often, this conditional effect testing is embedded in a higher-dimensional setting where there are hundreds of $X$'s or more. Typically, there is no particular ordering, so for example it is unclear whether to test $X_1$ before adding $X_2$ to the model, or after. The genome-wide association study is one type of problem with this structure; another is [causal structure learning](https://arxiv.org/abs/2206.01152). 
 
@@ -28,7 +28,7 @@ From this exchangeability property, Candes & company construct a "machine" that 
 - for [any graphical model](https://arxiv.org/abs/1903.00434)
 - when the distribution family is unknown, [with generative networks](https://arxiv.org/abs/1811.06687) 
 
-This is all done with no assumptions whatsoever on $P(Y|X)$. It can be complicated and nonlinear; it can have wild outliers and cauchy-distributed errors; or it can be linear with Gaussian noise. This works regardless. 
+This is all done with no assumptions whatsoever on $P(Y\mid X)$. It can be complicated and nonlinear; it can have wild outliers and cauchy-distributed errors; or it can be linear with Gaussian noise. This works regardless. 
 
 ### That's all
 
