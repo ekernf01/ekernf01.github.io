@@ -6,7 +6,9 @@ permalink: impossible_2
 tags: stat_ml
 ---
 
-So you want to cluster your data. And you want to use a good algorithm for clustering. What makes a clustering algorithm "good"? The work I'll discuss mentions three desirable properties. 
+So you want to cluster your data. And you want to use a "good" algorithm for clustering. What makes a clustering algorithm "good"? 
+
+The work I'll discuss mentions three desirable properties. 
 
 - isometry-invariant: if you rotate or reflect your dataset, your should get the same result. 
 - consistent: if two samples are assigned the same cluster, and you move them closer while keeping all else the same, then the result shouldn't change. Same if they're in different clusters and you move them farther apart. 

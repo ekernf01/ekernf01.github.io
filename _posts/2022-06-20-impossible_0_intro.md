@@ -16,5 +16,5 @@ One would be disappointed. Beyond that, one would be *disturbed* by the number o
 
 - [You can't achieve optimal inference and optimal prediction simultaneously](impossible_1)
 - [You can't satisfy three simple desiderata for a clustering algorithm](impossible_2)
-- [You can't test if the mean is 0.](impossible_3)
+- [You can't estimate the mean.](impossible_3)
 - [You can't test for independence conditional on a quantitative random variable](impossible_4)
