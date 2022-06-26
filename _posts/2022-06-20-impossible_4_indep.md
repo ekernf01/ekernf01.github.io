@@ -8,7 +8,8 @@ tags: stat_ml
 
 Suppose the joint distribution of $X, Y, Z$ is continuous and the max of $X$, $Y$, and $Z$ is $M$. Suppose you want to test whether $X$ and $Y$ are independent conditional on $Z$. You want to do this with a type 1 error rate (false positive rate) controlled at 5%. Is that possible?
 
-![Commander Will Riker angrily shouts "No you can't. Don't even try!"](images/commander-riker-no-you-cant.gif)
+
+![Commander Will Riker angrily shouts "No you can't. Don't even try!"](/images/commander-riker-no-you-cant.gif)
 
 The proof, by from Shah and Peters [(pdf)](https://arxiv.org/pdf/1804.07203.pdf), is based on an outrageous information-smuggling scheme. Round off the numbers to a long decimal (or binary) approximation. Stick the digits of $X$ into the right side of $Z$, like this.
 
