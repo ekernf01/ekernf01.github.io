@@ -12,7 +12,7 @@ In order to avoid wasting time on the wrong side of this dichotomy, the progress
 
 ![The meme where Bugs Bunny smugly says "No."](images/BugsBunnyNo.jpg)
 
-One would be disappointed. Beyond that, one would be *disturbed* by the number of basic and fundamental goals that are now known to be out of reach. And not just out of reach given present techniques or datasets: provably, irretrievably out of reach given any technique and any experimental design. What are these goals?
+One would be disappointed. Beyond that, one would be *disturbed* by the number of basic and fundamental goals that are now known to be out of reach. And not just out of reach given present techniques or datasets: provably, irretrievably out of reach given any technique and any experimental design. Some examples:
 
 - [You can't achieve optimal inference and optimal prediction simultaneously](impossible_1)
 - [You can't satisfy three simple desiderata for a clustering algorithm](impossible_2)
