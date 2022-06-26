@@ -6,11 +6,10 @@ permalink: impossible_1
 tags: stat_ml
 ---
 
-This is part of a series on [disturbing impossibility theorems](impossible_0).
 
-A previous mentor of mine said that compression, inference, and prediction are all the same goal: doing better at one lets you do better at the others. There's a lot of substance to that statement -- check out [the Hansen and Yu model selection work](https://www.seas.upenn.edu/~cis520/papers/mdl_hanson_yu.pdf) for a place to start relating compression with prediction and inference -- but I definitely read too much into this at the time. Now, I'm starting to realize that you *do* have to make choices sometimes; you have to set a priority for prediction or inference. 
+A previous mentor of mine said that compression, inference, and prediction are all the same goal: doing better at one lets you do better at the others. There's a lot of substance to that statement -- check out [the Hansen and Yu model selection work](https://www.seas.upenn.edu/~cis520/papers/mdl_hanson_yu.pdf) for a place to start relating compression with prediction and inference -- but I definitely read too much into this at the time. Now, I'm starting to realize that you *do* have to make choices sometimes; you have to set a priority for prediction or inference. The biggest thing convincing me of this is Yuhong Yang's "[Can the strengths of AIC and BIC be shared?](http://users.stat.umn.edu/~yangx374/papers/Pre-Print_2003-10_Biometrika.pdf)". 
 
-The biggest thing convincing me of this is Yuhong Yang's "[Can the strengths of AIC and BIC be shared?](http://users.stat.umn.edu/~yangx374/papers/Pre-Print_2003-10_Biometrika.pdf)". Yang considers linear regression
+Yang considers linear regression
 
 $$Y_i = \Phi(X_i)^T\theta + \epsilon_i$$
 
@@ -31,3 +30,5 @@ Naturally, people wanted to know if some AIC-BIC hybrid could achieve both consi
 Yang begins his argument with a mercifully simple example (one-dimensional $x$), and it is not too hard to follow up to the bottom of page 7. He shows that the rate of convergence of the minimax risk for any consistent model selection procedure has a crucial component involving the probability of selecting the simpler model. After that, it gets really into the weeds to show that even the most powerful possible test has to select the simpler model too often to have minimax-rate optimal risk.
 
 The implications of this finding are profound and ubiquitous. For one example, polygenic risk score development is basically a giant linear model selection problem. This finding would suggest that the best possible polygenic risk score will always extend beyond use of individual variants & genes we can be reasonably certain about. Same thing for [predicting antibiotic resistance from bacterial genomes](https://www.dayzerodiagnostics.com/) versus inferring causal genes. Polygenic risk scores typically do not use maximum likelihood estimators (too high-dimensional), so I am not certain if Yang's Theorem 1 applies. If some extension is possible, I don't know what exactly that work would say and whether it has been done. If you know, send me an email or a tweet (@ekernf01) and I'd appreciate it! 
+
+This is part of a series on [disturbing impossibility theorems](impossible_0).

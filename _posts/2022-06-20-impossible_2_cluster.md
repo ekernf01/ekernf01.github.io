@@ -6,8 +6,6 @@ permalink: impossible_2
 tags: stat_ml
 ---
 
-This is part of a series on [disturbing impossibility theorems](impossible_0).
-
 So you want to cluster your data. And you want to use a good algorithm for clustering. What makes a clustering algorithm "good"? The work I'll discuss mentions three desirable properties. 
 
 - isometry-invariant: if you rotate or reflect your dataset, your should get the same result. 
@@ -30,3 +28,4 @@ This result is explained elsewhere better than I can explain it, both formally a
 
 ![Another Bugs Bunny meme where Bugs Bunny nicely says "Yes."](images/BugsBunnyYes.jpg)
 
+This is part of a series on [disturbing impossibility theorems](impossible_0).

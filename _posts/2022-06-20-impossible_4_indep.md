@@ -6,9 +6,7 @@ permalink: impossible_4
 tags: stat_ml
 ---
 
-This is part of a series on [disturbing impossibility theorems](impossible_0).
-
-Suppose the joint distribution of $X, Y, Z$ is continuous and the max of $X$, $Y$, and $Z$ is $M$. (So, the impossibility theorem about the mean doesn't apply -- you *can* estimate the mean.) Suppose you want to test whether $X$ and $Y$ are independent conditional on $Z$. You want to do this with a type 1 error rate (false positive rate) controlled at 5%. Is that possible?
+Suppose the joint distribution of $X, Y, Z$ is continuous and the max of $X$, $Y$, and $Z$ is $M$. Suppose you want to test whether $X$ and $Y$ are independent conditional on $Z$. You want to do this with a type 1 error rate (false positive rate) controlled at 5%. Is that possible?
 
 ![The meme where Bugs Bunny smugly says "No."](images/BugsBunnyNo.jpg)
 
@@ -31,3 +29,5 @@ By doing that, you make X independent of $Y$ given $Z$. There is a ton of additi
 On the surface, this finding is devastating. Conditional independence tests are a basic building block of applied regression analysis and causal structure inference. Foundational techniques like the PC algorithm in causal inference rely on conditional independence tests as a starting point. This theorem seems to say that any quantitative scientist seeking to simplify their models with some kind of structure -- for example, a macroeconomist trying to simplify an [autoregressive model relating inflation, industrial production, the S&P 500, etc.](https://www.cmu.edu/dietrich/philosophy/events/workshops-conferences/causal-discovery/hoover.html) -- it is impossible to make *any* progress without assumptions on the complexity of the relationships between variables. Model structure inference *cannot* be solely data-driven. 
 
 Practically speaking, I don't think this finding makes much difference to modern science. The key questions: do tiny fluctuations in one variable carry substantial info about other variables? Maybe they do in chaotic domains like meterology or n-body problems. In n-body problems, though, conditional independence tests are not really needed. The causal structure is pretty clear from the inverse square law. For biology, economics, and neuroscience, tiny fluctuations in measured variables probably don't carry important, much less comprehensive, information about other variables. Some of these other applications using sparse causal structure have methods of directly measuring interactions (ChIP-seq, [BrainBow](https://en.wikipedia.org/wiki/Brainbow)) so they don't need to rely on conditional independence tests alone. 
+
+This is part of a series on [disturbing impossibility theorems](impossible_0).
