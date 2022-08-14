@@ -3,7 +3,7 @@ layout: post
 title: Differential expression for newcomers
 math: true
 permalink: newcomers_de
-tags: stat_ml, single_cell
+tags: stat_ml single_cell
 ---
 
 ## Differential expression for newcomers
