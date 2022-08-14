@@ -80,7 +80,7 @@ For this awful situation of estimating the standard deviation from just 4 replic
 Multiple cells from one organism or culture dish are not independent replicates. If you have four 10X runs with 10,000 cells each, then you have 4 replicates, not 40,000. In the early days, probably the best you could do was sum up the counts from the cells within each sample. Nowadays, there is scalable software for hierarchical models that address pseudoreplication natively. This is especially helpful when some samples have lots more cells than others. To the extent that variation is cell-to-cell instead of sample-to-sample, a well-specified hierarchical model can correctly give more credence to samples with more cells, while still not losing sight of the small number of truly independent replicates. 
 
 
-### Pointers
+### Pointers to software
 
 Ok, thanks for the coffee. Now that you know what you're doing and why, you naturally want to know **how** to do all this. Fortunately, you do not have to implement all of these features yourself from scratch. You have access to highly sophisticated existing software that can offer the aforementioned features even on a tight timeframe. (If you'd like me to add something to this list, I would be open to that. Email me or tweet @ekernf01.)
 
