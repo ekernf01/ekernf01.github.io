@@ -80,7 +80,7 @@ For this awful situation of estimating the standard deviation from just 4 replic
 
 #### Proper handling of "pseudoreplication"
 
-Multiple cells from one organism or culture dish are not independent replicates. If you have four 10X runs with 10,000 cells each, then you have 4 replicates, not 40,000. In the early days, probably the best you could do was sum up the counts from the cells within each sample. Nowadays, there is scalable software for hierarchical models that address pseudoreplication natively. This is especially helpful when some samples have lots more cells than others. To the extent that variation is cell-to-cell instead of sample-to-sample, a well-specified hierarchical model can correctly give more credence to samples with more cells, while still not losing sight of the small number of truly independent replicates. 
+Pseudoreplication is what you call it when your data looks like it has lots of independent replication, but actually it doesn't. For example, multiple cells from one organism or culture dish are not independent replicates. If you have four 10X runs with 10,000 cells each, then you have 4 replicates, not 40,000. In the early days, probably the best you could do was sum up the counts from the cells within each sample. Nowadays, there is scalable software for hierarchical models that address pseudoreplication natively. This is especially helpful when some samples have lots more cells than others. To the extent that variation is cell-to-cell instead of sample-to-sample, a well-specified hierarchical model can correctly give more credence to samples with more cells, while still not losing sight of the small number of truly independent replicates. 
 
 ### Pointers to software
 
@@ -111,3 +111,23 @@ You may run into certain types of trouble that require extensions of the work ab
 
 - CRISPR perturbations hard to measure? Try [conditional randomization](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-021-02545-2).
 - Double-dipping with differential expression on a pseudotime axis? Try [Poisson splitting](https://arxiv.org/abs/2207.00554).
+
+### Coda
+
+Hopefully this is a useful bird's-eye view of differential abundance, slanted towards RNA and DNA. It starts out looking like a typical "t-test" type of situation, but as you look closer, it has more and more quirks: 
+
+- highly variable rate of detection
+- low sample sizes
+- skewed count distributions 
+- pseudoreplication
+- highly multivariate
+
+The basic thrust of this field has been to use the last point ("highly multivariate") to fight the first two ("low sample sizes", "highly variable rate of detection").
+
+This parallels a broader truism in genomics.
+
+1. Measurements of individual genes or loci are terribly underpowered, but 
+2. averaging info over the whole genome is useful, and 
+3. winning strategies often share info genome-wide while squeezing out limited insight on individual genes. 
+
+This will not be true forever. As seen with MERFISH, UKBB, and whatever Nikolai Slavov is about to do, new tech and/or brute force scale-ups can enable high-powered conclusions about individual genes. As that happens, we'll be able to use more and more detailed mechanistic models. We may never have the luxury of turning our focus entirely away from technical matters such as measurement error and normalization. But, I hope that we will spend equal or more time on large-scale integrative modeling of genomes in action, and this will VASTLY increase our ability to understand and engineer cells. 
