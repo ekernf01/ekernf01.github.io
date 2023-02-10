@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Four disturbing impossibility theorems
+title: Five disturbing impossibility theorems
 math: true
 permalink: impossible_0
 tags: stat_ml
@@ -16,3 +16,4 @@ One would be disappointed. Beyond that, one would be *disturbed* by the number o
 - [You can't satisfy three simple desiderata for a clustering algorithm.](impossible_2)
 - [You can't estimate the mean.](impossible_3) 
 - [You can't test for independence conditional on a quantitative random variable.](impossible_4)
+- [You can't construct confidence intervals near a region of non-identifiability.](impossible_5)
