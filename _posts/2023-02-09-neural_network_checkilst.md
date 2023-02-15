@@ -6,7 +6,7 @@ permalink: neural_network_checklist
 tags: stat_ml
 ---
 
-Things to try when it doesn't work at first:
+Training neural networks is hard. Plan to explore many options. Take systematic notes. Here are some things to try when it doesn't work at first.
 
 - Make it deterministic:
     - `np.random.seed` for numpy
@@ -21,7 +21,6 @@ Things to try when it doesn't work at first:
     - the various components of your objective function (e.g. L1 penalty)
     - the number of iterations
     - the walltime per iteration and total
-    - Plan to explore many options. Take systematic notes.
 - Make it more stable:
     - Scale the input features to have mean 0, variance 1
     - Use a tried-and-true initialization
@@ -41,6 +40,12 @@ Things to try when it doesn't work at first:
     - Use L-BFGS with Wolfe line search for fast debugging on small problems, but don't expect it to scale well
     - Mess around with the learning rate
 
+More resources: 
+
+- Eventually, once my current project is closer to publication, I will share notes from about 40 experiments that took me from baby steps up to the scale of real data. 
+- [Stats SE thread](https://stats.stackexchange.com/questions/352036/what-should-i-do-when-my-neural-network-doesnt-learn)
+- [Twitter thread by DSaience](https://twitter.com/DSaience/status/1590784746375720960)
+- If you find something else helpful and you think it ought to be added here, please do contact me or tweet @ekernf01.
     
 
 
