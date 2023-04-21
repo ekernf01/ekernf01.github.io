@@ -16,11 +16,13 @@ There is a ton of literature on this topic. If you want to bone up on it, I can 
 
 FDR control methods are often phrased in terms of a bunch of *independent* tests. Sometimes they can also be proven to work for dependent tests. Buuuuut, the result can be highly volatile, even when everything formally works as claimed. A extreme example is when all the p-values are equal. Run this R code to see how controlling FDR at 10% behaves under extremely correlated p-values. You get nothing 90% of the time, and then 10% of the time, you get everything. This behavior is technically correct.
 
-    num_significant = c()
-    for(i in 1:1000){
-        num_significant[i] = sum(p.adjust(rep(runif(1), 1000), method = "BH") < 0.10)
-    }
-    table(num_significant)
+```
+num_significant = c()
+for(i in 1:1000){
+    num_significant[i] = sum(p.adjust(rep(runif(1), 1000), method = "BH") < 0.10)
+}
+table(num_significant)
+```
 
 This means that certain studies with lots of unexpected findings should be valued or weighed as if they found just a few unexpected findings. This is especially true in transcriptomics, where measurement errors or changes in cell state can manifest in tons of genes at once.
 
@@ -34,23 +36,24 @@ A common situation: I run tests from comparison A, obtaining a set of discoverie
 
 Not so. Here's the intuition for why this fails. Whichever of S and T is bigger will usually dominate the combined results. The bigger one is often bigger because it contains a bunch of extra false crap. Run this R code to see it happen.
 
-
-    # 10% of hypotheses are true. 
-    # FDR cutoff is set at 10%.
-    is_false = c(rep(1, 90), rep(0, 10))
-    run_tests = function(){
-    return(p.adjust(c(runif(90), 0.1*runif(10)), method = "BH")<0.1)
-    } 
-    # We'll record the false discovery fraction at each of 1000 trials
-    fdp = data.frame(s=rep(0, 1000), t=rep(0, 1000), union=rep(0, 1000))
-    for(i in 1:1000){
-    S = run_tests()
-    T = run_tests()
-    fdp[i,"s"] = mean(is_false[S])
-    fdp[i,"t"] = mean(is_false[T])
-    fdp[i,"union"] =  mean(c(is_false[S],  is_false[T]))
-    # When there's no discoveries, I count it as false discovery proportion of 0.
-    fdp[i,is.na(fdp[i, ])] = 0
-    }
-    # FDR in union: ~0.16.
-    colMeans(fdp)
+```
+# 10% of hypotheses are true. 
+# FDR cutoff is set at 10%.
+is_false = c(rep(1, 90), rep(0, 10))
+run_tests = function(){
+return(p.adjust(c(runif(90), 0.1*runif(10)), method = "BH")<0.1)
+} 
+# We'll record the false discovery fraction at each of 1000 trials
+fdp = data.frame(s=rep(0, 1000), t=rep(0, 1000), union=rep(0, 1000))
+for(i in 1:1000){
+S = run_tests()
+T = run_tests()
+fdp[i,"s"] = mean(is_false[S])
+fdp[i,"t"] = mean(is_false[T])
+fdp[i,"union"] =  mean(c(is_false[S],  is_false[T]))
+# When there's no discoveries, I count it as false discovery proportion of 0.
+fdp[i,is.na(fdp[i, ])] = 0
+}
+# FDR in union: ~0.16.
+colMeans(fdp)
+```
