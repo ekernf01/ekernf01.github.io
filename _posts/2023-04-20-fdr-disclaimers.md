@@ -34,23 +34,22 @@ A common situation: I run tests from comparison A, obtaining a set of discoverie
 
 Not so. Here's the intuition for why this fails. Whichever of S and T is bigger will usually dominate the combined results. The bigger one is often bigger because it contains a bunch of extra false crap. Run this R code to see it happen.
 
-
-    # 10% of hypotheses are true. 
-    # FDR cutoff is set at 10%.
-    is_false = c(rep(1, 90), rep(0, 10))
-    run_tests = function(){
-    return(p.adjust(c(runif(90), 0.1*runif(10)), method = "BH")<0.1)
+  # 10% of hypotheses are true. 
+  # FDR cutoff is set at 10%.
+  is_false = c(rep(1, 90), rep(0, 10))
+  run_tests = function(){
+  return(p.adjust(c(runif(90), 0.1*runif(10)), method = "BH")<0.1)
     } 
-    # We'll record the false discovery fraction at each of 1000 trials
-    fdp = data.frame(s=rep(0, 1000), t=rep(0, 1000), union=rep(0, 1000))
-    for(i in 1:1000){
-    S = run_tests()
-    T = run_tests()
-    fdp[i,"s"] = mean(is_false[S])
-    fdp[i,"t"] = mean(is_false[T])
-    fdp[i,"union"] =  mean(c(is_false[S],  is_false[T]))
-    # When there's no discoveries, I count it as false discovery proportion of 0.
-    fdp[i,is.na(fdp[i, ])] = 0
-    }
-    # FDR in union: ~0.16.
-    colMeans(fdp)
+  # We'll record the false discovery fraction at each of 1000 trials
+  fdp = data.frame(s=rep(0, 1000), t=rep(0, 1000), union=rep(0, 1000))
+  for(i in 1:1000){
+  S = run_tests()
+  T = run_tests()
+  fdp[i,"s"] = mean(is_false[S])
+  fdp[i,"t"] = mean(is_false[T])
+  fdp[i,"union"] =  mean(c(is_false[S],  is_false[T]))
+  # When there's no discoveries, I count it as false discovery proportion of 0.
+  fdp[i,is.na(fdp[i, ])] = 0
+  }
+  # FDR in union: ~0.16.
+  colMeans(fdp)
