@@ -4,11 +4,10 @@ title: About
 permalink: /about/
 ---
 
-I'm Eric, and I help scientists find meaning in quantitative datasets. I've spent over a decade indulging my curiosity about many topics that contribute to this cause, especially molecular biology and applied statistics. Since 2016, I have been studying embryology and stem cell biology, and I have become interested in building predictive models of how stem cells will behave in response to various stimuli. I got my start in stem cell biology working for Rene Maehr's lab ([intro post](/about_maehrlab), [lab site](http://maehrlab.net/)) at UMass Medical School. In the fall of 2020, I started a Ph.D. in the Department of Biomedical Engineering at Johns Hopkins, and I am jointly advised between Alexis Battle ([lab site](https://battlelab.jhu.edu/)) and Patrick Cahan ([lab site](https://www.cahanlab.org/)). I'm really excited to continue full-time engagement in this strange and fascinating domain!
+Hi! I'm Eric, and I help scientists find meaning in data. For years now, I have been obsessed with systems biology and computer models of gene activity. My current agenda is to understand the reliability of such computer models, the limits of modern data and software, and the next steps we should take to push those limits. In 2020, I started a Ph.D. in the Department of Biomedical Engineering at Johns Hopkins, working on [false discovery rate control](https://www.biorxiv.org/content/10.1101/2023.05.23.541948v1) and [perturbation prediction assessment](https://github.com/ekernf01/perturbation_benchmarking). I am jointly advised between Alexis Battle ([lab site](https://battlelab.jhu.edu/)) and Patrick Cahan ([lab site](https://www.cahanlab.org/)). I got my start in bioinformatics working for Rene Maehr's lab ([intro post](/about_maehrlab), [lab site](http://maehrlab.net/)) at UMass Medical School. 
 
 This is my personal blog: a venue to write about [interesting stuff](/topics), boost signals for [good work](/blogroll), and make my modest contribution to the vitality of the blogosphere. Opinions are my own.
 
-
 ### Contact me
 
-One delightful privilege of this type of work is talking with people who are interested the same weird topics. If you'd like to get in touch, you can email me: `cire tod nrek 31 ta liamg tod moc`. Reverse each word, including the 31, for my liame sserdda. 
+One privilege of this type of work is talking with people who are interested the same highly specific topics. If you'd like to get in touch, you can email me: `cire tod nrek 31 ta liamg tod moc`. Reverse each word, including the 31, for my liame sserdda. 
