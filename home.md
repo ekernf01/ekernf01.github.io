@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: Eric Kernfeld
+permalink: /
 ---
 
 Hi! I'm Eric, and I help scientists find meaning in data. For years now, I have been obsessed with systems biology and computer models of gene activity. My current agenda is to understand the reliability of such computer models, the limits of modern data and software, and the next steps we should take to push those limits. In 2020, I started a Ph.D. in the Department of Biomedical Engineering at Johns Hopkins, working on [false discovery rate control](https://www.biorxiv.org/content/10.1101/2023.05.23.541948v1) and [perturbation prediction assessment](https://github.com/ekernf01/perturbation_benchmarking). I am jointly advised between Alexis Battle ([lab site](https://battlelab.jhu.edu/)) and Patrick Cahan ([lab site](https://www.cahanlab.org/)). I got my start in bioinformatics working for Rene Maehr's lab ([intro post](/about_maehrlab), [lab site](http://maehrlab.net/)) at UMass Medical School. 
