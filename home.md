@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Eric Kernfeld
+title: About
 permalink: /
 ---
 
