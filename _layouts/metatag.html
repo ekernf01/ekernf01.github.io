@@ -7,7 +7,7 @@ layout: default
 
     <div>
       {% for toc in site.content_tags %}
-        <li> 
+      <li class="no-wrap">
           <nobr> <a href="../content_tags/{{ toc.tag }}/"> {{ toc.tag }} </a>: &nbsp; {{ toc.content | markdownify }}  </nobr>
         </li>
       {% endfor %}
@@ -15,3 +15,9 @@ layout: default
 </div>
 <hr>
 
+
+<style>
+  .no-wrap {
+    white-space: nowrap;
+  }
+</style>
