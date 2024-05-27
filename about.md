@@ -4,7 +4,11 @@ title: About me
 permalink: /
 ---
 
-Hi! I'm Eric, and I help scientists find meaning in data. For years now, I have been obsessed with systems biology and computer models of gene activity. My current agenda is to understand the limits of modern models and data, then outline the next steps we should take to push those limits. In 2020, I started a Ph.D. in the Department of Biomedical Engineering at Johns Hopkins, working on [false discovery rate control](https://www.biorxiv.org/content/10.1101/2023.05.23.541948v1) and [assessing predictions about genetic perturbations](https://github.com/ekernf01/perturbation_benchmarking). I am jointly advised between Alexis Battle ([lab site](https://battlelab.jhu.edu/)) and Patrick Cahan ([lab site](https://www.cahanlab.org/)). My work is heavily informed by four years providing bioinformatics support for Rene Maehr's lab ([intro post](/about_maehrlab), [lab site](http://maehrlab.net/)) at UMass Medical School. I am also a [musician](/sackbut). This is my personal blog: a venue to write about [interesting topics](/topics), boost signals for [good work](/blogroll), and make my modest contribution to the vitality of the blogosphere. Opinions are my own.
+Hi! I'm Eric, and I help scientists find meaning in data. For years now, I have been obsessed with systems biology and computer models of gene activity. My current agenda is to understand the limits of modern models and data, then outline the next steps we should take to push those limits. In 2020, I started a Ph.D. in the Department of Biomedical Engineering at Johns Hopkins, working on [false discovery rate control](https://www.biorxiv.org/content/10.1101/2023.05.23.541948v1) and [assessing predictions about genetic perturbations](https://github.com/ekernf01/perturbation_benchmarking). I am jointly advised between Alexis Battle ([lab site](https://battlelab.jhu.edu/)) and Patrick Cahan ([lab site](https://www.cahanlab.org/)). My work is heavily informed by four years providing bioinformatics support for Rene Maehr's lab ([intro post](/about_maehrlab), [lab site](http://maehrlab.net/)) at UMass Medical School. 
+
+This is my personal blog: a venue to write about [interesting topics](/topics), boost signals for [good work](/blogroll), and make my modest contribution to the vitality of the blogosphere. Opinions are my own.
+
+I am also a [musician](/sackbut). 
 
 ### Contact me
 
