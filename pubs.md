@@ -6,7 +6,7 @@ permalink: /pubs/
 
 †: equal contribution
 
-- 	Kernfeld EM, Keener R, Cahan P, & Battle A (2023). Model-X knockoffs reveal data-dependent limits on regulatory network identification. bioRxiv, 2023-05.
+- 	Kernfeld EM, Keener R, Cahan PM, & Battle A (2023). Model-X knockoffs reveal data-dependent limits on regulatory network identification. bioRxiv, 2023-05.
     - [code](https://github.com/ekernf01/knockoffs_paper)
 -  	Kernfeld EM, Yang Y, Weinstock JS, Battle A, & Cahan PM (2023). A systematic comparison of computational methods for expression forecasting. bioRxiv, 2023-07.
     - [code](https://github.com/ekernf01/perturbation_benchmarking)
