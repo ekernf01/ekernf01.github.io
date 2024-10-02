@@ -3,7 +3,7 @@ layout: post
 title: Methods for expression forecasting under novel genetic perturbations
 math: true
 permalink: perturbation-methods
-tags: GRN
+tags: grn
 ---
 
 Forecasting expression in response to genetic perturbations is potentially extremely valuable for drug target discovery, stem cell protocol optimization, or developmental genetics. More and more methods papers are showing promising results. Let's take a look.

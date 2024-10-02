@@ -3,7 +3,7 @@ layout: post
 title: Expression forecasting benchmarks
 math: true
 permalink: perturbation-benchmarks
-tags: GRN
+tags: grn
 ---
 
 I wrote about the [boom of new perturbation prediction methods](perturbation-methods). The natural predator of the methods developer is the benchmark developer, and a population boom of methods is naturally followed by a boom of benchmarks. (The usual prediction about what happens after the booms is left as an [exercise to the reader](https://en.wikipedia.org/wiki/Lotka%E2%80%93Volterra_equations).) Here are some benchmark studies that evaluate perturbation prediction methods, along with some thoughts about their distinctive advantages.
