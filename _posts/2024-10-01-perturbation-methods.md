@@ -38,6 +38,7 @@ EDIT 2024 Oct 16: there are also methods that use RNA velocity to predict pertur
 
 - [Dynamo](https://www.sciencedirect.com/science/article/pii/S0092867421015774) uses kernel ridge regression to predict velocity from expression state. They predict knockout differentiation trajectories by "least action": a path that minimizes the difference between the velocity implied by the path and the velocity predicted by the model.
 - The [biophysical model of Chari et al.](https://www.biorxiv.org/content/10.1101/2024.07.04.602131v1.full) uses a bursting model to estimate post-perturbation rates of transcription, splicing, and decay rates directly from perturb-seq data. In addition to assessing which specific processes mediate differential expression, this work includes some prediction of kinetic parameters under new perturbations.
+- [RegVelo](https://www.biorxiv.org/content/10.1101/2024.12.11.627935v1) predicts transcription rates as $a = h(Ws + b)$ where $s$ are spliced RNA counts, $W$ is a GRN weight matrix, and $h$ is a nonlinear response function. The structure of $W$ is hard-constrained, or L1-penalized towards, prior GRNs from motif analysis and other sources. 
 
 ### Perspective: bioinformatics boom and bust
 
