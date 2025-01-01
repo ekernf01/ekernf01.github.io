@@ -1,0 +1,38 @@
+---
+layout: post
+title: Retrospection and unexpecteds, 2025 edition
+math: true
+tags: misc
+---
+
+Happy new year! 2025 is a round number (ends in 5) and also a square number (45^2), and it's gonna be a BIG year for me. I have a poor memory, and I don't often look backwards, so the calendar is giving me a useful nudge to take stock of the past 10 years. 
+
+Compared to the median JHU BME Ph.D. student, I am old. But on Jan 1, 2015, I was just out of undergrad, starting a Ph.D. at UW Statistics, which is a uniquely pluralistic research utopia. If you made an alignment chart with a Frequentist to Bayesian Axis and a Small-data to Big-data Axis, you'd see all corners amply represented. There's also a panoply of application areas, with statistically interesting courses and research in many adjacent departments. UW has produced beautifully bespoke models for everything from [ranking data](https://arxiv.org/abs/1206.5265) to [sea ice extent](https://journals.ametsoc.org/view/journals/clim/30/23/jcli-d-17-0185.1.xml). Choosing UW was the best way to maintain multipotency in my career, since at age 22, I wasn't ready to commit to a fate. 
+
+This period in my career turned out very different from how I initially envisioned it. I contributed very little research, and the best courses (likelihoodist inference theory, advanced regression, stochastic modeling) were not special topics but rather at the very core of the discipline. By the end of year two, I had passed the quals, finished most coursework, somewhat damaged my relationship with sleep, and made ... zero progress towards identifying a thesis topic or even a subfield of interest. So I left.
+
+Looking back, this was a great decision, because it let me find, in Uri Alon's [words](https://www.weizmann.ac.il/mcb/alon/sites/mcb.UriAlon/files/uploads/nurturing/howtochoosegoodproblem.pdf), the "faint voice in [my] breast, that says, 'This is interesting to me.'" In fact, my inner voice was not so faint; as soon as I had the luck to snag an interview with [Rene Maehr](https://ekernf01.github.io/about_maehrlab/), my inner voice started screeching about gene regulatory network models incessantly. I got an offer, gleefully took it, and stumbled into some of the early adopters of DIY Drop-seq tech. 
+
+This was a tremendous opportunity for growth because their training and mine were nearly disjoint. From Rene and his lab, I learned about NGS alignment, quantification, and quality control; about embryonic development; about adaptive immunity; about transcriptional control; about enhancer catalogs and chromatin looping assays; and about modern models of stem cells. This was an amazing opportunity, and I wish every early-career data analyst could be so lucky. 
+
+By far the most analysis that we did was descriptive: annotate cell types; visualize similarities; catalog changes over time. The first gene regulatory network model that I fit using time-series transcriptome data was a Boolean model, but we were completely unable to assess its reliability or test its predictions. Rene and I didn't trust the output, so he wasn't about to drop big money on a knockout mouse, and regardless, my colleagues at the bench were allocating almost all their effort to embryo atlases, technology development, morphogen screens, and transplantation assays. We scrapped it and went on with other projects.
+
+Descriptive analysis is important. I love working with data, and I love hunting down technical issues with new equipment or protocols. And we got a lot done: I was involved in a [thymus cell type catalog](https://ekernf01.github.io/thymus_atlas/), a backwards extension to the [pharynx](https://www.nature.com/articles/s41467-022-28067-4), characterization of a [pharyngeal endoderm directed differentiation protocol](https://pubmed.ncbi.nlm.nih.gov/37751684/), and an [endoderm screen](https://ekernf01.github.io/DE_screen/). But despite Rene's technical brilliance, extreme work ethic, and open-mindedness to new tech, we were finding that projects were very often bottlenecked by the amount, or resolution, or quality, of our data. And my main role in the lab, which was to support others' research and new tech adoption, made it hard to do biology of the "form a hypothesis and test it" sort.
+
+So after almost 4 years, I started here at JHU BME. For someone with my ambitions of large-scale gene regulatory networks and developmental genetics cell simulators, it has been a wonderful, interesting, engaging ...
+
+... act of salvage? 
+
+I decided I could Solve False Discoveries In Gene Regulatory Network Inference With This One Weird Trick (Doctors Hate Him!!). It failed, abysmally, not even close, and when I saw those (mis-)calibration charts, that day was a real bummer. We found the disconnect and came away with a lesson about What Are The Real Problems Here ([tweetorial](https://x.com/ekernf01/status/1826632281819316499)). In the end, we were able to take our predictions seriously and literally and check them against real data in a way that I haven't seen anyone else do (not exactly). And from that, we learned about a fundamental property of our data. It's really a Plato cave allegory: the transcriptome is more like a shadow than a picture. This is useful to know, and it will be nice to crane my neck and look outside the Cave of Transcriptomics some day.
+
+I decided that reliable mechanistic inference was impossible from shadows, and it would be better to just make and test predictions. So I started one of the lowest-risk, least creative, and most important types of comp genomics project: a benchmark. I collected a bunch of perturbation transcriptomics data and split them in a way that assesses one of the core tasks of causal statistics: reasoning about unseen interventions. 
+
+This, too, crashed and burned: if you want low mean squared error, apparently the best thing to do is just ignore the interventions and average all your training data ([tweetorial](https://x.com/ekernf01/status/1845809278197567542)). There was a lot of appetite for that finding in my Twitter circles, which has been an awesome chance to chat with other people in genomics, but I really would much rather have something to say about working models and ways to improve them. 
+
+This brings us to 2025. I've got one more project in the oven, something I have wanted to do for a LONG time, and I hope to discuss that more soon. Meanwhile, what have I learned?
+
+- I got lucky to get offers from Rene's lab and again lucky to get admitted to JHU BME, then again lucky to fall in with Patrick Cahan, then again lucky to simultaneously snag a spot in Alexis Battle's lab. These jobs let me follow my inner voice in a way that most people, most of the time, don't get to do. Soon, I will have to choose again whether to follow my inner voice and how. 
+- I didn't write much about this above, but money is a big factor here: I could have made maybe 50% more (pre-tax) by doing e.g. digital marketing instead of working for academic labs, but I haven't needed to do that.  
+- Roughly 100% of my endeavors didn't work out how I initially hoped. In some cases, I prematurely terminated projects, goals, or (once) a Ph.D., wringing out available value and abandoning sunk cost/effort. Most of the work was still worthwhile, especially *given what we knew at time of planning*, and I just needed to be flexible about the exact selling points.
+
+Uri Alon's problem-choosing piece ([pdf](https://www.weizmann.ac.il/mcb/alon/sites/mcb.UriAlon/files/uploads/nurturing/howtochoosegoodproblem.pdf)) resonates more than ever. Good luck to all readers in 2025; may you adapt well.
