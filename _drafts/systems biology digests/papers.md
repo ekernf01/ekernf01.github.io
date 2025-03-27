@@ -1,0 +1,5 @@
+- Symmons and Raj on "luck" https://www.cell.com/molecular-cell/fulltext/S1097-2765(16)30186-1
+    - many valuable references therein
+- Levy, E., & Slavov, N. (2018). Single cell protein analysis for systems biology. Essays In Biochemistry, EBC20180014. doi:10.1042/ebc20180014 
+- Voices of biotch research https://www.nature.com/articles/s41587-021-00847-1
+- Voices in methods dev https://www.nature.com/articles/s41592-019-0585-6
