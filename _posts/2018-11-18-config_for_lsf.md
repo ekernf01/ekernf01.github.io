@@ -20,7 +20,7 @@ In each case, you first download and install the pipelining tool. It will have a
 
 ### Cromwell
 
-Cromwell is the muscle behind the Broad Institute's wonderfully readable [Workflow Description Language (WDL)](???). To install Cromwell, I got the [download](???) and did my best to implement the LSF interface based on [these](???) instructions. Everything almost worked, but I hit [a snag](https://github.com/broadinstitute/cromwell/issues/3185) where Cromwell lacked permissions to execute the shell scripts that it creates. If you read that thread, you'll see how this issue was eventually resolved: it turns out if you use `bash myscript.sh` instead of `./myscript.sh`, you won't need execution permissions for the script itself. 
+Cromwell is the muscle behind the Broad Institute's wonderfully readable [Workflow Description Language (WDL)](https://openwdl.org/). To install Cromwell, I got the official download and did my best to implement the LSF interface based on [these](https://cromwell.readthedocs.io/en/stable/backends/LSF/) instructions. Everything almost worked, but I hit [a snag](https://github.com/broadinstitute/cromwell/issues/3185) where Cromwell lacked permissions to execute the shell scripts that it creates. If you read that thread, you'll see how this issue was eventually resolved: it turns out if you use `bash myscript.sh` instead of `./myscript.sh`, you won't need execution permissions for the script itself. 
 
 Here is the job submission/monitoring file that I used to interface between Cromwell and LSF. 
     
