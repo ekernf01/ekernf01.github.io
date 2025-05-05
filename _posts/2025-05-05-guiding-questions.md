@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Some (still!) open questions in gene regulatory network inference
+title: Gene regulatory network inference is a venus fly trap for quants
 math: true
 tags: GRN, grn
 ---
@@ -13,7 +13,7 @@ Choosing a scientific project is hard, and people don't spend enough time on it 
 
 We learn about LASSO and regression trees and dynamic mode decomposition and "Bayesian mechanics" and Kalman filters and transformers, and we get excited to solve real problems with these models. Maybe we start thinking about assumptions -- e.g. my predictors are supposed to have [not too much correlation for LASSO model selection consistency](https://jmlr.org/papers/v7/zhao06a.html), and oh yeah I only have mRNA data, so I hope the protein activity in my cells [relies on uninterrupted mRNA production](https://www.nobelprize.org/prizes/medicine/1965/ceremony-speech/). Oh and some of the variation is measurement error, not biological variation, so let's build in a [Gaussian](https://www.sciencedirect.com/science/article/pii/S1046202315300049) or [Binomial](https://www.nature.com/articles/s41592-023-01971-3) error model. And we have some [guesses about the network structure](https://github.com/ekernf01/network_collection), so let's [use those as a prior for Bayesian model averaging](https://bmcsystbiol.biomedcentral.com/articles/10.1186/1752-0509-8-47). Wow, this is turning into a ton of work! Throw in a demo on a real dataset. OK, great, we're done. 
 
-... I guess maybe we should check the results. Let's [simulate some data](https://www.liebertpub.com/doi/abs/10.1089/cmb.2008.09TT) and maybe also compare to portions of known networks in well-studied organisms ([BEELINE](https://www.nature.com/articles/s41592-019-0690-6), [DREAM5](https://www.nature.com/articles/nmeth.2016), [Djordjevic](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111661), [McCalla](https://academic.oup.com/g3journal/article/13/3/jkad004/6982776)). Wow, this is even more work! And the precision-recall tradeoffs look pretty bad. Huh ...
+... I guess maybe we should check the results. Let's ([simulate](https://www.liebertpub.com/doi/abs/10.1089/cmb.2008.09TT)) ([some](https://ieeexplore.ieee.org/abstract/document/9992359)) ([data](https://www.biorxiv.org/content/10.1101/2023.02.23.529720v1)) and maybe also compare to portions of known networks in well-studied organisms ([BEELINE](https://www.nature.com/articles/s41592-019-0690-6), [DREAM5](https://www.nature.com/articles/nmeth.2016), [Djordjevic](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111661), [McCalla](https://academic.oup.com/g3journal/article/13/3/jkad004/6982776)). Wow, this is even more work! And the precision-recall tradeoffs look pretty bad. Huh ...
 
 ... ok, maybe we can't get the whole network. Fine. If someone can ChIP and KO a single transcription factor and publish a paper on that -- which, to be clear, is common and worthwhile -- then maybe I can still have a positive impact by recovering a subset of a gene regulatory network with high confidence. So let's get some p-values and run some multiple testing correction and just skim off the top of the list. Throw in a real-data demo. OK, great, we're done. 
 
