@@ -5,7 +5,7 @@ math: true
 tags: misc
 ---
 
-![An image of Audrey II captioned 'Why dont you try .... GENE REGULATORY NETWORK INFERENCE?'](images/grn_meme_audrey_ii.jpg)
+![An image of Audrey II captioned 'Why dont you try .... GENE REGULATORY NETWORK INFERENCE?'](/images/grn_meme_audrey_ii.jpg)
 
 Choosing a scientific project is hard, and people don't spend enough time on it (see Alon ([pdf](https://www.weizmann.ac.il/mcb/alon/sites/mcb.UriAlon/files/uploads/nurturing/howtochoosegoodproblem.pdf)) and [Fischbach](https://www.cell.com/cell/abstract/S0092-8674(24)00304-0) on this). If you are thinking of choosing a research project related to **gene regulatory networks**, **computer models of transcription**, **perturbation responses**, or **virtual cells**, then you might benefit from knowing what others have set out to do and how it has gone.
 
