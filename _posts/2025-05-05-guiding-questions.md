@@ -2,7 +2,7 @@
 layout: post
 title: Some (still!) open questions in gene regulatory network inference
 math: true
-tags: misc
+tags: GRN, grn
 ---
 
 ![An image of Audrey II captioned 'Why dont you try .... GENE REGULATORY NETWORK INFERENCE?'](/images/grn_meme_audrey_ii.jpg)
