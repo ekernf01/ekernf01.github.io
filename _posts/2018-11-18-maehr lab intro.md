@@ -6,6 +6,8 @@ math: true
 tags: maehrlab 
 ---
 
+**Addendum 2020 August 15: I worked in the Maehr lab for almost 4 years. I am now excited to be entering the Ph.D. program in the Johns Hopkins BME Department.**
+
 We're a **stem cell lab** in a **diabetes center**. Stem cell biology is the hammer; Type I diabetes is the nail. The connection is rather complicated. 
 
 Type I diabetes is an autoimmune disease. (Actually, it may consist of several diseases that are different on a microscopic level but share clinical symptoms.) In most cases of type I diabetes, part of the immune system (usually T cells) destroys the insulin-making machinery (pancreatic beta cells). 
@@ -20,4 +22,3 @@ In order to make progress on stem-cell-derived thymic epithelium, the Maehr lab 
 
 It's an amazing era to be working in molecular biology, and a big privilege to work in this lab in particular. Check out [our website](http://maehrlab.net/) for more info.
 
-**Addendum 2020 August 15: I worked in the Maehr lab for almost 4 years. I am now excited to be entering the Ph.D. program in the Johns Hopkins BME Department.**
