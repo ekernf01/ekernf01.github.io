@@ -2,7 +2,7 @@
 layout: post
 title: Gene regulatory network inference is a venus fly trap for quants
 math: true
-tags: GRN, grn
+tags: grn
 ---
 
 ![An image of Audrey II captioned 'Why dont you try .... GENE REGULATORY NETWORK INFERENCE?'](/images/grn_meme_audrey_ii.jpg)

@@ -2,7 +2,7 @@
 layout: post
 title: Are we using really context-specific GRN's for their nominal purpose? 
 math: true
-tags: GRN 
+tags: grn
 ---
 
 Warning: near-delirious rant initiating. Consider two of the major unmet needs for predicting gene function in stem cell biology:  
