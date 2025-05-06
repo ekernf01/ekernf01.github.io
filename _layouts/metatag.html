@@ -10,6 +10,21 @@ layout: default
       <li class="no-wrap">
           <nobr> <a href="../content_tags/{{ toc.tag }}/"> {{ toc.tag }} </a> &nbsp; {{ toc.content | strip_html | strip }}  </nobr>
         </li>
+        
+        <h4>{{ toc.tag }}</h4>
+          <p><strong>Available properties:</strong></p>
+          <ul>
+            <li>title: {{ toc.title }}</li>
+            <li>tag: {{ toc.tag }}</li>
+            <li>description: {{ toc.description }}</li>
+            <li>layout: {{ toc.layout }}</li>
+            <li>path: {{ toc.path }}</li>
+            <li>url: {{ toc.url }}</li>
+            <li>content length: {{ toc.content | size }}</li>
+            <li>content preview: {{ toc.content | strip_html | strip | truncate: 50 }}</li>
+          </ul>
+        
+        
       {% endfor %}
     </div>
 </div>
