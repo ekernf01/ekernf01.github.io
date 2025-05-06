@@ -8,7 +8,7 @@ layout: default
     <div>
       {% for toc in site.content_tags %}
       <li class="no-wrap">
-          <nobr> <a href="../content_tags/{{ toc.tag }}/"> {{ toc.tag }} </a> &nbsp; {{ toc.content }}  </nobr>
+          <nobr> <a href="../content_tags/{{ toc.tag }}/"> {{ toc.tag }} </a> &nbsp; {{ toc.description }}  </nobr>
         </li>
       {% endfor %}
     </div>
