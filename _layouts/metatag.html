@@ -8,13 +8,12 @@ layout: default
     <div>
       {% for toc in site.content_tags %}
       <li class="no-wrap">
-          <nobr> <a href="../content_tags/{{ toc.tag }}/"> {{ toc.tag }} </a> &nbsp; {{ toc.content | strip_html | truncate: 100 }}  </nobr>
+          <nobr> <a href="../content_tags/{{ toc.tag }}/"> {{ toc.tag }} </a> &nbsp; {{ toc.content | strip_html | strip }}  </nobr>
         </li>
       {% endfor %}
     </div>
 </div>
 <hr>
-
 
 <style>
   .no-wrap {
