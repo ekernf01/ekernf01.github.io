@@ -27,50 +27,9 @@ Ok fine, maybe the data are just hopelessly confounded by unmodeled post-transcr
 
 ### Virtual cells
 
-So we tried GRN inference and the result is extremely messy. Can we still get some value out of a messy network with lots of wrong answers but also enrichment of right answers? People claim to make useful cell state predictions with a messy first-draft motif-based network ([CellOracle](https://www.nature.com/articles/s41586-022-05688-9), [scKINETICS](https://academic.oup.com/bioinformatics/article/39/Supplement_1/i394/7210448?login=false)) or a curated functional similarity network ([GEARS](https://www.nature.com/articles/s41587-023-01905-6), [CODEX](https://pmc.ncbi.nlm.nih.gov/articles/PMC11211812/)) or no network at all ([PRESCIENT](https://www.nature.com/articles/s41467-021-23518-w), [GeneFormer](https://www.nature.com/articles/s41586-023-06139-9)). There is [tons of modeling diversity here](https://ekernf01.github.io/perturbation-methods) and there are lots of open questions. In fact, here's a [list of guiding questions](https://github.com/ekernf01/perturbation_benchmarking/blob/main/guiding_questions.txt) that I maintained and extended for several years during my Ph.D. 
+So we tried GRN inference and the result is extremely messy. Can we still get some value out of a messy network with lots of wrong answers but also enrichment of right answers? People claim to make useful cell state predictions with a messy first-draft motif-based network ([CellOracle](https://www.nature.com/articles/s41586-022-05688-9), [scKINETICS](https://academic.oup.com/bioinformatics/article/39/Supplement_1/i394/7210448?login=false)) or a curated functional similarity network ([GEARS](https://www.nature.com/articles/s41587-023-01905-6), [CODEX](https://pmc.ncbi.nlm.nih.gov/articles/PMC11211812/)) or no network at all ([PRESCIENT](https://www.nature.com/articles/s41467-021-23518-w), [GeneFormer](https://www.nature.com/articles/s41586-023-06139-9)). 
 
-- What is the best computational/statistical framework for predicting unseen perturbations of the transcriptome, and what characteristics of that framework are important to its performance?
-    - How important is the specific choice of ML method (e.g. ridge regression, LASSO, kernel regression, neural nets, boosted trees/random forests)?
-    - How dense are the network structures that best predict expression following new perturbations?
-        - How harshly should we prune features?
-        - Should we allow non-TF regulators?
-    - How does handling of time affect performance? 
-        - For dynamic models, is RNA velocity better or worse than modeling based on sample collection time?
-        - Is it better to match each treatment to the nearest control (estimating total effects), or match each treatment to itself and assume steady state (estimating direct effects)? Is it better to predict results after a single iteration of the model, or a few, or many (steady state)? How do these decisions interact?
-    - How much are causal effects or causal structures shared across different cell types? 
-        - Do estimators treating cell types as "separate", "identical", or "similar" work best?
-        - Can transfer learning or pre-training approaches such as GeneFormer improve causal effect predictions?
-    - About existing drafts of causal networks affecting transcription:
-        - Do most regulators have similar effects across all their targets?
-        - Do cell-type-specific draft networks work better on the corresponding cell types?
-        - What’s the best way to use a given network? Does GEARS beat causal inference approaches?
-        - Do some sources of network structures work better than others?
-        - Even if we can't get quantitative fold estimates, do networks predict which genes will change and which stay the same?
-        - Given gene expression, do existing networks predict which genes were perturbed (DoRothEA copycat)?
-    - How do existing methods compare on common tasks?
-        - How do CellOracle, scKinetics, Dictys, PRESCIENT, RNAForecaster, and simple baselines compare?
-    - What method of imposing low-rank structure works best, if any?
-        - Does DCD-FG work?
-        - Leaving aside causal inference or held-out perturbations, does low-rank structure also help learn fold changes for perturbations, as in FR-Perturb?
-    - What method of measuring TF activity works best?
-    - What types of data contain more useful signal? How do mundane details (e.g. data splitting) affect apparent performance? 
-        - Which is more useful: lots of perturbations, or wild-type time-series data? 
-        - Does pseudobulk aggregation or metacell aggregation or averaging of replicates hurt performance?
-        - How does variable gene selection affect apparent performance? 
-        - Is the main problem statistical generalization, or causal identification? Specifically, is it harder when the perturbations in the test set do not appear in the training set, or is it just as hard with a simple random split?
-        - How do different data splits affect performance (50-50 vs 90-10, different seeds)?
-        - Some evaluations require revealing all the test data to the predictor -- for instance, any evaluation of heldout data log likelihood. Does this make the task substantially easier?
-    - Why does everything fail? Would similar evaluations work if cascading effects were much larger than noise, or if models were correctly specified?
-- Different model assumptions imply different amounts of perturbations are needed to identify network structure. What do our results imply about identifiability?
-- Is it possible to obtain calibrated predictive intervals for expression profiles after unseen perturbations? 
-    - What are the biggest drivers of uncertainty?
-        - Measurement noise? 
-        - Network structure? 
-        - Causal effect size & direction?
-        - Systematic errors such as samples failing sequencing or off-target CRISPR effects?
-- What makes some genes easier to predict and others harder?
-
-I chased after too many of these questions during the super-customizable [PEREGGRN project](https://github.com/ekernf01/perturbation_benchmarking), leaving myself a little overextended. The [main result](https://www.biorxiv.org/content/10.1101/2023.07.28.551039v2) was that simple baselines usually worked best, preventing us from obtaining meaningful answers to many of our questions. [Many others are finding similar results](https://ekernf01.github.io/perturbation-benchmarks). So this didn't work out either.
+There is [tons of modeling diversity here](https://ekernf01.github.io/perturbation-methods) and there are lots of open questions. In fact, here's a [list of guiding questions](https://github.com/ekernf01/perturbation_benchmarking/blob/main/guiding_questions.txt) that I maintained and extended for several years during my Ph.D. I chased after too many of these questions during the super-customizable [PEREGGRN project](https://github.com/ekernf01/perturbation_benchmarking), leaving myself a little overextended. But the [main result](https://www.biorxiv.org/content/10.1101/2023.07.28.551039v2) was that simple baselines usually worked best, preventing us from obtaining meaningful answers to many of our questions. [Many others are finding similar results](https://ekernf01.github.io/perturbation-benchmarks). So this didn't work out either.
 
 ### Lessons
 
