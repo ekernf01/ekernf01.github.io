@@ -6,9 +6,6 @@ permalink: /blogroll/
 tags: misc
 ---
 
-
-### What I read
-
 Curiosities 
 
 - [Brian Potter](https://www.construction-physics.com/), Construction Physics
@@ -31,6 +28,7 @@ Technical matters
 
 - Fischbach on picking a problem: paywalled [article](https://www.cell.com/cell/abstract/S0092-8674(24)00304-0), twitter [thread](https://x.com/mfgrp/status/1778440273988812835)
 - Alon on picking a problem ([pdf](https://www.weizmann.ac.il/mcb/alon/sites/mcb.UriAlon/files/uploads/nurturing/howtochoosegoodproblem.pdf))
+- Bayless on [time estimates for projects](https://thesearesystems.substack.com/p/task-estimation-conquering-hofstadters)
 - Jake VanderPlas on Python for data science, especially this excellent [conda myth debunker](http://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/).
 - [CodingHorror](https://blog.codinghorror.com/) on programming effectively 
 - [Julia Evans](https://jvns.ca/about/) on being delighted to do it and on [effective debugging](https://jvns.ca/blog/2022/12/08/a-debugging-manifesto/).
