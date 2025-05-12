@@ -2,6 +2,7 @@
 layout: post
 title: Multiplexed perturbations enable massive scale ... but how big can we go?
 math: true
+tags: single_cell stat_ml
 ---
 
 In molecular biology, most molecules are irrelevant to most phenotypes, and it is terribly difficult to guess a mechanism a priori. This leads to [bad problems](https://slatestarcodex.com/2019/05/07/5-httlpr-a-pointed-review/). 
