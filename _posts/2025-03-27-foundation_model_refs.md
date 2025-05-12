@@ -21,6 +21,8 @@ In a recent [Very Large Benchmark of enhancer-to-gene pairing](https://www.biorx
 
 #### seq2seq
 
+Update, 2025 May: [Nivard's book](https://michelnivard.github.io/biobook/Preamble1.html) has more and better info than I have. 
+
 I don't know as much about models of DNA sequence alone -- mostly just what the [Owl posts](https://www.owlposting.com/p/a-socratic-dialogue-over-the-utility). 
 
 - [Evo2](https://arcinstitute.org/news/blog/evo2), [DNABERT](https://academic.oup.com/bioinformatics/article/37/15/2112/6128680), [Feng et al. benchmark](https://www.biorxiv.org/content/10.1101/2024.08.16.608288v1)
