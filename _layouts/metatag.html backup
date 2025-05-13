@@ -1,25 +1,42 @@
 ---
 layout: default
 ---
-<div class="post">
-<h1>Topics</h1>
-    <div id="main" role="main" class="container">
-      {{ content }}
-    </div>
 
-    {% capture temptags %}
-      {% for tag in site.tags %}
-        {{ tag[1].size | plus: 1000 }}#{{ tag[0] }}#{{ tag[1].size }}
-      {% endfor %}
-    {% endcapture %}
-    {% assign sortedtemptags = temptags | split:' ' | sort | reverse %}
-    {% for temptag in sortedtemptags %}
-      {% assign tagitems = temptag | split: '#' %}
-      {% capture tagname %}{{ tagitems[1] }}{% endcapture %}
-      {% assign post = site.content_tags %}
-      <li>
-      <a href="/content_tags/{{ tagname }}"><code class="highligher-rouge"><nobr>{{ tagname }}</nobr></code> </a>: {{post.content}}
-      </li>
+<div class="post">
+  <h1>Topics</h1>
+  <div id="main" role="main" class="container">
+    {{ content }}
+  </div>
+
+ <ul style="list-style: none; padding-left: 0;">
+  {% capture temptags %}
+    {% for tag in site.tags %}
+      {{ tag[1].size | plus: 1000 }}#{{ tag[0] }}#{{ tag[1].size }}
     {% endfor %}
+  {% endcapture %}
+
+  {% assign sortedtemptags = temptags | split:' ' | sort | reverse %}
+
+  {% for temptag in sortedtemptags %}
+    {% assign tagitems = temptag | split: '#' %}
+    {% assign tagname = tagitems[1] %}
+    {% assign tagpage = site.content_tags | where: "tag", tagname | first %}
+
+    <li style="display: flex; align-items: baseline; gap: 0.5em;">
+      <a href="/content_tags/{{ tagname }}/">
+        <code class="highlighter-rouge"><nobr>{{ tagname }}:</nobr></code>
+      </a>
+      <span>
+        {% if tagpage %}
+          {{ tagpage.description | markdownify | strip }}
+        {% else %}
+          <em>No description</em>
+        {% endif %}
+      </span>
+    </li>
+  {% endfor %}
+</ul>
+
 </div>
+
 <hr>
