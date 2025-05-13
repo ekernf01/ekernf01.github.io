@@ -1,6 +1,6 @@
 ---
 layout: metatag
-title: Topics
+title: 
 permalink: /topics/
 ---
 
@@ -9,4 +9,4 @@ permalink: /topics/
 
 ---
 
-Some of the different areas I write on:
+# Some of the different areas I write on:
