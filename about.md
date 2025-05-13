@@ -1,14 +1,8 @@
 ---
 layout: page
-title: ""
+title: "About"
 permalink: /
 ---
-
-2025 April: I have finished my Ph.D.!!! I am looking for a Boston-area biotech role with opportunities to grow towards new-to-me data types and new-to-me biological problems. If you know a company or team that seems like a good fit, please help me get in touch! Here is my [resume (pdf)](/files/Eric_Kernfeld_resume_2025_April.pdf).
-
----
-
-# About me
 
 Hi! I'm Eric, and I help scientists find meaning in data. For years now, I have been working towards reliable computer models of gene activity, with a focus on human stem cells. The agenda of my Ph.D. was to understand the limits of modern gene activity models and relevant data. My work on [false discovery rate control in network inference](https://www.biorxiv.org/content/10.1101/2023.05.23.541948v1) and [assessing predictions about genetic perturbations](https://github.com/ekernf01/perturbation_benchmarking) demonstrated that we are a long way from having what we need in this domain.
 
