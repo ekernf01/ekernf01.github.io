@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page
 title: 
 math: true
 permalink: /blogroll/
