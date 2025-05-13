@@ -3,7 +3,6 @@ layout: default
 ---
 
 <div class="post">
-  <h1>Topics</h1>
   <div id="main" role="main" class="container">
     {{ content }}
   </div>
