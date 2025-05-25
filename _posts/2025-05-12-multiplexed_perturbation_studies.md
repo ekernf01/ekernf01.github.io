@@ -63,7 +63,7 @@ So, suppose you apply 1,000 perturbations, and each sample has an independent 50
 
 **Only 1/1024 survives**. So this case is pretty harsh. What are your options?
 
-- If the perturbation and cell culture is cheap and the readout is expensive, then you could just apply the perturbation, and filter out dead samples prior to the readout. In a well-based assay, don't bother imaging or sequencing the contents of the well if it looks dead. In a droplet-based assay, it's common to remove dead cells by FACS.
+- If the perturbation and cell culture is cheap and the readout is expensive, then you could just apply the perturbation, and filter out dead samples prior to the readout. In a well-based assay, don't bother imaging or sequencing the contents of the well if it looks dead. In a droplet-based assay, it's common to remove dead cells by FACS. (Actually, cell count alone [contains much of the info you might want.](https://www.biorxiv.org/content/10.1101/2025.04.27.650853v1))
 - You could allocate each treatment to fewer cells. If you allocate each treatment to 10% of the cells, then the probability of survival is 0.9^10, which is about 35%. This is much, much better than 1/1024. 
 
 These kinds of considerations are unlikely to be resolved by statistical optimality criteria ... but just for funsies, let's:
