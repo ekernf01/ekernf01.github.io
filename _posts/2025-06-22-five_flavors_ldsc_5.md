@@ -42,7 +42,7 @@ A quick breakdown:
 
 - We are back to modeling the squared association statistic for SNP $k$. 
 - The first term matches [strawberry (stratified) LDSC](strawberry). $C$ and $\tau_C$ are a set of SNPs and its per-SNP heritability contribution. $\ell_{k ; C}=\sum_{j\in C} r_{kj}^2$ is the stratified LD score, summing LD over variants in $C$. The difference between strawberry and melon is that here, $\tau_C$ measures effects that are *not mediated by gene expression*. 
-- For the second term, effects mediated by gene expression, the formula is in the same general shape. The set of SNPs $C$ is replaced by a set of genes $D$, and there is a separate learned weight $\pi_D$. But the LD score $\ell_{k,C}$ is replaced by a more complex "expression score". The expression score sums up all possible two-stage effects where SNP $k$ is in LD with SNP $j$ and SNP $j$ affects expression of gene $i$: $\mathcal{L}_{k ; d} = \sum_{i \in D} \sum_{j\in SNPs} r_{j ⁢ k}^{2} ⁢ \beta_{i ⁢ j}^{2}$. As you compare this with the model for the phenotype, note that an uppercase $\beta$ is a $B$.
+- For the second term, effects mediated by gene expression, the formula is in the same general shape. The set of SNPs $C$ is replaced by a set of genes $D$, and there is a separate learned weight $\pi_D$. But the LD score $\ell_{k,C}$ is replaced by a more complex "expression score". The expression score sums up all possible two-stage effects where SNP $k$ is in LD with SNP $j$ and SNP $j$ affects expression of gene i: $$\mathcal{L}_{k ; d} = \sum_{i \in D} \sum_{j\in SNPs} r_{j ⁢ k}^{2} ⁢ \beta_{i ⁢ j}^{2}$$. As you compare this with the model for the phenotype, note that an uppercase $\beta$ is a $B$.
 
 There are major complications here. 
 
