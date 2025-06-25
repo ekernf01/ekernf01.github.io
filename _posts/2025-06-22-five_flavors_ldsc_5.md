@@ -85,6 +85,8 @@ Parameters are assumed to be independent within and across the different vectors
 
 The independence assumptions allow them to engage in a habitual hobby of heritability hackers and pretend $(a+b)^2 = a^2 + b^2$. Beginner algebra students across the globe weep with envy.
 
+![images/ldsc_midwit.png]()
+
 There is another key derivation explaining what happens when gene expression effects are measured in the wrong cell type. Hopefully, expression is correlated between the cell type measured and the ideal cell type. Actually, all we need is for *genetic effects on expression* to be correlated, a.k.a. a genetic correlation. If the average (across genes) of the genetic correlation between expression in the measured and ideal cell types is $\rho$, then the MESC estimates for $\pi$ are off by a factor of $\rho^2$. This is given in full generality in supplement 1.1.3, and one of the hardest lines in the whole piece is supplement 1.1.3 section line 3, in which a bunch of LD terms $r^2_j$ and transcript effects $\alpha_i$ slide right through a covariance operator as if they were scalars. I suspect this could be formally verified with the [Law of Total Covariance](https://en.wikipedia.org/wiki/Law_of_total_covariance).  
 
 #### Simulations
