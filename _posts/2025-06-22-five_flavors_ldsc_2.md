@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Five flavors of stratified LD score regression: part 2, strawberry
+title: Five flavors of stratified LD score regression (Part 2, Strawberry)
 math: true
 tags: stat_ml
 permalink: strawberry

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Five flavors of stratified LD score regression: part 4, lime
+title: Five flavors of stratified LD score regression (Part 4, Lime)
 math: true
 tags: stat_ml
 permalink: lime

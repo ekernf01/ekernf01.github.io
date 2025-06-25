@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Five flavors of stratified LD score regression: part 1, vanilla
+title: Five flavors of stratified LD score regression (Part 1, Vanilla)
 math: true
 tags: stat_ml
 permalink: vanilla

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Five flavors of stratified LD score regression: part 5, melon
+title: Five flavors of stratified LD score regression (Part 5, Melon)
 math: true
 tags: stat_ml
 permalink: melon

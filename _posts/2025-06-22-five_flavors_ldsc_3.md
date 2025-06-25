@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Five flavors of stratified LD score regression: part 3, cranberry
+title: Five flavors of stratified LD score regression (Part 3, Cranberry)
 math: true
 tags: stat_ml
 permalink: cranberry
