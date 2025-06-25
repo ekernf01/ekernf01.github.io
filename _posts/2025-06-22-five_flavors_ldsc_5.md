@@ -30,9 +30,9 @@ By now you know the drill: let's come up with a flavor of LD score regression th
 
 The assumed model for the phenotype is 
 
-$$y = X\gamma + X\Beta\alpha + \epsilon$$
+$$y = X\gamma + XB\alpha + \epsilon$$
 
-where $X$ contains genotypes, $\Beta$ contains effects of genotypes on gene expression, $\alpha$ contains effects of expression on the phenotype, and $\gamma$ contains genetic effects on the phenotype that are not mediated by gene expression. The $\gamma$ and $\alpha$ terms are assumed to be independent and Gaussian, with variance $\sum_C \tau_C$ or $\sum_D \pi_D$ being a sum of contributions from membership in different sets of variants or genes. These variance contributions $\tau_C$ and $\pi_D$ will be the targets of inference. 
+where $X$ contains genotypes, $B$ contains effects of genotypes on gene expression, $\alpha$ contains effects of expression on the phenotype, and $\gamma$ contains genetic effects on the phenotype that are not mediated by gene expression. The $\gamma$ and $\alpha$ terms are assumed to be independent and Gaussian, with variance $\sum_C \tau_C$ or $\sum_D \pi_D$ being a sum of contributions from membership in different sets of variants or genes. These variance contributions $\tau_C$ and $\pi_D$ will be the targets of inference. 
 
 As usual, the method itself does not require direct observation of genotypes and phenotypes; it uses summary statistics and LD to infer regression slopes that describe how much heritability is mediated by certain mechanisms or classes of variants. The formula actually used for model-fitting is this.
 
@@ -42,7 +42,7 @@ A quick breakdown:
 
 - We are back to modeling the squared association statistic for SNP $k$. 
 - The first term matches [strawberry (stratified) LDSC](strawberry). $C$ and $\tau_C$ are a set of SNPs and its per-SNP heritability contribution. $\ell_{k ; C}=\sum_{j\in C} r_{kj}^2$ is the stratified LD score, summing LD over variants in $C$. The difference between strawberry and melon is that here, $\tau_C$ measures effects that are *not mediated by gene expression*. 
-- For the second term, effects mediated by gene expression, the formula is in the same general shape. The set of SNPs $C$ is replaced by a set of genes $D$, and there is a separate learned weight $\pi_D$. But the LD score $\ell_{k,C}$ is replaced by a more complex "expression score". The expression score sums up all possible two-stage effects where SNP $k$ is in LD with SNP $j$ and SNP $j$ affects expression of gene $i$: $\mathcal{L}_{k ; d} = \sum_{i \in D} \sum_{j\in SNPs} r_{j ⁢ k}^{2} ⁢ \beta_{i ⁢ j}^{2}$. As you compare this with the model for the phenotype, note that an uppercase $\beta$ is a $\Beta$.
+- For the second term, effects mediated by gene expression, the formula is in the same general shape. The set of SNPs $C$ is replaced by a set of genes $D$, and there is a separate learned weight $\pi_D$. But the LD score $\ell_{k,C}$ is replaced by a more complex "expression score". The expression score sums up all possible two-stage effects where SNP $k$ is in LD with SNP $j$ and SNP $j$ affects expression of gene $i$: $\mathcal{L}_{k ; d} = \sum_{i \in D} \sum_{j\in SNPs} r_{j ⁢ k}^{2} ⁢ \beta_{i ⁢ j}^{2}$. As you compare this with the model for the phenotype, note that an uppercase $\beta$ is a $B$.
 
 There are major complications here. 
 
@@ -75,7 +75,7 @@ They also ran the procedure with expression effects from multiple cell types and
 
 The main derivation is in supplement 1.1.2. The phenotype is assumed to result from genetic effects mediated by gene expression and direct genetic effects.
 
-$$y = X\gamma + X\Beta\alpha + \epsilon$$
+$$y = X\gamma + XB\alpha + \epsilon$$
 
 Parameters are assumed to be independent within and across the different vectors. Violation of these assumptions are tested via simulation; recap below. The assumptions make it pretty easy to do the usual LDSC derivation: multiply an $X_k^T/N$ through both sides; square both sides; wrap both sides in an $E[\cdot]$; and zero out a gajillion cross-terms. They do not show all this, but a cross-terms vanishes if it has: 
 

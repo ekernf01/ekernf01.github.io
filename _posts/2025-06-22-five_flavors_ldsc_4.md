@@ -22,7 +22,7 @@ Close. You would run [lime-flavored (signed) LDSC](https://pubmed.ncbi.nlm.nih.g
 
 ### Key formulas 
 
-$E[\hat \alpha | v] = r_f\sqrt{h^2_g}Rv$
+$E[\hat \alpha ; v] = r_f\sqrt{h^2_g}Rv$
 
 You may notice that there is no $\chi$ and no $^2$; so; what is this saying?
 
@@ -37,16 +37,15 @@ A more unexpected part of this paper is in the significance testing.
 
 Less common alleles are often less for a reason. At baseline, even without specific molecular-level explanations, rare alleles would tend to have a directional (deleterious) effect on a typical polygenic trait. To control for this, Reshef et al. widen $v$ into a matrix by appending 5 extra columns encoding discretized allele frequency for each genotype. 
 
-They quantify significance of estimates for $r_f$ by randomly flipping signs of large contiguous blocks of entries of v and re-running the estimation. The null model holds that $Pr(\hat \alpha|v)$ does not depend on $sign(v)$; this is an unusual assumption that I have not seen anywhere else. This method allows them to maintain calibration even when large predicted effects co-localize with important regions that the model has no knowledge of, which is very different from s-LDSC.
+They quantify significance of estimates for $r_f$ by randomly flipping signs of large contiguous blocks of entries of v and re-running the estimation. The null model holds that $Pr(\hat \alpha;v)$ does not depend on $sign(v)$; this is an unusual assumption that I have not seen anywhere else. This method allows them to maintain calibration even when large predicted effects co-localize with important regions that the model has no knowledge of, which is very different from s-LDSC.
 
 ### Empirical results
 
 They deployed the model using annotations from deep-learning predictions of transcription factor binding for 382 TF's. Using transcription as a phenotype, they verified that several TF's tend to activate transcription as expected. Then they analyzed diseases and complex traits. Among the findings was some really interesting novel evidence for involvement of IRF1 in Crohn's disease. The IRF1 locus hosts SNP's contributing Crohn's risk, but it is densely packed with genes, and the cause of the association is not clear. This analysis aggregates smaller effects over the whole genome from places where IRF1 *binding sites* are affected by genetic variants, so it is not subject to the same fine-mapping difficulty.
 
-### Stay tuned for part 5: ???.
+### Stay tuned for part 5: melon.
 
-The [next part of this series](???) is on ??? (???) linkage disequilibrium score regression. 
-
+The [next part of this series](melon) is on melon-flavored (mediated expression) score regression. 
 
 ### Notes on derivation of lime LDSC
 
