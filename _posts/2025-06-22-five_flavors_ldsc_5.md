@@ -83,7 +83,7 @@ Parameters are assumed to be independent within and across the different vectors
 - an $\alpha_j\alpha_k$ for $j\neq k$ 
 - a $\beta_{ij}\beta_{\ell k}$ for $i\neq \ell$ OR $j\neq k$.
 
-The independence assumptions allow them to engage in a habitual hobby of heritability hackers and pretend $(a+b)^2 = a^2 + b^2$. Beginner algebra students across the globe weep with envy.
+The independence assumptions allow them to engage in a habitual hobby of human heritability hobnobbers and pretend $(a+b)^2 = a^2 + b^2$. Beginner algebra students across the globe weep with envy.
 
 ![The classic midwit meme template where the left (idiot) forgets the cross-term while expanding a quadratic; the middle (pic of Eric) expands it correctly, and the right (pic of Sasha Gusev lolol) omits the cross-term by assuming it has an expected value of 0.](images/ldsc_midwit.png)
 
