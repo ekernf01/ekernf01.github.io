@@ -71,13 +71,13 @@ It is [here](https://www.nature.com/articles/ng.3211#MOESM39). The derivation be
 - in general, define theoretical quantities and estimators separately, then do math to see how far the estimator is off; for example $\ell_j \neq \hat \ell_j$ and $r_{jk}\neq \hat r_{jk}$.
 - univariate linear regression with standardized features yield the estimator $X^T\phi/N$, since the usual $X^TX^{-1}$ boils down to $1/N$
 - law of total variance
-- variance is quadratic: $Var(AZ|A) = AVar(Z)A^T$.
+- variance is quadratic: $Var(AZ;A) = AVar(Z)A^T$.
 
 Some confusing things to watch out for:
 
 - the phenotype might usually be called "y", but here it is called "$\phi$". This is an N by 1 vector. When they write $Var[\phi]$, they mean an N by N covariance matrix, not a scalar; $Var[\phi_i] = Var[\phi]_{i,i}$. 
 - some $X$'s have a subscript $j$ and some do not. This is important. 
-- Equation 1.5 is quite specific to a genetics setting; my regression classes did not help without context. Specifically, $X$ and $\beta$ are both random. So it makes sense to write $Var[\phi|X] = Var[X\beta + \epsilon|X] =  XVar[\beta]X^T + Var[\epsilon]$. 
+- Equation 1.5 is quite specific to a genetics setting; my regression classes did not help without context. Specifically, $X$ and $\beta$ are both random. So it makes sense to write $Var[\phi;X] = Var[X\beta + \epsilon;X] =  XVar[\beta]X^T + Var[\epsilon]$. 
     - Furthermore, $Var[\beta]$ is the M by M identity matrix because they have already scaled the genotypes $X$ in a way that accounts for a biological expectation: rare variants having bigger expected effects.
     - Further further more more, $Var[\epsilon]$ is normally where I punt and write $\sigma^2$, but here, it's fully constrained. The genetic and non-genetic variance have to add up to 1, and the proportion of variance that is genetic (the heritability) is known a priori. 
 - Equation 1.9 seems to omit Equation 1.5's $N(1 − h^2_g)$ without notice; however, this term vanishes like 1/N and typical modern GWAS N is at least $10^4$. 
