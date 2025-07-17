@@ -2,10 +2,19 @@
 layout: post
 title: Some references on genomic foundation models
 math: true
+permalink: FM-refs-2025
 tags: misc
 ---
 
 I recently offered to swap bibliographies with the folks at [Tabula Bio](https://www.lesswrong.com/posts/SsLkxCxmkbBudLHQr/tabula-bio-towards-a-future-free-of-disease-and-looking-for), so I put together a haphazard list of recent work on foundation models in genomics. I always want to know what are the limits of the latest data and how far we can generalize, so this discussion is a great opportunity to explore where Tabula's interests and mine overlap. For three model classes defined by the general type of training data, here are some pointers to a sampling of existing work, plus a brief comment on where these models seem to hit a wall. Read it quick before the SOTA gets up and walks away!
+
+Update: I am retconning this post into a series on virtual cell modeling. 
+
+- [Episode 1](perturbation-methods): methods circa mid-2024
+- [Episode 2](perturbation-benchmarks): benchmarks circa early 2025
+- [Episode 3](FM-refs-2025): a broader look at genomic foundation models (this post)
+- [Episode 4](virtual-cell-june-2025): new developments circa June 2025
+
 
 #### Seq2function
 

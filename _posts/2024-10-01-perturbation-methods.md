@@ -10,6 +10,13 @@ Forecasting expression in response to genetic perturbations is potentially extre
 
 If you get bored in the middle of the list, you can skip to the end for a spicy take on epistemic standards in bioinformatics. 🌶️
 
+UPDATE 2025 July: I am retconning this post into a series on virtual cell modeling.
+
+- [Episode 1](perturbation-methods): methods circa mid-2024 (this post)
+- [Episode 2](perturbation-benchmarks): benchmarks circa early 2025
+- [Episode 3](FM-refs-2025): a broader look at genomic foundation models
+- [Episode 4](virtual-cell-june-2025): new developments circa June 2025 
+
 First I'll recap methods that require some perturbations in the training data.
 
 - [DCD-FG](https://arxiv.org/abs/2206.07824) estimates a causal structural model where each variable is a possibly-nonlinear function of its parents. The twist is the "factor graph" structure: there's a bottleneck where each regulator feeds into a limited number of latent master regulators, which in turn propagate effects downstream. Smooth penalties are applied to make the structure sparse and acyclic (as in NO-TEARS). Mathematical guarantees accompanying the paper show that less data is needed: even in situations where many causal DAGs fit the data, often only one of them is a factor graph. The main purpose of DCD-FG is network structure recovery, but predicting counterfactuals is another core function of causal inference, and the original paper has intriguing demos predicting unseen genetic perturbations. A lot of love and care went into this method, and I'm a big fan of it.

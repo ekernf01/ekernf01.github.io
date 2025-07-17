@@ -13,7 +13,14 @@ I wrote about the [boom of new perturbation prediction methods](perturbation-met
 - What are this benchmark's distinctive advantages? 
 - Is the code intended to be reused? If I have a new method, should I test it with this benchmark?
 
-I hope this will be a useful gathering place for people to find related work. 
+I hope this will be a useful gathering place for people to find related work. UPDATE 2025 July: I am retconning this post into a series on virtual cell modeling.
+
+- [Episode 1](perturbation-methods): methods circa mid-2024
+- [Episode 2](perturbation-benchmarks): benchmarks circa early 2025 (this post)
+- [Episode 3](FM-refs-2025): a broader look at genomic foundation models
+- [Episode 4](virtual-cell-june-2025): new developments circa June 2025 
+
+Evals:
 
 - PEREGGRN ([code](https://github.com/ekernf01/perturbation_benchmarking), [paper](https://www.biorxiv.org/content/10.1101/2023.07.28.551039v2)) constitutes the bulk of my PhD work, and therefore I cannot discuss it objectively. If you want my take anyway:
     - Task: predict gene expression for new perturbations not seen during training, or new combinations of perturbations. The post-perturbation expression level is revealed only for the directly perturbed gene. 
