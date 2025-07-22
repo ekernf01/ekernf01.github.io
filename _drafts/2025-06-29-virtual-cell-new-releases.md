@@ -166,7 +166,7 @@ They compare Ambrosia against the mean of the training data, the linear baseline
 
 In a follow-up task, they reveal portions of the NLMT-cx0001 data to Ambrosia sequentially, allowing it to choose which results it wants to see at each round. With the objective of mimicking a specfic T cell state, Ambrosia discovered about twice as many hits as a random baseline.
 
-This is a nice, easy-to-understand contribution with sensible due diligence. The ESMFold embeddings are a clever source of information that I don't remember seeing elsewhere. 
+This is a nice, easy-to-understand contribution with sensible due diligence. The ESMFold embeddings are a clever source of information that has previously shown promise in predicting genetic interactions (see Fig. 4 of [Zhong et al.](https://www.biorxiv.org/content/10.1101/2025.01.29.635607v1.full)).
 
 The proprietary data allow them to see a scaling law where the log of the weighted mean squared error decreases about linearly with the log of the number of observed perturbation conditions. I have limited perspective on this and no reason to doubt it, but in terms of expense, it seems daunting: an exponential decrease in error will require an exponential increase in sequencing costs.
 
