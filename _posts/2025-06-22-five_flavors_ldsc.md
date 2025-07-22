@@ -17,7 +17,7 @@ Linkage disequilibrium score regression (LDSC) is a workhorse technique at the i
 4. [Lime](lime) (signed LDSC)
 5. [Melon](melon) (mediated expression score regression)
 
-{:toc}
+{:toc} table of contents goes here pleeeeeaasssseee
 
 ### Vanilla (the original, [Bulik-Sullivan et al. 2015](https://www.nature.com/articles/ng.3211))
 
