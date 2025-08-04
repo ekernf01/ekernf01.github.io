@@ -15,7 +15,7 @@ For context, this post is part of a series dedicated to computational prediction
 - [Episode 3](FM-refs-2025): a broader look at genomic foundation models (large-scale, multi-purpose neural networks trained on DNA or RNA data)
 - [Episode 4](virtual-cell-june-2025): new developments circa June 2025 (this post)
 
-#### A spicy note on terminology
+### A spicy note on terminology
 
 Some people want to restrict the term "virtual cell" to mechanistic models. But [most layers of gene regulation are not measured in transcriptome data](https://ekernf01.github.io/GRN_missing/), and mechanism-oriented network models [currently don't work for predicting detailed outcomes of novel genetic perturbations](https://www.biorxiv.org/content/10.1101/2023.07.28.551039v2). It's time to creatively adapt our methods to work best given the limited but incredible datasets currently on offer circa 2025. People are already doing it, and [usage of words determines their meaning](https://en.wikipedia.org/wiki/Philosophical_Investigations#Meaning_as_use), so this ship has sailed. I'll talk about deep learning models as "virtual cells" throughout this post. 
 
@@ -25,7 +25,7 @@ Some people want to restrict the term "virtual cell" to mechanistic models. But 
 
 It's [this](https://arxiv.org/html/2412.13478v1). The core innovation is to pair transcriptome foundation models with a "drug conditional adapter" that fine-tunes them to predict transcriptional responses to *chemical perturbations not seen during training* or *in cell lines not seen during training*. Also, when they say "unseen cell lines (zero-shot)", they mean that control expression for test-set cell lines is observed during training, but no perturbed expression profiles from test-set cell lines are seen during training. 
 
-A crucial ingredient is the molecular embeddings provided by ChemBERTa. Embeddings are lists of numbers that represent discrete entities. The most famous example of an embedding might be the [word embeddings](https://en.wikipedia.org/wiki/Word_embedding) from [word2vec](https://en.wikipedia.org/wiki/Word2vec#:~:text=Word2vec%20is%20a%20technique%20in,text%20in%20a%20large%20corpus.). 
+A crucial ingredient is the molecular embeddings provided by ChemBERTa. Embeddings are lists of numbers that represent discrete entities. The most famous example of an embedding might be the [word embeddings](https://en.wikipedia.org/wiki/Word_embedding) from [word2vec](https://en.wikipedia.org/wiki/Word2vec#:~:text=Word2vec%20is%20a%20technique%20in,text%20in%20a%20large%20corpus.), which became known for examples like "sister" being the closest word in embedding space to the result of "Brother" - "Man" + "Woman". The ChemBERTa embeddings represent small organic molecules. 
 
 Genentech's DCA is compatible with different transcriptome foundation models, but the exposition focuses on scGPT, the [single-cell Generative Pretrained Transformer](https://www.nature.com/articles/s41592-024-02201-0). The usual function of scGPT is to convert gene expression measurement into triples (g, x, c) where g is a gene identifier, x is a discretized expression level, and c is a covariate (usually the name of the cell line). Each cell is a collection of these triples. A transformer model is trained to predict held-out triples. The latent space of the transformer consists of gene embeddings, expression level embeddings, and covariate embeddings. To make predictions, the embeddings are added together and passed through a transformer, making this a type of [latent space arithmetic](https://en.wikipedia.org/wiki/Word2vec).
 
@@ -75,7 +75,7 @@ Ablation studies show that:
 3. Recursion datasets add information roughly equally across better-known and lesser-understood genes.
 4. (I don't fully understand this yet but) scRNA foundation models do not seem to be important to their results.
 
-Given that most of the value in this study comes from the STRINGdb graph, I would love to see results from GEARS with the STRINGdb graph swapped in. To find that so much detailed insight was already sitting in the public domain is a huge win.
+Given that most of the value in this study can be had from the STRINGdb graph alone, I would love to see results from GEARS with the STRINGdb graph swapped in. To find that so much detailed insight was already sitting in the public domain is a huge win.
 
 #### Arc (State)
 
@@ -140,7 +140,7 @@ Here's a [notebook from Arc](https://colab.research.google.com/drive/1QKOtYP7bMp
 
 Shift and U. Toronto researchers have put out [new work on benchmarking](https://arxiv.org/pdf/2506.22641). The author list here includes Bo Wang, creator of scGPT, a method that has been used for perturbation prediction both on its own and as a component of methods like DCA. The central argument is that metrics such as mean squared error and Pearson correlation between predicted and observed differential expression are a bad choice because they favor baselines like the mean of the training data. Instead, we should use weighted $R^2$ or squared-error metrics that emphasize genes with higher deviation from the mean of the training data. According to these weighted metrics, GEARS out-performs the mean of the training data on the [Norman 2019 erythroid leukemia genetic interaction data](https://pubmed.ncbi.nlm.nih.gov/31395745/). The authors also hack GEARS to change the *training* loss to weighted squared error, and they observe further improved results. 
 
-How should we view this in context of other recent work? On the Norman data, various metrics emphasizing the most differentially expressed genes have favored GEARS over baselines: Pearson DE Delta in [Wong et al.](https://academic.oup.com/bioinformatics/article/41/6/btaf317/8142305#524967483) and [PEREGGRN figure S6](https://www.biorxiv.org/content/10.1101/2023.07.28.551039v2.full#F10). New Limit's Ambrosia evals also eschew MSE in favor of a metric with more differentially-expressed genes upweighted. The new priorities and results from Shift et al. seem qualitatively in line with all this.
+How should we view this in context of other recent work? On the Norman data, various metrics emphasizing the most differentially expressed genes have favored GEARS over baselines: Pearson DE Delta in [Wong et al.](https://academic.oup.com/bioinformatics/article/41/6/btaf317/8142305#524967483) and the MSE on the top genes in [PEREGGRN figure S6](https://www.biorxiv.org/content/10.1101/2023.07.28.551039v2.full#F10). New Limit's Ambrosia evals also eschew MSE in favor of a metric with more differentially-expressed genes upweighted. The new priorities and results from Shift et al. seem qualitatively in line with all this.
 
 But, there is actually a huge qualitative difference in methodology between this study and any other work I have seen. In this study, the weighting is not done by differential expression over controls. It is done by differential expression over the mean baseline. For any prediction P, you can show poor performance of P by up-weighting genes according to their observed distance from P in the test data. 
 
@@ -161,7 +161,7 @@ Well, these models are starting to work by leveraging new information and by ide
 
 **Overall, it would be prudent for us to act as if virtual cell models are about to get a lot better quickly.**
 
-Here are some more specific takes about "how good are they *really*.
+Here are some more specific takes about "how good are they *really*".
 
 #### Causal networks are down and out, but we still like them and we want them back
 
@@ -200,7 +200,7 @@ Consider predictions P1, P2 and true outcomes T1, T2. Retrieval could be assesse
 
 #### The mean baseline contains biologically relevant findings that could trick you if you didn't know they came from a baseline
 
-The Txpert authors write "[T]he strong predictive power of the mean baseline  ... reflects general biological responses to perturbation-induced stress or a reduction in fitness, health or growth due to perturbation of an important cellular component, rather than perturbation-specific effects." Similarly, the eval work from Shift and U Toronto claims "Systematic bias is readily apparent when evaluating DEGs against control. This is illustrated in the Norman19 dataset[.]" I disagree; here's why. 
+The Txpert authors write "[T]he strong predictive power of the mean baseline  ... reflects general biological responses to perturbation-induced stress or a reduction in fitness, health or growth due to perturbation of an important cellular component, rather than perturbation-specific effects." Similarly, the eval work from Shift and U Toronto claims "Systematic bias is readily apparent when evaluating DEGs against control. This is illustrated in the Norman19 dataset[.]" This cannot be the full explanation of what's going on. Here's why. 
 
 I averaged together all the perturbation samples in the [Norman 2019 erythroid leukemia genetic interaction data](https://pubmed.ncbi.nlm.nih.gov/31395745/). I computed the log fold change over the control mean. I inspected the top 100 most increased genes. They included the following indicators of erythrocyte (red blood cell) differentiation:
 
@@ -217,11 +217,11 @@ I averaged together all the perturbation samples in the [Norman 2019 erythroid l
 - Two [glycophorins](https://en.wikipedia.org/wiki/Glycophorin). Glycophorins are membrane proteins that make up 2% of red blood cell mass.
 - Six different hemoglobin genes. Hemoglobin is used by red blood cells to transport oxygen.
 
-Thus, the results are not perturbation-induced stress, nor technical artifacts. They are highly specific to the biological process that drives interest in much prior literature on K562 cells: erythroid differentiation. 
+Thus, the results are not only perturbation-induced stress and technical artifacts. Many results are highly specific to the biological process that drives interest in much prior literature on K562 cells: erythroid differentiation. 
 
 The biological relevance of the "mean" baseline is especially important in light of how deep learning model results are presented. The [GEARS paper](https://www.nature.com/articles/s41587-023-01905-6#Sec2) has a section "Predicting new biologically meaningful phenotypes". They fill in the gaps in the Norman data by predicting consequences of perturbing every pair of the 102 genes for which perturbations are observed in the data. They highlights how "GEARS predicts a few new phenotypes, including one cluster showing high expression of erythroid markers... [I]ts identification demonstrates the ability of GEARS to expand the space of postperturbation phenotypes beyond what is observed in perturbational experiments." But erythroid differentiation is not beyond the training data; it's easily found in the training data. 
 
-Caveat: GEARS repeated the discovery of an erythroid-like outcome using a subset of training data with some of the most erythroid-like perturbation signatures removed from the training data (Figure S11). This renews the possibility that the finding represents an insightful generalization. It would be simple to see how the same procedure affects the mean baseline, so I ran the analysis as best I could. The figure legend say 7 signatures are removed, but the figure lists 10 pairs across 11 genes, and the 10 pairs do not occur in the training data. I removed the 11 single genes and repeated the above analysis. The mean-over-control top 100 most increased genes still had six hemoglobins, two glycophorins, APOE, ferritin, biliverdin reductase, ALAS2, YPEL3, SLC25A37, PRDX5, TXNIP, and KLF1 (but not CEBPB). I am not yet convinced that GEARS has discovered an erythroid phenotype that could not be found in the training data.
+Caveat: GEARS repeated the discovery of an erythroid-like outcome using a subset of training data with some of the most erythroid-like perturbation signatures removed from the training data (in Figure S11). This renews the possibility that the finding represents an insightful generalization. It would be simple to see how the same procedure affects the mean baseline, so I ran the analysis as best I could. The figure legend say 7 signatures are removed, but the figure lists 10 pairs across 11 genes, and the 10 pairs do not occur in the training data. I removed the 11 single genes and repeated the above analysis. The mean-over-control top 100 most increased genes still had six hemoglobins, two glycophorins, APOE, ferritin, biliverdin reductase, ALAS2, YPEL3, SLC25A37, PRDX5, TXNIP, and KLF1 (but not CEBPB). I am not yet convinced that GEARS has discovered an erythroid phenotype that could not be found in the training data.
 
 #### The subfield is in an early phase that will not yet produce a stable consensus on performance
 
