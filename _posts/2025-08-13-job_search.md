@@ -32,7 +32,7 @@ Here's how my job search went, and here are some suggested tactics. All numbers 
     - For your bigger announcements that you really want eyeballs on, people love legible accomplishments: baby's first preprint; degree obtained; exam passed. Don't be afraid to juice it up with some capital letters and emojis etc. If you have real substance, people won't mind a tiny bit of cynicism about human attention. 
     - Contrarian takes can also get a lot of attention, although you might make enemies this way. Even more popular are opinions that sound contrarian, but are actually already widespread, such as anti-AI sentiment.
 
-### What you don't need:
+### What you don't need
 
 - You don't need native or smooth English.
 - You don't need funny or charming jokes.
