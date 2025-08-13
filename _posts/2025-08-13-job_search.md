@@ -9,7 +9,7 @@ The comp bio job market is scarier than usual: 2023 was a [biotech bankruptcy bl
 
 Here's how it went and some suggested tactics. All numbers are approximate. For accessibility or screen readers, you can scroll to the bottom to find source data for this diagram.
 
-[A Sankey diagram with details on Eric's job search and also an obligatory Aella joke](images/job_search_sankey.png)
+![A Sankey diagram with details on Eric's job search and also an obligatory Aella joke](images/job_search_sankey.png)
 
 ### What to do? 
 
