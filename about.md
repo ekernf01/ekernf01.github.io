@@ -12,6 +12,8 @@ This is my personal blog: a venue to write about [interesting topics](/topics), 
 
 I am also a [musician](/sackbut). 
 
+Positions are not those of my employer.
+
 ### Contact me
 
 One privilege of this type of work is talking with people who are interested in the same highly specific topics. If you'd like to get in touch ... please do! You can find me on the bottom banner via email, LinkedIn, or Twitter.
