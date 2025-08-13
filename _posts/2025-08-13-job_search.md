@@ -3,6 +3,7 @@ layout: post
 title: Job search 2025 post-mortem and advice
 math: true
 permalink: job_search_2025
+tag: misc
 ---
 
 The comp bio job market is scarier than usual: 2023 was a [biotech bankruptcy bloodbath](https://www.fiercebiotech.com/special-reports/biotech-bankruptcies-break-10-year-record-2023), 2024 was [a little better](https://www.fiercebiotech.com/special-reports/2024-biotech-graveyard), and as far as layoffs, [2025 has been worse](https://www.fiercebiotech.com/biotech/biopharma-layoffs-first-half-year-jump-32-yoy). Academic and government sectors are also reeling from government cuts, and in the two places I have recently lived (Massachusetts and Maryland), cuts have specifically targeted large biomedical research employers (Harvard and NIH). The tech job market is [pandemically weird](https://technical.ly/professional-development/tech-job-market-trends-downturn/) and also not so hot. Anecdotally, there are lots of interesting job postings in comp bio, but each one might get *hundreds of applicants per week*, among which are many brilliant people. Some of them have [training and qualifications very similar to me](https://www.linkedin.com/feed/update/urn:li:activity:7344351549818638336/). I applied to about 65-70 jobs and got almost no interviews (except where I had a referral). 
