@@ -51,7 +51,7 @@ I have found no mention of this topic in:
 - [Diversity by Design](https://arxiv.org/pdf/2506.22641)
 - [Deep Learning-Based Genetic Perturbation Models Do Outperform Uninformative Baselines on Well-Calibrated Metrics](https://www.biorxiv.org/content/10.1101/2025.10.20.683304v1). 
 
-This may not matter for metrics like MSE or MAE that dilute the target-gene effect with lots of other non-targeted genes. But Wong's and Csendes's teams showed it can make or break SOTA for retrieval metrics, as well as metrics that isolate or up-weight the genes that are most poorly predicted by control expression or training-data mean expression. This problem needs to be addressed. 
+This may not matter for metrics like MSE or MAE that dilute the target-gene effect with lots of other non-targeted genes. But Wong's and Csendes's teams showed it can make or break SOTA for retrieval metrics, as well as metrics that isolate or up-weight the genes that are most differentially expressed. This problem needs to be addressed. 
 
 ### A classical solution: conditioning
 
