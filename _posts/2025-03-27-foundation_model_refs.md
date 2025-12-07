@@ -14,7 +14,8 @@ Update: I am retconning this post into a series on virtual cell modeling.
 - [Episode 2](perturbation-benchmarks): benchmarks circa early 2025
 - [Episode 3](FM-refs-2025): a broader look at genomic foundation models (this post)
 - [Episode 4](virtual-cell-june-2025): new developments circa June 2025
-
+- [Episode 5](mse_of_de): a snippet on weird behavior of MSE 
+- [Episode 6](target_gene_shenanigans): a rant on biological versus technical effects
 
 #### Seq2function
 

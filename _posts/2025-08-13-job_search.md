@@ -19,6 +19,7 @@ Here's how my job search went, and here are some suggested tactics. All numbers 
 [Increase your surface area](https://usefulfictions.substack.com/p/how-to-increase-your-surface-area) for good luck to land on.
 
 - Open your search to as many companies and locations as possible. I was unable to pursue really cool opportunities in several non-Boston cities, which was sad. 
+- Don't rely solely on applying in the obvious way. I got very little return from spending ~3 weeks to put in ~65 applications. Good fit or no, hiring managers [cannot handle the volume right now](https://www.linkedin.com/posts/olga-v-sazonova_well-thats-it-hiring-is-fcked-im-just-activity-7364820341728137216-h90s?utm_source=share&utm_medium=member_desktop&rcm=ACoAACw-HXMB84ZgNO4uco2hzQzjaDWEISaUT3Y).
 - Conduct informational interviews with people you know or people they know. Do it roughly [like this](https://managejobapplications.com/networking). I did ~30 of these. It was super interesting and enjoyable. It also got me a lot of useful advice and some merciful affirmation during a stressful time. It netted me 1 offer for a good job that I was enthusiastic about, plus one really cool near miss. 
 - Establish a public reputation in an area you are interested in.
 

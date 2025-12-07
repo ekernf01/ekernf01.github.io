@@ -8,12 +8,14 @@ permalink: virtual-cell-june-2025
 
 In October 2024, I [twote](https://x.com/ekernf01/status/1845809278197567542) that "something is deeply wrong" with what we now call virtual cell models. A lot has happened since then: modelers are advancing new architectures and mining new sources of information; evaluators are upping their game with deeper follow-up and an open competition; and synthetic biology wizards are building new datasets. Let's see what's cookin'. 
 
-For context, this post is part of a series dedicated to computational prediction of gene expression in response to genetic perturbations, which is often called virtual cell modeling.
+For context, this post is part of a series on prediction of gene expression in response to genetic perturbations, which is often called virtual cell modeling.
 
 - [Episode 1](perturbation-methods): methods circa mid-2024
 - [Episode 2](perturbation-benchmarks): benchmarks circa early 2025
 - [Episode 3](FM-refs-2025): a broader look at genomic foundation models (large-scale, multi-purpose neural networks trained on DNA or RNA data)
 - [Episode 4](virtual-cell-june-2025): new developments circa June 2025 (this post)
+- [Episode 5](mse_of_de): a snippet on weird behavior of MSE
+- [Episode 6](target_gene_shenanigans): a rant on biological versus technical effects
 
 ### A spicy note on terminology
 

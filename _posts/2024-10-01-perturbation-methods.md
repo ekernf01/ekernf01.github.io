@@ -16,6 +16,8 @@ UPDATE 2025 July: I am retconning this post into a series on virtual cell modeli
 - [Episode 2](perturbation-benchmarks): benchmarks circa early 2025
 - [Episode 3](FM-refs-2025): a broader look at genomic foundation models
 - [Episode 4](virtual-cell-june-2025): new developments circa June 2025 
+- [Episode 5](mse_of_de): a snippet on weird behavior of MSE 
+- [Episode 6](target_gene_shenanigans): a rant on biological versus technical effects
 
 First I'll recap methods that require some perturbations in the training data.
 

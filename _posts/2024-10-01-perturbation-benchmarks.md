@@ -19,6 +19,8 @@ I hope this will be a useful gathering place for people to find related work. UP
 - [Episode 2](perturbation-benchmarks): benchmarks circa early 2025 (this post)
 - [Episode 3](FM-refs-2025): a broader look at genomic foundation models
 - [Episode 4](virtual-cell-june-2025): new developments circa June 2025 
+- [Episode 5](mse_of_de): a snippet on weird behavior of MSE 
+- [Episode 6](target_gene_shenanigans): a rant on biological versus technical effects
 
 Evals:
 
