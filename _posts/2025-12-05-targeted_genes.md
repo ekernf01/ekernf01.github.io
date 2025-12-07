@@ -57,7 +57,7 @@ This may not matter for metrics like MSE or MAE that dilute the target-gene effe
 
 ![A bottle of ogx nourishing coconut milk hair conditioner. "Intense formula moisturizes for immediate softness after first use."](images/silky_smooth.png)
 
-If you write out the probability distribution of a transcript count vector as P(T)P(X|T), where T is the count of the directly perturbed gene(s) and X is the count of everything else, we should be using $P(X|T)$, not $P(T)$. To a causal statistics person, this is a natural decomposition: it corresponds to an "intervention graph", which is like a gene regulatory network where the incoming edges are removed from the perturbed gene. [Chevalley et al. 2025](https://www.nature.com/articles/s42003-025-07764-y/figures/1) provide a great visual.
+If you write out the probability distribution of a transcript count vector as $P(T)P(X|T)$, where T is the count of the directly perturbed gene(s) and X is the count of everything else, we should be using $P(X|T)$, not $P(T)$. To a causal statistics person, this is a natural decomposition: it corresponds to an "intervention graph", which is like a gene regulatory network where the incoming edges are removed from the perturbed gene. [Chevalley et al. 2025](https://www.nature.com/articles/s42003-025-07764-y/figures/1) provide a great visual.
 
 ![alt text](images/interventional_graph.png)
 
