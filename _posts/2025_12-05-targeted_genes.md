@@ -6,15 +6,6 @@ tags: single_cell grn stat_ml
 permalink: target_gene_shenanigans
 ---
 
-This post is part of a series on prediction of gene expression in response to genetic perturbations, which is often called virtual cell modeling.
-
-- [Episode 1](perturbation-methods): methods circa mid-2024
-- [Episode 2](perturbation-benchmarks): benchmarks circa early 2025
-- [Episode 3](FM-refs-2025): a broader look at genomic foundation models (large-scale, multi-purpose neural networks trained on DNA or RNA data)
-- [Episode 4](virtual-cell-june-2025): new developments circa June 2025 (this post)
-- [Episode 5](mse_of_de): a snippet on weird behavior of MSE
-- [Episode 6](target_gene_shenanigans): a rant on biological versus technical effects (this post)
-
 ### The problem with gene-wise characterization of genetic interventions
 
 When you target a gene with CRISPRi, or something, its transcript goes down (or up). Actually, it goes down (or up) a very, very large amount. It goes down (or up) farther than most other genes; see figure 1d of [Wong et al.](https://academic.oup.com/bioinformatics/article/41/6/btaf317/8142305). 
@@ -24,6 +15,17 @@ When you target a gene with CRISPRi, or something, its transcript goes down (or 
 It goes down (or up) radically farther than biologically-oriented models expect: see figure 5C,D of the [TxPert paper](https://arxiv.org/html/2505.14919v1#S2).
 
 ![figure 5C,D of the TxPert paper shows a clear separation of targeted and non-targeted genes along the axis of prediction minus ground truth.](images/txpert5cd.png)
+
+
+(This post is part of a series on prediction of gene expression in response to genetic perturbations, which is often called virtual cell modeling.)
+
+- [Episode 1](perturbation-methods): methods circa mid-2024
+- [Episode 2](perturbation-benchmarks): benchmarks circa early 2025
+- [Episode 3](FM-refs-2025): a broader look at genomic foundation models (large-scale, multi-purpose neural networks trained on DNA or RNA data)
+- [Episode 4](virtual-cell-june-2025): new developments circa June 2025 (this post)
+- [Episode 5](mse_of_de): a snippet on weird behavior of MSE
+- [Episode 6](target_gene_shenanigans): a rant on biological versus technical effects (this post)
+
 
 **Hitting the target is a technical matter; it has nothing to do with the biology we are interested in.** The natural regulation of the targeted gene is completely subverted. For CRISPRi, some of the strongest human repressors, [KRAB](https://en.wikipedia.org/wiki/Kr%C3%BCppel_associated_box) or [KRAB+MECP2](https://www.nature.com/articles/s41592-018-0048-5), are delivered straight to your doorstep (free shipping if you pay for Prime... editing... I'll see myself out). For CRISRPa, four copies of the famously potent activator [VP16](https://pmc.ncbi.nlm.nih.gov/articles/PMC3419751/) are often used. For CRISPR, a double-strand break is introduced that renders the protein product of the gene non-functional. This *usually* lowers the mRNA abundance, and it *always* uncouples the mRNA abundance from its typical (hopeful) interpretation as a proxy for gene activity. 
 
