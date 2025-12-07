@@ -1,6 +1,6 @@
 ---
 layout: post
-title: We predict that the transcript abundance from the gene we are knocking down will *checks notes* decrease
+title: We predict that the transcript abundance from the gene we are knocking down will (checks notes) decrease
 math: true
 tags: single_cell grn stat_ml
 permalink: target_gene_shenanigans
