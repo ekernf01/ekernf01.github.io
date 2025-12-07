@@ -67,7 +67,7 @@ So, let's estimate $P(X\vert T)$, not $P(X,T)$. During training, that means you 
 
 Suppose I look at retrieval and I compare predictions P1, P2, P3 against true profile T1, or I compare P1 to T1, T2, T3. For a given comparison, multiple genes are among those targeted, and this causes weird gotchas.
 
-- Should the calculation for distance of P[i] to T[j] exclude both genes i and j? You could ask if $d_{-i,-i}(P[i], T[i]) < d_{-i,-j}(P[i], T[j])$. But then you are comparing different notions of distance, and the desired winner has one more dimension than everyone else. Also, what if gene $j$ has extremely high variance for some values of $j$? Anyone not needing to predict it gets an undue advantage.
+- Should the calculation for distance of P[i] to T[j] exclude both genes i and j? You could rank by $d_{-i,-j}(P[i], T[j])$ across all $j$. But then you are head-to-head comparing different notions of distance ... and the desired winner has one more dimension than everyone else. Also, what if gene $j$ has extremely high variance for some values of $j$? Anyone not needing to predict it gets an undue advantage.
 - Should all distance calculation exclude all directly targeted genes? Then you exclude a lot of interesting and useful info.
 
 I have a proposal for how to fix this. The position of one item in a ranked list can be determined by comparing its value to each other item in the list. For all $j\neq i$, check if $d_{-i,-j}(P[i], T[i]) < d_{-i,-j}(P[i], T[j])$ where $d_{-i,-j}$ is a distance that ignores genes $i$ and $j$. Each individual comparison is fair, and the end result is similar to existing retrieval metrics.
