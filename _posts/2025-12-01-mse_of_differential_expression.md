@@ -24,7 +24,7 @@ For M, you would naturally think to average the controls. But you can probably r
 
 ### When Systema's "centroid" approach has better theoretical MSE than controls-only
 
-What about the best MSE for $D_G$? Let's consider two estimators: "simple" (treatment mean minus control mean) and "mean-centered" (treatment mean minus everything-else mean). 
+What about the best MSE for $D_G$? Let's consider two estimators: "simple" (treatment mean minus control mean) and "centroid" (treatment mean minus everything-else mean). 
 
 - For "simple", the formula is $(1/C)\sum_{i=1}^C Z_i - (1/C)\sum_{i=1}^C Y_i$, the bias is 0, and the variance is $\sigma^2/C + \sigma^2/C$. (Let's assume every sample has independent error with variance $\sigma^2$.) 
 - For "centroid", the formula is $(1/C)\sum_{i=1}^C Z_i - (1/N)\sum_{i=1}^N X_i$, the bias is $(1/N)\sum_{i=1}^N D_{J(i)}-D_G$, and the variance is $\sigma^2/C + \sigma^2/N$. 
