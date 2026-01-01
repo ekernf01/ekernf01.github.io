@@ -22,7 +22,7 @@ It goes down (or up) radically farther than biologically-oriented models expect:
 - [Episode 1](perturbation-methods): methods circa mid-2024
 - [Episode 2](perturbation-benchmarks): benchmarks circa early 2025
 - [Episode 3](FM-refs-2025): a broader look at genomic foundation models (large-scale, multi-purpose neural networks trained on DNA or RNA data)
-- [Episode 4](virtual-cell-june-2025): new developments circa June 2025 (this post)
+- [Episode 4](virtual-cell-june-2025): new developments circa June 2025
 - [Episode 5](mse_of_de): a snippet on weird behavior of MSE
 - [Episode 6](target_gene_shenanigans): a rant on biological versus technical effects (this post)
 
