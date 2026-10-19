@@ -210,18 +210,18 @@ I averaged together all the perturbation samples in the [Norman 2019 erythroid l
 - biliverdin reductase, which helps catalyze degradation of *fetal* heme
 - SLC25A37, which is an iron importer
 - Ferritin, which is used for iron storage
-- APOE4, which [is essential for iron homeostasis](https://pmc.ncbi.nlm.nih.gov/articles/PMC7823209/)
+- APOE4 (EDIT: the gene is APOE, not APOE4; thanks Ilias), which [is essential for iron homeostasis](https://pmc.ncbi.nlm.nih.gov/articles/PMC7823209/)
 - PRDX5, which [may have an antioxidant role in erythroid differentiation](https://pmc.ncbi.nlm.nih.gov/articles/PMC6283586/)
 - YPEL3, which [is essential for red blood cell membrane properties](https://www.nature.com/articles/s41598-021-95291-1)
 - TXNIP, which [regulates erythroid differentiation](https://pubmed.ncbi.nlm.nih.gov/25600403/)
 - CEBPB, which also regulates erythroid differentiation, at least for [some isoforms](https://pubmed.ncbi.nlm.nih.gov/18832658/)
 - KLF1, which regulates beta-globin and other erythroid genes [per GeneCards](https://www.genecards.org/cgi-bin/carddisp.pl?gene=KLF1&keywords=KLF1)
-- Two [glycophorins](https://en.wikipedia.org/wiki/Glycophorin). Glycophorins are membrane proteins that make up 2% of red blood cell mass.
+- Two [glycophorins](https://en.wikipedia.org/wiki/Glycophorin). Glycophorins are membrane proteins that make up 2% of red blood cell mass (EDIT: 2% of the membrane, not 2% of the cell! Thanks Ilias).
 - Six different hemoglobin genes. Hemoglobin is used by red blood cells to transport oxygen.
 
 Thus, the results are not only perturbation-induced stress and technical artifacts. Many results are highly specific to the biological process that drives interest in much prior literature on K562 cells: erythroid differentiation. 
 
-The biological relevance of the "mean" baseline is especially important in light of how deep learning model results are presented. The [GEARS paper](https://www.nature.com/articles/s41587-023-01905-6#Sec2) has a section "Predicting new biologically meaningful phenotypes". They fill in the gaps in the Norman data by predicting consequences of perturbing every pair of the 102 genes for which perturbations are observed in the data. They highlights how "GEARS predicts a few new phenotypes, including one cluster showing high expression of erythroid markers... [I]ts identification demonstrates the ability of GEARS to expand the space of postperturbation phenotypes beyond what is observed in perturbational experiments." But erythroid differentiation is not beyond the training data; it's easily found in the training data. 
+The biological relevance of the "mean" baseline is especially important in light of how deep learning model results are presented. The [GEARS paper](https://www.nature.com/articles/s41587-023-01905-6#Sec2) has a section "Predicting new biologically meaningful phenotypes". They fill in the gaps in the Norman data by predicting consequences of perturbing every pair of the 102 (EDIT: 105, thanks Ilias!) genes for which single-gene perturbations are observed in the data. They highlights how "GEARS predicts a few new phenotypes, including one cluster showing high expression of erythroid markers... [I]ts identification demonstrates the ability of GEARS to expand the space of postperturbation phenotypes beyond what is observed in perturbational experiments." But erythroid differentiation is not beyond the training data; it's easily found in the training data. 
 
 Caveat: GEARS repeated the discovery of an erythroid-like outcome using a subset of training data with some of the most erythroid-like perturbation signatures removed from the training data (in Figure S11). This renews the possibility that the finding represents an insightful generalization. It would be simple to see how the same procedure affects the mean baseline, so I ran the analysis as best I could. The figure legend say 7 signatures are removed, but the figure lists 10 pairs across 11 genes, and the 10 pairs do not occur in the training data. I removed the 11 single genes and repeated the above analysis. The mean-over-control top 100 most increased genes still had six hemoglobins, two glycophorins, APOE, ferritin, biliverdin reductase, ALAS2, YPEL3, SLC25A37, PRDX5, TXNIP, and KLF1 (but not CEBPB). I am not yet convinced that GEARS has discovered an erythroid phenotype that could not be found in the training data.
 
@@ -247,6 +247,8 @@ So, it is totally reasonable and necessary to slice and dice the results when ch
 ### Epistemic coda
 
 #### Mistake bounty
+
+*Update 2026 10 18: thanks very much to Ilias, who asked to be credited only by that one name, for claiming 2 of the 4 bounties and improving the rigor of this recap!*
 
 I will pay you 25 USD via Venmo if you can (patiently!) explain to me a significant factual error that affects a substantive claim within this post. 
 
